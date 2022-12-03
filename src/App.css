@@ -10,4 +10,11 @@ h1 {
   color: #ffffff;
   background-color: cadetblue;
   padding: 10px;
+  margin-bottom: 0px !important;
+}
+
+p {
+  color: #000000;
+  background-color: rgb(221, 221, 221);
+  padding: 10px;
 }
