@@ -1,6 +1,6 @@
 import './App.css';
-import Problem from './bebin/R055_ReactstrapTab';
 import 'bootstrap/dist/css/bootstrap.css';
+import Problem from './middle/R071_Onkey';
 
 function App() {
   return (
