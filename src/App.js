@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Problem from './middle/R071_Onkey';
+import Problem from './middle/R072_onSubmit';
 
 function App() {
   return (
