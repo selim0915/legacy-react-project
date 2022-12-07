@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import content from './R095_reactThrottle'
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import floatingPopulationList from './Floating_population/floatingPopulationList';
 
 // css
 import '../css/new.css';
@@ -18,7 +19,6 @@ import Footer from './Footer/Footer';
 // login
 import LoginForm from './LoginForm';
 
-
 class App extends Component {
   render() {
     return (
@@ -26,6 +26,7 @@ class App extends Component {
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
         <Route exact path='/Debounce' component={content} />
+        <Route path='/floatingPopulationList' component={floatingPopulationList} />
         <Footer />
       </div>
       // <div>
