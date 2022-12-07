@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { Route } from "react-router-dom";
 // import {connect} from 'react-redux';
-// import StrAddButton from '../StrAddButton';
-import { Route, Routes } from "react-router-dom";
-import content from './R095_reactThrottle'
+import ApiPostJson from './R111_ApiPostJson';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import floatingPopulationList from './Floating_population/floatingPopulationList';
+//import floatingPopulationList from './Floating_population/floatingPopulationList';
 
 // css
 import '../css/new.css';
@@ -25,8 +24,8 @@ class App extends Component {
       <div className="App">
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
-        <Route exact path='/Debounce' component={content} />
-        <Route path='/floatingPopulationList' component={floatingPopulationList} />
+        <Route exact path='/ApiPostJson' component={ApiPostJson} />
+        {/* <Route path='/floatingPopulationList' component={floatingPopulationList} /> */}
         <Footer />
       </div>
       // <div>
