@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from "react-router-dom";
 // import {connect} from 'react-redux';
-import ApiPostJson from './R111_ApiPostJson';
+import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 //import floatingPopulationList from './Floating_population/floatingPopulationList';
@@ -24,7 +24,7 @@ class App extends Component {
       <div className="App">
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
-        <Route exact path='/ApiPostJson' component={ApiPostJson} />
+        <Route path='/SoftwareList' component={SoftwareList} />
         {/* <Route path='/floatingPopulationList' component={floatingPopulationList} /> */}
         <Footer />
       </div>
