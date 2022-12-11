@@ -1,16 +1,17 @@
 var express = require("express");
 var router = express.Router();
-const oracledb = require('oracledb');
+const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
 router.use(bodyParser.json());
 
-//oracle 서버 접속 정보
-const connection = oracledb.getConnection({ 
-  user: "system", 
-  password: "1234", 
-  connectionString: "localhost:1521/xe",
-  externalAuth  : false
+//mysql 서버 접속 정보
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: "3306",
+  database: 'react',
+  user: "srwoo",
+  password: "1234",
 });
 
 router.post("/", (req, res) => {
@@ -24,18 +25,16 @@ router.post("/", (req, res) => {
   console.log("\n Called Mapper Name  = "+param.mapper);
 
   var format = { language: 'sql', indent: '  ' };
-
-  //oracle 쿼리 정보 세팅
+  //mysql 쿼리 정보 세팅
   var query = mybatisMapper.getStatement(param.mapper, param.mapper_id, param, format);
   console.log("\n========= Node Mybatis Query Log Start =========");
   console.log("* mapper namespce : "+param.mapper+"."+param.mapper_id+" *\n");
   console.log(query+"\n");
-  
+
   connection.query(query, function (error, results) {
     if (error) {
       console.log("db error************* : "+error);
     }
-
     var time2 = new Date();
     console.log('## '+time2+ ' ##');
     console.log('## RESULT DATA LIST ## : \n', results);

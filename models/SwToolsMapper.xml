@@ -14,7 +14,7 @@
         , swt_manual_path
         , swt_github_url
         , reg_date
-      FROM srwoo.react_swtool
+      FROM react_swtool
       ORDER BY update_date DESC
   </select>
 </mapper>
