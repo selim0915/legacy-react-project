@@ -103,6 +103,8 @@ class SoftwareView extends Component {
                 if(body == "succ"){
                     if(type == 'save'){
                         this.sweetalertSucc('Software Tools 등록이 완료되었습니다.', false)
+                    }else if(type == 'modify'){
+                        this.sweetalertSucc('Software Tools 수정이 완료되었습니다.', false)
                     }
                     setTimeout(function() {
                         this.props.history.push('/SoftwareList');
@@ -138,6 +140,7 @@ class SoftwareView extends Component {
                         <form name="frm" id="frm" action="" method="post">
                             <input id="is_Swtcode" type="hidden" name="is_Swtcode" />
                             <input id="is_Email" type="hidden" name="is_Email" value="guest" />
+                            <input id="is_beforeSwtcode" type="hidden" name="is_beforeSwtcode" value={this.state.before_swtcode} />
                             <article className="res_w">
                                 <p className="ment" style={{"textAlign": "right"}}>
                                     <span className="red">(*)</span>표시는 필수입력사항 입니다.
