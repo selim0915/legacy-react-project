@@ -9,8 +9,8 @@ class Footer extends Component {
               <li className="em_bt"><a href="#n">이메일주소무단수집거부</a></li>
             </ul>
             <div className="ft_p">
-              <span>주소 : 서울시 구로구 항동</span>
-              <span>Tel : 02-1234-5678</span>
+              <span>주소 : 서울시 관악구 OO동</span>
+              <span>Tel : 010-5581-1711</span>
             </div>
             <p>COPYRIGHT &copy; React 200, ALL RIGHTS RESERVED.{this.props.name}</p>
         </footer>

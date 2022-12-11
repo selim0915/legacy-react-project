@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 // import {connect} from 'react-redux';
 import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
+import floatingPopulationList from './Floating_population/floatingPopulationList';
 //import '../App.css';
 //import 'bootstrap/dist/css/bootstrap.css';
 
@@ -26,7 +27,7 @@ class App extends Component {
         <Route exact path='/' component={LoginForm} />
         <Route path='/SoftwareList' component={SoftwareList} />
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
-        {/* <Route path='/floatingPopulationList' component={floatingPopulationList} /> */}
+        <Route path='/floatingPopulationList' component={floatingPopulationList} />
         <Footer />
       </div>
       // <div>
