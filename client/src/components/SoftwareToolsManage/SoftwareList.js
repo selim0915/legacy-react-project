@@ -22,8 +22,7 @@ class SoftwareList extends Component {
         .then( response => {
             try {
                 this.setState({ responseSwtoolList: response });
-                debugger
-                this.setState({ append_SwtoolList: this.SwToolListAppend() });
+                this.setState({ append_SwtoolList: this.SwToolListAppend(response) });
             } catch (error) {
                 alert('작업중 오류가 발생하였습니다.');
             }
@@ -31,10 +30,9 @@ class SoftwareList extends Component {
         .catch( error => {alert('작업중 오류가 발생하였습니다.');return false;} );
     }
 
-    SwToolListAppend = () => {
+    SwToolListAppend = (response) => {
         let result = []
-        var SwToolList = this.state.responseSwtoolList.data
-        debugger
+        var SwToolList = response.data;
         
         for(let i=0; i<SwToolList.json.length; i++){
             var data = SwToolList.json[i]
@@ -46,15 +44,14 @@ class SoftwareList extends Component {
             var reg_date = year +'.'+month+'.'+day
 
             result.push(
-                <table className="table_ty2 ad_tlist">
-                    <tbody>\
+                <table key={i} className="table_ty2 ad_tlist">
+                    <tbody>
                         <tr className="hidden_type">
                             <td>{data.swt_toolname}</td>
                             <td>{data.swt_function}</td>
                             <td>{reg_date}</td>
                             <td>
-                                <Link to={'/AdminSoftwareView/'+data.swt_code} 
-                                className="bt_c1 bt_c2 w50_b">수정</Link>
+                                <Link to={'/SoftwareView/'+data.swt_code} className="bt_c1 bt_c2 w50_b">수정</Link>
                                 <a href="#n" className="bt_c1 w50_b" >삭제</a>
                             </td>
                         </tr>
@@ -72,7 +69,7 @@ class SoftwareList extends Component {
                     <div className="li_top">
                         <h2 className="s_tit1">Software Tools 목록</h2>
                         <div className="li_top_sch af">
-                        <Link to={'/AdminSoftwareView/register'} className="sch_bt2 wi_au">Tool 등록</Link>
+                        <Link to={'/SoftwareView/register'} className="sch_bt2 wi_au">Tool 등록</Link>
                         </div>
                     </div>
 
