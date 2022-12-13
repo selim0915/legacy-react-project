@@ -2,8 +2,10 @@ var express = require("express");
 var router = express.Router();
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
+const bcrypt = require('bcrypt');
 
 router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // Connection Pool 세팅
 const pool  = mysql.createPool({
@@ -32,31 +34,51 @@ router.post("/", (req, res) => {
   console.log("\n========= Node Mybatis Query Log Start =========");
   console.log("* mapper namespce : "+param.mapper+"."+param.mapper_id+" *\n");
   console.log(query+"\n");
-
-  pool.getConnection(function(err,connection){
-    connection.query(query, function (error, results) {
-      if (error) {
-        console.log("db error************* : "+error);
-      }
-      var time2 = new Date();
-      console.log('## '+time2+ ' ##');
-      console.log('## RESULT DATA LIST ## : \n', results);
-      if(results != undefined){
-        string = JSON.stringify(results);
-        var json = JSON.parse(string);
-        if (req.body.crud == "select") {
-          res.send({ json });
-        }else{
-          res.send("succ");
+  try {
+    pool.getConnection(function(err,connection){
+      connection.query(query, function (error, results) {
+        if (error) {
+          console.log("db error************* : "+error);
         }
-      }else{
-        res.send("error");
-      }
-
-      connection.release();
-      console.log("========= Node Mybatis Query Log End =========\n");
-    });
-  })
+        var time2 = new Date();
+        console.log('## '+time2+ ' ##');
+        console.log('## RESULT DATA LIST ## : \n', results);
+        if(results != undefined){
+          string = JSON.stringify(results);
+          var json = JSON.parse(string);
+          if (req.body.crud == "select") {
+            if (param.mapper_id == "selectLoginCheck") {
+              if (json[0] == undefined) {
+                res.send(null);
+              } else {
+                bcrypt.compare(req.body.is_Password, json[0].userpassword, function(
+                  err,
+                  login_flag
+                ) {
+                  if (login_flag == true) {
+                    res.send({ json });
+                  } else {
+                    res.send(null);
+                  }
+                });
+              }
+            } else {
+              res.send({ json });
+            }
+          }else{
+            res.send("succ");
+          }
+        }else{
+          res.send("error");
+        }
+  
+        connection.release();
+        console.log("========= Node Mybatis Query Log End =========\n");
+      });
+    })
+  } catch (error) {
+    console.log("pool error : "+error);
+  }
 });
 
 module.exports = router;
