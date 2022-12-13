@@ -6,6 +6,7 @@ import SoftwareView from './SoftwareToolsManage/SoftwareView';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
 //import '../App.css';
 //import 'bootstrap/dist/css/bootstrap.css';
+import Register from './Register/Register';
 
 // css
 import '../css/new.css';
@@ -28,6 +29,7 @@ class App extends Component {
         <Route path='/SoftwareList' component={SoftwareList} />
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
         <Route path='/floatingPopulationList' component={floatingPopulationList} />
+        <Route path='/register' component={Register} />
         <Footer />
       </div>
       // <div>
