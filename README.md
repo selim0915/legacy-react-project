@@ -31,5 +31,6 @@
 ##### npm install --save bcrypt
 ##### npm install --save jsonwebtoken
 ##### npm install react-cookies --save
+##### npm install --save node-cron
 
 ##### yarn dev
