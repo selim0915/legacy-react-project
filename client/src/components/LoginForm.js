@@ -79,11 +79,11 @@ class LoginForm extends Component {
                         </span>
                         <input type="password" id="pwd_val" placeholder="비밀번호" />
                     </div>
+                    <div className="s_bt" type="" onClick={(e) => this.submitClick(e)}>로그인</div>
                     <ul className="af">
                         <li><Link to={'/register'}>회원가입</Link></li>
-                        <li className="pwr_b"><a href="#n">비밀번호 재설정</a></li>
+                        {/* <li className="pwr_b"><a href="#n">비밀번호 재설정</a></li> */}
                     </ul>
-                    <div className="s_bt" type="" onClick={(e) => this.submitClick(e)}>로그인</div>
                 </div>
                 </div>
             </section>

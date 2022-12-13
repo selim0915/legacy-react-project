@@ -28,4 +28,8 @@
 ##### npm install --save multer
 ##### npm install --save moment
 
+##### npm install --save bcrypt
+##### npm install --save jsonwebtoken
+##### npm install react-cookies --save
+
 ##### yarn dev
