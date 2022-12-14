@@ -4,7 +4,7 @@ var cron = require('node-cron');
 
 // cron.schedule('5 * * * *', () => {
 // cron.schedule('5 0 * * *', () => {
-cron.schedule('* * * * *', () => {
+cron.schedule('0 9 * * 1', () => {
   var mapper = 'BatchMapper';//mybatis xml 파일명
   var crud = 'insert';//select, insert, update, delete 중에 입력
   var mapper_id = 'insertBatchlog';

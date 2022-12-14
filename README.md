@@ -27,6 +27,7 @@
 
 ##### npm install --save multer
 ##### npm install --save moment
+##### npm install -save react-moment
 
 ##### npm install --save bcrypt
 ##### npm install --save jsonwebtoken

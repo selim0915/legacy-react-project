@@ -7,6 +7,8 @@ import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
 import Register from './Register/Register';
+import UserApproval from './User/UserApproval';
+
 
 // css
 //import '../App.css';
@@ -84,6 +86,7 @@ class App extends Component {
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
         <Route path='/floatingPopulationList' component={floatingPopulationList} />
         <Route path='/register' component={Register} />
+        <Route path='/UserApproval' component={UserApproval} />
         <Footer />
       </div>
     );

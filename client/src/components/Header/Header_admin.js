@@ -107,22 +107,16 @@ class Header extends Component {
                                 <Link to={'/UserApproval'}>사용자 관리</Link>
                             </li>
                             <li className="menulist">
-                                <Link to={'/AdminResearchProject'}>Research Projects 관리</Link>
-                            </li>
-                            <li className="menulist">
                                 <Link to={'/SoftwareList'}>Software Tools 관리</Link>
                             </li>
-                            <li className="menulist">
-                                <Link to={'/AdminDataSourceList'}>Data Sources 관리</Link>
-                            </li>
-                            {/* 드롭다운 이벤트 */}
-                            <li  className="menulist"><Link to={'/floatPopulationList'}>버스 승강장 조회</Link>
-                            <ul className="gn_2">
-                                <li><Link to={'/community/notice'}>공지사항</Link></li>
-                            </ul>
+                            <li  className="menulist">
+                                <Link to={'/floatPopulationList'}>버스승강장 조회</Link>
                             </li>
                             <li  className="menulist">
-                                <Link to={'/SubCodeManage'}>Sub code 관리</Link>
+                                <Link to={'/SubCodeManage'}>Map 조회</Link>
+                            </li>
+                            <li className="menulist">
+                                <Link to={'/AdminDataSourceList'}>공지사항</Link>
                             </li>
                         </ul>
                     </nav>

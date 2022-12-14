@@ -5,6 +5,7 @@ var usersRouter = require('./routes/users');
 var swtoolRouter = require("./routes/SwtoolRout");
 var fileuploadRouter = require("./routes/UploadRout");
 var usersRouter = require("./routes/UsersRout");
+var usersAdminRouter = require("./routes/UsersAdminRout");
 require("./routes/BatchRout");
 
 var app = express();
@@ -16,6 +17,7 @@ app.use("/api/upload", fileuploadRouter);
 app.use(express.static("./uploads"));
 app.use("/api/register", usersRouter);
 app.use("/api/LoginForm", usersRouter);
+app.use("/api/userAdmin", usersAdminRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
