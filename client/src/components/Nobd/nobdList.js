@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, createRef, useEffect, useState } from "react";
 
 // **** React Hooks ****
 const NobdList = () => { // 함수는 대문사 명시 필요.
@@ -10,9 +10,19 @@ const NobdList = () => { // 함수는 대문사 명시 필요.
         } = e;
         setEmail(value);
     }
+    const onClickOutside = () => {
+        console.log("serim");
+    }
+    const ref = ClickOutside(onClickOutside);
 
     return (
         <>
+            <div ref={ref}>
+                <h1>List</h1>
+                <h2>popup</h2>
+            </div>
+            <input type="text" />
+            
             <p>{count}</p>
             <hr/>
             <button onClick={() => setCount(count+1)}>추천</button>
@@ -21,6 +31,24 @@ const NobdList = () => { // 함수는 대문사 명시 필요.
         </>
     );
 };
+
+function ClickOutside (fn) {
+    const ref = createRef();
+    const handleClick = e => {
+        //console.log(ref.current.contains(e.target));
+        if(!ref.current.contains(e.target)){
+            //console.log("clicked outside");
+            fn();
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("click", handleClick);
+    }, [])
+
+    return ref;
+}
+
 export default NobdList;
 
 // **** React ****
