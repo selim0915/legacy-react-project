@@ -1,3 +1,5 @@
+import { Axios } from "axios";
+import { ReactDOM } from "react";
 import React, { Component, createRef, useEffect, useState } from "react";
 
 // **** React Hooks ****
@@ -13,15 +15,25 @@ const NobdList = () => { // 함수는 대문사 명시 필요.
     const onClickOutside = () => {
         console.log("serim");
     }
-    const ref = ClickOutside(onClickOutside);
+    //const ref = ClickOutside(onClickOutside);
+    const name = UseInput("");
+    console.log("name", name);
+    const {payload, loading, error} = Usefetch("https://www.tutorialkart.com/sample_image.jpg");
 
     return (
         <>
-            <div ref={ref}>
+            {/* <div ref={ref}>
                 <h1>List</h1>
                 <h2>popup</h2>
+            </div> */}
+
+            <div>
+                <input {...name} placeholder="what your name" />
+                <br/>
+                {loading && <span>loding</span>}
+                {!loading && error && <span>error</span>}
+                {!loading && payload && <img src={payload.file}/>}
             </div>
-            <input type="text" />
             
             <p>{count}</p>
             <hr/>
@@ -47,6 +59,43 @@ function ClickOutside (fn) {
     }, [])
 
     return ref;
+}
+
+function UseInput(defaultValue){
+    const [value, setValue] = useState(defaultValue);
+
+    const onChange = e => {
+        const {
+            target: {value}
+        } = e;
+        setValue(value);
+    };
+
+    return {value, onChange};
+}
+
+function Usefetch(url) {
+    const [payload, setPayload] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    const callUrl = async () => {
+        try {
+            const {data} = await Axios.get(url);
+            //throw error
+            setPayload(data);
+        } catch (error) {
+            setError("error!");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        callUrl();
+    }, []);
+
+    return {payload, loading, error}
 }
 
 export default NobdList;
