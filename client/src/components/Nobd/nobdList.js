@@ -1,12 +1,23 @@
 import React, { Component, useState } from "react";
 
 // **** React Hooks ****
-const NobdList = () => {
+const NobdList = () => { // 함수는 대문사 명시 필요.
     const [count, setCount] = useState(0);
+    const [email, setEmail] = useState("");
+    const updateEmail = e => {
+        const {
+            target : {value}
+        } = e;
+        setEmail(value);
+    }
+
     return (
         <>
-            {count}
-            <button onClick={() => setCount(count+1)}>btn</button>
+            <p>{count}</p>
+            <hr/>
+            <button onClick={() => setCount(count+1)}>추천</button>
+            <button onClick={() => setCount(count-1)}>비추천</button>
+            <input placeholder="Email" value={email} onChange={updateEmail} />
         </>
     );
 };
