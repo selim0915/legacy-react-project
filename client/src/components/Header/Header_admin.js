@@ -110,7 +110,7 @@ class Header extends Component {
                                 <Link to={'/SoftwareList'}>Software Tools 관리</Link>
                             </li>
                             <li  className="menulist">
-                                <Link to={'/floatPopulationList'}>버스승강장 조회</Link>
+                                <Link to={'/floatingPopulationList'}>버스승강장 조회</Link>
                             </li>
                             <li  className="menulist">
                                 <Link to={'/SubCodeManage'}>Map 조회</Link>
