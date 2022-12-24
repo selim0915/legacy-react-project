@@ -36,13 +36,20 @@ class nobdList extends Component {
                             <Search 
                                 title={this.state.subject.title}
                                 sub={this.state.subject.sub}
-                                    onChangePage={function(){
-                                        this.setState({
-                                            mode: 'read'
-                                        });
-                                    }.bind(this)}>
+                                onChangePage={function(){
+                                    this.setState({
+                                        mode: 'welcome'
+                                    });
+                                }.bind(this)}>
                             </Search>
-                            <Content data={this.state.contents}></Content>
+                            <Content 
+                                data={this.state.contents}
+                                onChangePage={function(){
+                                    this.setState({
+                                        mode: 'read'
+                                    });
+                                }.bind(this)}>
+                            </Content>
                             <Content2 title={_titie} desc={_desc}></Content2>
                         </div>
                     </article>
