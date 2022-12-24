@@ -3,7 +3,7 @@
 /**** Common ************************************************/
 * {max-height:1000000px;margin:0;padding:0;}
 img, fieldset, button {border:none;}
-hr, button img {display:none;}
+button img {display:none;}
 input, select, button, textarea {font-family:'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:15px;font-weight:400;color:#505050;line-height:30px;letter-spacing:-0.03em;box-sizing:border-box;vertical-align:middle;}
 input[type=submit] {cursor:pointer;appearance:none;-moz-appearance:none;-webkit-appearance:none;border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;}
 select::-ms-expand {display: none;}
@@ -227,7 +227,7 @@ body{min-width:1280px; }
 
 /*sub 공통*/
 .sub_wrap{background: #f8f8f8; padding: 56px 0;}
-.s_tit1{font-size: 30px; line-height: 38px; color: #333; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 27px; margin-left: -3px;}
+.s_tit1{font-size: 30px; line-height: 38px; color: #333; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 20px; margin-left: -3px;}
 .input_ty1{font-size: 15px; color: #333; height: 45px; line-height: 43px; background: #fff; border: 1px solid #dedede; outline:none; text-indent: 20px; box-sizing: border-box; padding-right: 15px;}
 .input_ty1::placeholder{color: #cdcdcd;}
 

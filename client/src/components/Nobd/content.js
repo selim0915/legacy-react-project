@@ -7,24 +7,30 @@ class Content extends Component {
         var i = 0;
         while(i<data.length){
             lists.push(
-                <li key={data[i].id}>
+                <li key={data[i].id} style={{'float':'left', 'marginRight':'10px'}}>
                     <a 
                         href={"/content/"+data[i].id} 
-                        onClick={function(e){
+                        data-id={data[i].id}
+                        onClick={function(id, num, e){
                             e.preventDefault();
-                            this.props.onChangePage();
-                    }.bind(this)}>{data[i].title}</a>
+                            this.props.onChangePage(id);
+                            //this.props.onChangePage(e.target.dataset.id);
+                    }.bind(this, data[i].id, 10)}>
+                        {data[i].title}
+                    </a>
                 </li>
             );
             i += 1;
         }
 
         return (
-            <nav>
-                <ul>
-                    {lists}
-                </ul>
-            </nav>
+            <div className="list_cont" style={{'display':'inline-block', 'marginTop': '15px'}}>
+                <hr />
+                    <ul>
+                        {lists}
+                    </ul>
+                <hr />
+            </div>
         )
     }
 }
