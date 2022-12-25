@@ -1,0 +1,17 @@
+/* 눈내리기 */
+.snowflake {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(0, 255, 94);
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+}
+
+@keyframes fall {
+    from {}
+    to {
+        transform: translateY(90vh);
+        opacity: 0;
+    }
+}

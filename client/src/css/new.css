@@ -1,7 +1,7 @@
 /* @import url(/css/dpl/sce/NotoSansKR-Hestia.css); */
 
 /**** Common ************************************************/
-* {max-height:1000000px;margin:0;padding:0;}
+* {margin:0;padding:0;}
 img, fieldset, button {border:none;}
 button img {display:none;}
 input, select, button, textarea {font-family:'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:15px;font-weight:400;color:#505050;line-height:30px;letter-spacing:-0.03em;box-sizing:border-box;vertical-align:middle;}

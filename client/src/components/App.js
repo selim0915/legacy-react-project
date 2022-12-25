@@ -14,6 +14,10 @@ import AdminDataSourceList from './Nobd/nobdList';
 //import '../App.css';
 //import 'bootstrap/dist/css/bootstrap.css';
 import '../css/new.css';
+import '../css/snow.css';
+
+// js
+import '../js/snow.js'
 
 // header
 import HeaderAdmin from './Header/Header_admin';

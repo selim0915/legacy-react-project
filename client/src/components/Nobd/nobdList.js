@@ -39,7 +39,7 @@ class nobdList extends Component {
 
         return (
             <div>
-                <section className="sub_wrap" >
+                <section className="sub_wrap">
                     <article className="s_cnt re_1 ct1">
                         <Search 
                             title={this.state.subject.title}
