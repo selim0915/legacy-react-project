@@ -4,6 +4,7 @@ import Content from "./Content";
 import Control from "./Control";
 import ReadContent from "./ReadContent";
 import CreatContent from "./CreatContent";
+import UpdateContent from "./UpdateContent";
 
 class nobdList extends Component {
     constructor(props){
@@ -23,41 +24,83 @@ class nobdList extends Component {
         }
     }
 
-    render(){
+    getReadContent(){
+        var i = 0;
+        while(i < this.state.contents.length){
+            var data = this.state.contents[i];
+            if(data.id === this.state.selected_content_id){
+                return data;
+            }
+            i += 1;
+        }
+    }
+
+    getContent() {
         var _titie, _desc, _article = null;
         if(this.state.mode === 'welcome'){
             _titie = this.state.welcome.title;
             _desc = this.state.welcome.desc;
             _article = <ReadContent title={_titie} desc={_desc}></ReadContent>
         }else if (this.state.mode === 'read'){
-            var i = 0;
-            while(i < this.state.contents.length){
-                var data = this.state.contents[i];
-                if(data.id === this.state.selected_content_id){
-                    _titie = data.title;
-                    _desc = data.desc;
-                    break;
-                }
-                i += 1;
-            }
-            _article = <ReadContent title={_titie} desc={_desc}></ReadContent>
+            var _content = this.getReadContent();
+            _article = <ReadContent title={_content.title} desc={_content.desc}></ReadContent>
         }else if(this.state.mode === 'create'){
             _article = <CreatContent 
                             onSubmit={function(_title, _desc){
                                 this._max_content_id = this.max_content_id+1;
+                                // 1. push
                                 // this.state.contents.push(
                                 //     {id: this._max_content_id, title: _title, desc: _desc}
                                 // );
-                                var _contents = this.state.contents.concat(
+
+                                // 2. concat
+                                // var _contents = this.state.contents.concat(
+                                //     {id: this._max_content_id, title: _title, desc: _desc}
+                                // )
+
+                                // 3. Array.from
+                                // var newContents = Array.from(this.state.contents);
+                                // newContents.push(
+                                //     {id: this._max_content_id, title: _title, desc: _desc}
+                                // );
+
+                                // 4. Array.from
+                                var _contents = Array.from(this.state.contents);
+                                _contents.push(
                                     {id: this._max_content_id, title: _title, desc: _desc}
                                 )
                                 this.setState({
-                                    contents: _contents
+                                    contents: _contents,
+                                    mode: 'read',
+                                    selected_content_id: this._max_content_id
                                 });
                             }.bind(this)}
                         ></CreatContent>
+        }else if(this.state.mode === 'update'){
+            _content = this.getReadContent();
+            _article = <UpdateContent
+                            data={_content}
+                            onSubmit={function(_id, _title, _desc){
+                                var _contents = Array.from(this.state.contents);
+                                var i = 0;
+                                while(i < _contents.length){
+                                    if(_contents[i].id === _id){
+                                        _contents[i] = {id: _id, title: _title, desc: _desc}
+                                        break;
+                                    }
+                                    i += 1;
+                                }
+                                this.setState({
+                                    contents: _contents,
+                                    mode: 'read'
+                                });
+                            }.bind(this)}
+                        ></UpdateContent>
         }
+        return _article;
+    }
 
+    render(){
         return (
             <div>
                 <section className="sub_wrap">
@@ -80,7 +123,7 @@ class nobdList extends Component {
                                 });
                             }.bind(this)}>
                         </Content>
-                        {_article}
+                        {this.getContent()}
                         <Control onChangeMode={function(_mode){
                             this.setState({
                                 mode: _mode
