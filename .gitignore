@@ -22,3 +22,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+client/node_modules/.cache/babel-loader/144a3227dd15eb65c64bbb0a18d6768ec4a58856d10e0fcc846521eb591df01f.json
+client/node_modules/.cache/babel-loader/1ad241ac5c4673fa864e0d445f8bdf699e6f51f112b2ddbc6c73b5b95be2a7b3.json
+client/node_modules/.cache/babel-loader/2be385d78c1955b18dd0dd457098b2d3c47924989c99e3a59606ba73cf013efd.json
+client/node_modules/.cache/babel-loader/3ce73c6357c154f8e0252dbfbf94ffae08d7223773cd6d7ca9bea1d9b44d5b94.json
+client/node_modules/.cache/babel-loader/500bfee5c3a677e8721485736e86c5310fb2539adab24e7ae2cf952f3af036a8.json
+client/node_modules/.cache/babel-loader/9061ea03916079dd1a81487b3a857c07a14b74b707303405837e38f84ed5ceea.json
+client/node_modules/.cache/babel-loader/c3f148869a0a5c80970ba74dc2021eb60c235538097e2044579d6f9577a80f80.json
+client/node_modules/.cache/babel-loader/d72421c27859b9d0ea088c43d46f0221cfbb63eed1523d3f9d50d73287a0ff87.json
+client/node_modules/.cache/babel-loader/e0b73995d2673d1c037f4f24e9d8687e67a7559947bef9f75b685378f771a94f.json
+client/node_modules/.cache/babel-loader/e8412930ebfe6c0b7801ee2014e49db355e642c8cbb30e5f3ee2ef1bacf3164f.json
+client/node_modules/.cache/babel-loader/ef8b912a5d7955ac7b83e74e4f1624d659d4b20f0e66ee58b198bae2f7669bd7.json
+client/node_modules/.cache/babel-loader/f0376e820dc4d325dc02f0b37629d67e142ea4859bfb16f1ce4a6154a4cb3c53.json
+*.json
+*.pack

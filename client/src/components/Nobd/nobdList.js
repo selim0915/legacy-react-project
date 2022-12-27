@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import Search from "./search";
-import Content from "./content";
-import Control from "./control";
-import Content2 from "./content2";
+import Content from "./Content";
+import Control from "./Control";
+import ReadContent from "./ReadContent";
+import CreatContent from "./CreatContent";
 
 class nobdList extends Component {
     constructor(props){
         super(props);
+        this.max_content_id = 3; // TODO contents 크기 구하기
+
         this.state = {
             mode: "read",
             selected_content_id: 2,
@@ -21,10 +24,11 @@ class nobdList extends Component {
     }
 
     render(){
-        var _titie, _desc = null;
+        var _titie, _desc, _article = null;
         if(this.state.mode === 'welcome'){
             _titie = this.state.welcome.title;
             _desc = this.state.welcome.desc;
+            _article = <ReadContent title={_titie} desc={_desc}></ReadContent>
         }else if (this.state.mode === 'read'){
             var i = 0;
             while(i < this.state.contents.length){
@@ -36,6 +40,22 @@ class nobdList extends Component {
                 }
                 i += 1;
             }
+            _article = <ReadContent title={_titie} desc={_desc}></ReadContent>
+        }else if(this.state.mode === 'create'){
+            _article = <CreatContent 
+                            onSubmit={function(_title, _desc){
+                                this._max_content_id = this.max_content_id+1;
+                                // this.state.contents.push(
+                                //     {id: this._max_content_id, title: _title, desc: _desc}
+                                // );
+                                var _contents = this.state.contents.concat(
+                                    {id: this._max_content_id, title: _title, desc: _desc}
+                                )
+                                this.setState({
+                                    contents: _contents
+                                });
+                            }.bind(this)}
+                        ></CreatContent>
         }
 
         return (
@@ -60,12 +80,12 @@ class nobdList extends Component {
                                 });
                             }.bind(this)}>
                         </Content>
+                        {_article}
                         <Control onChangeMode={function(_mode){
                             this.setState({
                                 mode: _mode
                             });
                         }.bind(this)}></Control>
-                        <Content2 title={_titie} desc={_desc}></Content2>
                     </article>
                 </section>
             </div>
