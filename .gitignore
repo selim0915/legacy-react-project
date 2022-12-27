@@ -36,3 +36,4 @@ client/node_modules/.cache/babel-loader/ef8b912a5d7955ac7b83e74e4f1624d659d4b20f
 client/node_modules/.cache/babel-loader/f0376e820dc4d325dc02f0b37629d67e142ea4859bfb16f1ce4a6154a4cb3c53.json
 *.json
 *.pack
+client/node_modules/
