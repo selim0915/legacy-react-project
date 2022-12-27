@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Search from "./search";
 import Content from "./content";
+import Control from "./control";
 import Content2 from "./content2";
 
 class nobdList extends Component {
@@ -59,6 +60,11 @@ class nobdList extends Component {
                                 });
                             }.bind(this)}>
                         </Content>
+                        <Control onChangeMode={function(_mode){
+                            this.setState({
+                                mode: _mode
+                            });
+                        }.bind(this)}></Control>
                         <Content2 title={_titie} desc={_desc}></Content2>
                     </article>
                 </section>
