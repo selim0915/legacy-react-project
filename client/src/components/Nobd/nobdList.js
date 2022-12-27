@@ -12,7 +12,7 @@ class nobdList extends Component {
         this.max_content_id = 3; // TODO contents 크기 구하기
 
         this.state = {
-            mode: "read",
+            mode: "welcome",
             selected_content_id: 2,
             welcome: {title: 'welcome', desc:'hello'},
             subject: {title: '게시판', sub: '게시글을 관리하는 메뉴'},
@@ -125,9 +125,25 @@ class nobdList extends Component {
                         </Content>
                         {this.getContent()}
                         <Control onChangeMode={function(_mode){
-                            this.setState({
-                                mode: _mode
-                            });
+                            if(_mode === "delete"){
+                                if(window.confirm('삭제 하겠습니까?')){ // true, false
+                                    var _contents = Array.from(this.state.contents);
+                                    var i = 0 ;
+                                    while(i < _contents.length){
+                                        if(_contents[i].id === this.state.selected_content_id){
+                                            _contents.splice(i, 1);
+                                            break;
+                                        }
+                                        i += 1;
+                                    }
+                                }
+                            }else{
+                                this.setState({
+                                    contents: _contents,
+                                    mode: 'welcome'
+                                });
+                                alert('삭제 되었습니다.');
+                            }
                         }.bind(this)}></Control>
                     </article>
                 </section>
