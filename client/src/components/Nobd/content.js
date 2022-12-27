@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 
 class Content extends Component {
+    shouldComponentUpdate(newProps, newState){
+        console.log("=== shouldComponentUpdate ===", newProps.date, this.props.data);
+
+        // shouldComponentUpdate가 true면 render 호출
+        // fasle 면 shouldComponentUpdate 내부 호출
+        if(this.props.data === newProps.data){
+            return false;
+        }
+        return true;
+    }
+
     render() {
+        console.log("=== Content render ===");
+
         var lists = [];
         var data = this.props.data;
         var i = 0;
