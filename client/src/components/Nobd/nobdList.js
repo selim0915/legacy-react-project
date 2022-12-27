@@ -137,12 +137,15 @@ class nobdList extends Component {
                                         i += 1;
                                     }
                                 }
-                            }else{
                                 this.setState({
                                     contents: _contents,
                                     mode: 'welcome'
                                 });
-                                alert('삭제 되었습니다.');
+                                alert("삭제 되었습니다.");
+                            }else{
+                                this.setState({
+                                    mode: _mode
+                                });
                             }
                         }.bind(this)}></Control>
                     </article>
