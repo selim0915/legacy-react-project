@@ -4,7 +4,19 @@
 * {margin:0;padding:0;}
 img, fieldset, button {border:none;}
 button img {display:none;}
-input, select, button, textarea {font-family:'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:15px;font-weight:400;color:#505050;line-height:30px;letter-spacing:-0.03em;box-sizing:border-box;vertical-align:middle;}
+button {
+    font-family: 'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #25b156;
+    line-height: 30px;
+    vertical-align: middle;
+    border: 1px solid #c5c5c5;
+    padding: 0px 5px;
+    margin: 0px 2px;
+}
+input, select, textarea {font-family:'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:15px;font-weight:400;color:#505050;line-height:30px;letter-spacing:-0.03em;box-sizing:border-box;vertical-align:middle;}
 input[type=submit] {cursor:pointer;appearance:none;-moz-appearance:none;-webkit-appearance:none;border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;}
 select::-ms-expand {display: none;}
 ul, li {list-style:none;}
