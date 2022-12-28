@@ -15,6 +15,9 @@ class LikeContent extends Component {
 export default LikeContent;
 
 var classStyle = 'color:red';
+var classStyle2= 'color:green';
+var funId = 0;
+
 class NobdListTwo extends Component {
     state = {
         count: this.props.initNumber,
@@ -40,6 +43,7 @@ class NobdListTwo extends Component {
     componentDidUpdate(nextProps, nextState){
         console.log("%c7. class => componentDidUpdate", classStyle);
     }
+
     render(){
         console.log("%c2.6. class => render", classStyle);
         return (
@@ -47,15 +51,24 @@ class NobdListTwo extends Component {
                 <hr/>
                 <p>{this.state.count}</p>
                 <p>{this.state.data}</p>
-                <input type="button" value="random"
+                <button type="button" value="random"
                     onClick={function(){
                         this.setState(
                             {
                                 count: Math.random()
                             }
                         )
-                    }.bind(this)}>
-                </input>
+                    }.bind(this)}>랜덤숫자
+                </button>
+                <button type="button" value="date"
+                    onClick={function(){
+                        this.setState(
+                            {
+                                data: (new Date()).toString()
+                            }
+                        )
+                    }.bind(this)}>최근날짜
+                </button>
             </>
         )
     }
@@ -87,6 +100,32 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
     //console.log("name", name);
     const {payload, loading, error} = Usefetch("https://www.tutorialkart.com/sample_image.jpg");
 
+    useEffect(function(){
+        // 보통 초기화 문법 작성
+        // componentDidMount & componentDidUpdate 와 같은 시점에 조회된다 할 수 있음
+        console.log("%cfunc => useEffect (componentDidMount) A"+(++funId), classStyle2);
+        document.title = number;
+        return function cleanup(){
+            console.log("%cfunc => useEffect return (componentWillMount) A"+(++funId), classStyle2);
+            // 보통 자원해제 문법 작성
+        }
+        // useEffect -> render3 -> useEffect return -> useEffect
+        // useEffect에 return를 통해 코드를 입력하면 한번 들려갔다 옴, 보통 clean up 기능이라고 활용 함
+    }, []); // 맨 처음 조회될떄만 호출되도록 하는 useEffect
+
+    useEffect(function(){
+        console.log("%cfunc => useEffect number(componentDidMount & componentDidUpdate) A"+(++funId), classStyle2);
+        document.title = number;
+    }, [number]); // []에 적힌 값이 바뀔때만 useEffect 조회
+
+    // useEffect 복수 입력 가능
+    useEffect(function(){
+        console.log("%cfunc => useEffect _date(componentDidMount & componentDidUpdate) B"+(++funId), classStyle2);
+        document.title = _date;
+    }, [_date]); // []에 적힌 값이 바뀔때만 useEffect 조회
+
+    console.log("%cfunc => render"+(++funId), classStyle2);
+
     return (
         <>
             {/* <div ref={ref}>
@@ -103,15 +142,21 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
             </div>
             
             <hr/>
+
             <p>{number}</p>
             <p>{_date}</p>
-            <button onClick={() => setNumber(number+1)}>추천</button>
-            <button onClick={() => setNumber(number-1)}>비추천</button>
-            <button 
+            <button value="random"
+                onClick={function(){
+                    setNumber(Math.random());
+                }.bind(this)}>랜덤숫자
+            </button>
+            <button value="date"
                 onClick={function(){
                     setDate((new Date().toString()));
                 }.bind(this)}>최신날짜
             </button>
+            <button onClick={() => setNumber(number+1)}>추천</button>
+            <button onClick={() => setNumber(number-1)}>비추천</button>
             <input placeholder="Email" value={email} onChange={updateEmail} />
         </>
     );
