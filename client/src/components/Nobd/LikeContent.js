@@ -1,16 +1,27 @@
 import { Axios } from "axios";
 import React, { Component, createRef, useEffect, useState } from "react";
 
-class LikeContent extends Component {
-    render(){
-        return (
-            <>
-                <h2>추천/비추천</h2>
-                <NobdList initNumber={2}></NobdList>
-                <NobdListTwo initNumber={2}></NobdListTwo>
-            </>
-        )
-    }
+function LikeContent() {
+    var [funcShow, setFuncShow] = useState(true);
+    var [classShow, setClassShow] = useState(true);
+
+    return (
+        <>
+            <h2>추천/비추천</h2>
+            <button value="remove func"
+                onClick={function(){
+                    setFuncShow(false);
+                }.bind(this)}>remove func
+            </button>
+            <button value="remove comp"
+                onClick={function(){
+                    setClassShow(false);
+                }.bind(this)}>remove comp
+            </button>
+            {funcShow ? <NobdList initNumber={2}></NobdList> : null}
+            {classShow ? <NobdListTwo initNumber={2}></NobdListTwo> : null}
+        </>
+    )
 }
 export default LikeContent;
 
@@ -42,6 +53,10 @@ class NobdListTwo extends Component {
     }
     componentDidUpdate(nextProps, nextState){
         console.log("%c7. class => componentDidUpdate", classStyle);
+    }
+    componentWillUnmount(){
+        // 자원해제, 컴포넌트 사라질때 타는 함수
+        console.log("%c8. class => componentWillUnmount", classStyle);
     }
 
     render(){
@@ -106,12 +121,12 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
         console.log("%cfunc => useEffect (componentDidMount) A"+(++funId), classStyle2);
         document.title = number;
         return function cleanup(){
-            console.log("%cfunc => useEffect return (componentWillMount) A"+(++funId), classStyle2);
+            console.log("%cfunc => useEffect return (componentWillUnmount) A"+(++funId), classStyle2);
             // 보통 자원해제 문법 작성
         }
         // useEffect -> render3 -> useEffect return -> useEffect
         // useEffect에 return를 통해 코드를 입력하면 한번 들려갔다 옴, 보통 clean up 기능이라고 활용 함
-    }, []); // 맨 처음 조회될떄만 호출되도록 하는 useEffect
+    }, []); // 맨 처음 조회될떄만 호출되도록 하는 useEffect, 컴포넌트가 소멸될 때도 실행 됨
 
     useEffect(function(){
         console.log("%cfunc => useEffect number(componentDidMount & componentDidUpdate) A"+(++funId), classStyle2);
