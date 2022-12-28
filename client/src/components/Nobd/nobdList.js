@@ -5,6 +5,7 @@ import Control from "./Control";
 import ReadContent from "./ReadContent";
 import CreatContent from "./CreatContent";
 import UpdateContent from "./UpdateContent";
+import LikeContent from "./LikeContent";
 
 class nobdList extends Component {
     constructor(props){
@@ -148,6 +149,9 @@ class nobdList extends Component {
                                 });
                             }
                         }.bind(this)}></Control>
+                    </article>
+                    <article>
+                        <LikeContent></LikeContent>
                     </article>
                 </section>
             </div>
