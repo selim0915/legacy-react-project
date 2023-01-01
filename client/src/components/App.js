@@ -8,6 +8,7 @@ import SoftwareView from './SoftwareToolsManage/SoftwareView';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
 import Register from './Register/Register';
 import UserApproval from './User/UserApproval';
+import UserApprovalView from './User/UserApprovalView';
 import AdminDataSourceList from './Nobd/nobdList';
 
 // css
@@ -91,6 +92,7 @@ class App extends Component {
         <Route path='/floatingPopulationList' component={floatingPopulationList} />
         <Route path='/register' component={Register} />
         <Route path='/UserApproval' component={UserApproval} />
+        <Route path='/UserApprovalView/:useremail' component={UserApprovalView} />
         <Route path='/AdminDataSourceList' component={AdminDataSourceList} />
         <Footer />
       </div>

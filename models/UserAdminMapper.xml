@@ -15,8 +15,10 @@
       , reg_date
       , update_user
       , update_date
-      FROM
-      react.react_user
+      FROM react.react_user
+      <if test="is_useremail != null && is_useremail != ''">
+        WHERE useremail = #{is_useremail}
+      </if>
       ORDER BY username
   </select>
 
