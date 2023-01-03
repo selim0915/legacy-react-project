@@ -129,7 +129,8 @@ class Header extends Component {
                                 <div id="foo">
                                     <ul>
                                         <li><Link to={'/AdminDataSourceList'}>자유게시판</Link></li>
-                                        <li><Link to={'/ReduxEx'}>Redux</Link></li>
+                                        <li><Link to={'/Blog'}>Blog</Link></li>
+                                        {/* <li><Link to={'/ReduxEx'}>Redux</Link></li> */}
                                     </ul>
                                 </div>
                             </li>
