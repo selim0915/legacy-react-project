@@ -34,4 +34,6 @@
 ##### npm install react-cookies --save
 ##### npm install --save node-cron
 
+##### npm i styled-components
+
 ##### yarn dev
