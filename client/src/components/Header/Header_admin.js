@@ -75,6 +75,16 @@ class Header extends Component {
         window.location.href = '/login';
     }
 
+    toggleMenu(id) {
+        var e = document.getElementById(id);
+
+        if(e.style.display === 'block'){
+            e.style.display = 'none';
+        }else{
+            e.style.display = 'block';
+        }
+    }
+
     render () {
         return(
             <header className="gnb_box">
@@ -112,11 +122,16 @@ class Header extends Component {
                             <li  className="menulist">
                                 <Link to={'/floatingPopulationList'}>버스승강장 조회</Link>
                             </li>
-                            <li  className="menulist">
-                                <Link to={'/SubCodeManage'}>Map 조회</Link>
-                            </li>
                             <li className="menulist">
-                                <Link to={'/AdminDataSourceList'}>공지사항</Link>
+                                <a href="#" onClick={function(){
+                                    this.toggleMenu('foo');
+                                }.bind(this)}>게시판</a>
+                                <div id="foo">
+                                    <ul>
+                                        <li><Link to={'/AdminDataSourceList'}>자유게시판</Link></li>
+                                        <li><Link to={'/ReduxEx'}>Redux</Link></li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </nav>

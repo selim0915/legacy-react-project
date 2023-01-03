@@ -10,6 +10,7 @@ import Register from './Register/Register';
 import UserApproval from './User/UserApproval';
 import UserApprovalView from './User/UserApprovalView';
 import AdminDataSourceList from './Nobd/nobdList';
+import ReduxEx from './Nobd/ReduxEx';
 
 // css
 //import '../App.css';
@@ -94,6 +95,7 @@ class App extends Component {
         <Route path='/UserApproval' component={UserApproval} />
         <Route path='/UserApprovalView/:useremail' component={UserApprovalView} />
         <Route path='/AdminDataSourceList' component={AdminDataSourceList} />
+        <Route path='/ReduxEx' component={ReduxEx} />
         <Footer />
       </div>
     );
