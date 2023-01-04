@@ -36,5 +36,6 @@
 ##### npm install --save node-cron
 
 ##### npm i styled-components
+##### npm install -g json-server
 
 ##### yarn dev
