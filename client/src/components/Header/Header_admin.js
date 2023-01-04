@@ -119,9 +119,6 @@ class Header extends Component {
                             <li className="menulist">
                                 <Link to={'/SoftwareList'}>Software Tools 관리</Link>
                             </li>
-                            <li  className="menulist">
-                                <Link to={'/floatingPopulationList'}>버스승강장 조회</Link>
-                            </li>
                             <li className="menulist">
                                 <a href="#"
                                     onMouseOver={function(){
@@ -136,6 +133,9 @@ class Header extends Component {
                                         {/* <li><Link to={'/ReduxEx'}>Redux</Link></li> */}
                                     </ul>
                                 </div>
+                            </li>
+                            <li  className="menulist">
+                                <Link to={'/floatingPopulationList'}>버스승강장 조회</Link>
                             </li>
                         </ul>
                     </nav>
