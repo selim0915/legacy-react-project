@@ -128,8 +128,8 @@ class Header extends Component {
                                 }.bind(this)}>게시판</a>
                                 <div id="foo">
                                     <ul>
-                                        <li><Link to={'/AdminDataSourceList'}>자유게시판</Link></li>
                                         <li><Link to={'/Blog'}>Blog</Link></li>
+                                        <li><Link to={'/AdminDataSourceList'}>자유게시판</Link></li>
                                         {/* <li><Link to={'/ReduxEx'}>Redux</Link></li> */}
                                     </ul>
                                 </div>
