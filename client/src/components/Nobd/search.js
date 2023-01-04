@@ -10,9 +10,9 @@ class Search extends Component {
                         this.props.onChangePage();
                     }.bind(this)}>{this.props.title}</a>
                 </h2>
-                <h3>
+                <h6>
                     {this.props.sub}
-                </h3>
+                </h6>
             </div>
         )
     }

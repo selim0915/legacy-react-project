@@ -123,9 +123,12 @@ class Header extends Component {
                                 <Link to={'/floatingPopulationList'}>버스승강장 조회</Link>
                             </li>
                             <li className="menulist">
-                                <a href="#" onClick={function(){
-                                    this.toggleMenu('foo');
-                                }.bind(this)}>게시판</a>
+                                <a href="#"
+                                    onMouseOver={function(){
+                                        this.toggleMenu('foo');
+                                    }.bind(this)}>
+                                    게시판
+                                </a>
                                 <div id="foo">
                                     <ul>
                                         <li><Link to={'/Blog'}>Blog</Link></li>
