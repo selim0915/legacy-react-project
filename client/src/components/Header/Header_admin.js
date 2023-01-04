@@ -109,7 +109,7 @@ class Header extends Component {
             </div>
                 <div className="h_nav ct1 af">
                     <div className="logo">
-                        <Link to={'/'}><img src={require("../../img/layout/logo.jpg")} height="65px" width="200px" alt=""/></Link>
+                        <Link to={'/'}><img src={require("../../img/layout/logo.png")} height="40px" width="200px" style={{"marginTop": "20px"}} alt=""/></Link>
                     </div>
                     <nav className="gnb gnb_admin">
                         <ul className="af">
