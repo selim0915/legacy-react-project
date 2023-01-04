@@ -1,25 +1,26 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./componets/Navbar";
+import routes from "../../../routes";
 
 function Blog() {
-    const [number, setNumber] = useState(1);
-
-    const double = () => {
-        //const doubleNumber = number * 2;
-
-        // 이전 값을 활용하여 값을 세팅하는 방법
-        setNumber((number) => number * 2); // 1줄작성
-        setNumber((number) => { // 2줄작성
-            return number * 2
-        });
-    };
-
     return (
-        // <Fragment></Fragment>와 <></>는 같다
-        <>
-            <div>{number}</div>
-            <button className="btn btn-primary" onClick={double}>submit</button>
-        </>
+        <Router>
+            <div className="container">
+                <Navbar />
+
+                <section className="sub_wrap">
+                    <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
+                        <Switch>
+                            {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
+                            {routes.map((route) => {
+                                return <Route key={route.path} path={route.path} component={route.component} exact></Route>
+                            })}
+                        </Switch>
+                    </article>
+                </section>
+            </div>
+        </Router>
     )
 }
-
 export default Blog;
