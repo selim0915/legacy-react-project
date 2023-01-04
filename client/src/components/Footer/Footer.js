@@ -5,14 +5,10 @@ class Footer extends Component {
     return (
         <footer className="footer">
             <ul>
-              <li className="priv"><a href="#n">개인정보처리방침</a></li>
-              <li className="em_bt"><a href="#n">이메일주소무단수집거부</a></li>
+              <li className="priv"><a href="#n">이용약관</a></li>
+              <li className="em_bt"><a href="#n">고객센터</a></li>
+              <li className="em_bt"><a href="#n">&copy; 우세림</a></li>
             </ul>
-            <div className="ft_p">
-              <span>주소 : 서울시 관악구 OO동</span>
-              <span>Tel : 010-5581-1711</span>
-            </div>
-            <p>COPYRIGHT &copy; React 200, ALL RIGHTS RESERVED.{this.props.name}</p>
         </footer>
     );
   }
