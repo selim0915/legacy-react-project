@@ -6,6 +6,7 @@
 ##### npm install jquery 
 ##### npm install reactstrap
 ##### npm install bootstrap
+##### npm install bootstrap@5.3.0-alpha1
 ##### npm install sweetalert2
 ##### npm install axios
 ##### npm install redux
