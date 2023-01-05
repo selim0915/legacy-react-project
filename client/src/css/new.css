@@ -133,7 +133,7 @@ body{position: relative;min-height: 100%;min-width: 100%;}
 .gnb > ul > li.on > a{color: #25489e;}
 
 /*main*/
-.main{height: 800px; width: 100%;display: table; table-layout: fixed; background-color: #575757;}
+.main{height: 830px; width: 100%;display: table; table-layout: fixed; background-color: #575757;}
 .m_login{display: table-cell; text-align: center;padding-top: 180px;} /* vertical-align: middle; */
 .m_login h3{font-size: 55px; line-height: 67px; color: #fff; font-weight: 400; letter-spacing: 0; vertical-align: middle; margin-bottom: 39px;}
 .m_login h3 span{margin-right: 17px;}
