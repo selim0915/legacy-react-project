@@ -38,5 +38,6 @@
 
 ##### npm i styled-components
 ##### npm install -g json-server
+##### npm install prop-types
 
 ##### yarn dev
