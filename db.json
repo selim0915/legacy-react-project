@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "title": "Title ",
-      "body": "Body",
+      "title": "2023.01.07",
+      "body": "list, create, delete 기능 구현 성공!",
       "id": 1
     }
   ]

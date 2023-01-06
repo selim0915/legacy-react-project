@@ -16,9 +16,12 @@ import PropTypes from "prop-types";
  Card 안에 있는 div절을 children으로 가져올 수 있음
  children 컨텐츠가 없을 땐 undifine
 */
-const Card = ({ title, body, children }) => { // 위와 같은 데이터 표출 가능
+const Card = ({ title, body, children, onClick }) => { // 위와 같은 데이터 표출 가능
     return(
-        <div className="card mt-3">
+        <div 
+            className="card mt-3 cursor-pointer"
+            onClick={onClick}
+        >
             <div className="card-body">
                 <div className="d-flex justify-content-between">
                     <div>{title}</div>
@@ -34,6 +37,7 @@ const Card = ({ title, body, children }) => { // 위와 같은 데이터 표출 
 Card.prototype = {
     title: PropTypes.string.isRequired,
     children: PropTypes.element,
+    onClick: PropTypes.func,
 };
 
 // props 파라미터가 없을 때 기본값지정
@@ -47,6 +51,7 @@ Card.prototype = {
 Card.defaultProps = {
     // title: 'Title not data...',
     children: null,
+    onClick: () => {},
 };
 
 export default Card;

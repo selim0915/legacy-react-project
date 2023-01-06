@@ -765,3 +765,7 @@ td.check_ty1 label:after{margin-top: 7px;}
 #foo li {
     width: 80px;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

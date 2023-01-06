@@ -102,10 +102,10 @@ class SoftwareList extends Component {
         return (
             <section className="sub_wrap" >
                 <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
-                    <div className="li_top">
+                    <div className="li_top d-flex justify-content-between">
                         <h2 className="s_tit1">Software Tools 목록</h2>
                         <div className="li_top_sch af">
-                        <Link to={'/SoftwareView/register'} className="sch_bt2 wi_au">Tool 등록</Link>
+                            <Link to={'/SoftwareView/register'} className="sch_bt2 wi_au">신규등록</Link>
                         </div>
                     </div>
 
