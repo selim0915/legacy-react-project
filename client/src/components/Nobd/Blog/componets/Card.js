@@ -32,7 +32,7 @@ const Card = ({ title, body, children, onClick }) => { // 위와 같은 데이�
 
 // 가져오는 데이터 타입 확인용으로도 사용 됨
 // isRequired시 파라미터 안 넘어오면 스크립트 오류 남.
-Card.prototype = {
+Card.prototypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.element,
     onClick: PropTypes.func,

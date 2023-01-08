@@ -3,7 +3,6 @@ import { bool } from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
 
 const BlogForm = ({ editing }) => {
     const history = useHistory();
@@ -69,9 +68,9 @@ const BlogForm = ({ editing }) => {
     }, [id, editing]); // []: 디펜져싱
     return (
         <>
-            <h2>
+            <h1 className="mb-5">
                 {editing ? 'Blog 수정' : 'Blog 신규등록'}
-            </h2>
+            </h1>
             <div className="mb-3">
                 <label className="form-label">Title</label>
                 <input className="form-control" value={title} onChange={(e) => {setTitle(e.target.value)}}/>
@@ -80,19 +79,20 @@ const BlogForm = ({ editing }) => {
                 <label className="form-label">Body</label>
                 <textarea 
                     className="form-control"
-                    rows="10"
+                    rows="5"
                     value={body} 
                     onChange={(e) => {setBody(e.target.value)}}
                 />
             </div>
             <div className="form-check mb-3">
                 <input
+                    id="is_publish" 
                     className="form-check-input"
                     type="checkbox"
-                    check={publish}
+                    checked={publish.toString()}
                     onChange={onChangePublish}
                 />
-                <label className="form-check-label">
+                <label htmlFor="is_publish" className="form-check-label">
                     publish
                 </label>
             </div>
@@ -113,7 +113,7 @@ const BlogForm = ({ editing }) => {
     );
 }
 
-BlogForm.prototype = {
+BlogForm.prototypes = {
     editing: bool,
 }
 
