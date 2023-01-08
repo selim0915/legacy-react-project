@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const ShowPage = () => {
     const { id } = useParams();
+
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -35,7 +36,7 @@ const ShowPage = () => {
                     {post.title}
                 </h2>
                 <div>
-                    <Link className="btn btn-primary me-1" to="/blog">목록</Link>
+                    {/* // TODO 목록버튼 만들기 */}
                     <Link className="btn btn-primary" to={`/blog/${id}/edit`}>수정</Link>
                 </div>
             </div>
