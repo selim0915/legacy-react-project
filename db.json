@@ -1,60 +1,60 @@
 {
   "posts": [
     {
-      "title": "2023.01.07",
-      "body": "list, create, delete 기능 구현 성공!",
-      "publish": true,
-      "createdAt": 1673146082930,
-      "updatedAt": 1673148778849,
+      "title": "1",
+      "body": "1",
+      "publish": false,
+      "createdAt": 1673168186811,
+      "updatedAt": 1673168186811,
       "id": 1
-    },
-    {
-      "title": "2023.01.08",
-      "body": "get, edit 기능 구현 성공!",
-      "publish": true,
-      "createdAt": 1673148441426,
-      "updatedAt": 1673148778849,
-      "id": 5
-    },
-    {
-      "title": "222",
-      "body": "222",
-      "publish": true,
-      "createdAt": 1673154184669,
-      "updatedAt": 1673161764979,
-      "id": 6
     },
     {
       "title": "2",
       "body": "2",
-      "publish": true,
-      "createdAt": 1673160557587,
-      "updatedAt": 1673160557587,
-      "id": 7
-    },
-    {
-      "title": "1",
-      "body": "1",
       "publish": false,
-      "createdAt": 1673160562732,
-      "updatedAt": 1673160562732,
-      "id": 8
+      "createdAt": 1673168191087,
+      "updatedAt": 1673168191087,
+      "id": 2
     },
     {
       "title": "3",
       "body": "3",
       "publish": false,
-      "createdAt": 1673161781658,
-      "updatedAt": 1673161781658,
-      "id": 9
+      "createdAt": 1673168195159,
+      "updatedAt": 1673168195159,
+      "id": 3
     },
     {
-      "title": "44",
-      "body": "44",
+      "title": "4",
+      "body": "4",
       "publish": false,
-      "createdAt": 1673161849888,
-      "updatedAt": 1673161872365,
-      "id": 10
+      "createdAt": 1673168197754,
+      "updatedAt": 1673168197754,
+      "id": 4
+    },
+    {
+      "title": "5",
+      "body": "5",
+      "publish": false,
+      "createdAt": 1673168200829,
+      "updatedAt": 1673168200829,
+      "id": 5
+    },
+    {
+      "title": "6",
+      "body": "6",
+      "publish": true,
+      "createdAt": 1673168205470,
+      "updatedAt": 1673169108960,
+      "id": 6
+    },
+    {
+      "title": "7",
+      "body": "7",
+      "publish": false,
+      "createdAt": 1673168209499,
+      "updatedAt": 1673168209499,
+      "id": 7
     }
   ]
 }
