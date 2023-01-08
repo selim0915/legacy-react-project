@@ -766,6 +766,10 @@ td.check_ty1 label:after{margin-top: 7px;}
 .menu_toggle li {
     width: 80px;
 }
+.menu_toggle a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 .cursor-pointer {
     cursor: pointer;
