@@ -4,7 +4,7 @@ const ListPage = () => {
     return(
         <>
             <div className="d-flex justify-content-between">
-                <h1 className="mb-3">
+                <h1 className="mb-5">
                     Blogs
                 </h1>
             </div>

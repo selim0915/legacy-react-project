@@ -5,7 +5,7 @@ const AdminPage = () => {
     return(
         <>
             <div className="d-flex justify-content-between">
-                <h1 className="mb-3">
+                <h1 className="mb-5">
                     Admin Blogs
                 </h1>
                 <div>
