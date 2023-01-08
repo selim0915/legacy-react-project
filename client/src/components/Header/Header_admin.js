@@ -18,7 +18,7 @@ class Header extends Component {
         var cookie_usernm = cookie.load('username')
         var cookie_password = cookie.load('userpassword')
 
-        if(cookie_userid != undefined){
+        if(cookie_userid !== undefined){
             const expires = new Date()
             expires.setMinutes(expires.getMinutes() + 60)
 

@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   noPermission = (e) => {
-    if(window.location.hash != 'nocookie'){
+    if(window.location.hash !== 'nocookie'){
       this.remove_cookie();
 
       setTimeout(function() {
