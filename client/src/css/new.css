@@ -751,7 +751,8 @@ td.check_ty1 label:after{margin-top: 7px;}
 .mb0{margin-bottom: 0 !Important;}
 
 /* 토글메뉴 20230103 */
-#foo{
+.menu_toggle{
+    width: 100%;
     display: none;
     position: absolute;
     background-color: white;
@@ -759,10 +760,10 @@ td.check_ty1 label:after{margin-top: 7px;}
     padding: 5px 10px;
     z-index: 999;
 }
-#foo ul{
+.menu_toggle ul{
     padding: 10px;
 }
-#foo li {
+.menu_toggle li {
     width: 80px;
 }
 

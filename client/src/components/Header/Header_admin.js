@@ -60,6 +60,13 @@ class Header extends Component {
           })
     }
 
+    logout = async e => {
+        cookie.remove('userid', { path: '/'});
+        cookie.remove('username', { path: '/'});
+        cookie.remove('userpassword', { path: '/'});
+        window.location.href = '/login';
+    }
+
     myInfoHover () {
         $(".hd_left > li > .box1").stop().fadeIn(400);
     }
@@ -68,21 +75,20 @@ class Header extends Component {
         $(".hd_left > li > .box1").stop().fadeOut(400);
     }
 
-    logout = async e => {
-        cookie.remove('userid', { path: '/'});
-        cookie.remove('username', { path: '/'});
-        cookie.remove('userpassword', { path: '/'});
-        window.location.href = '/login';
+    menuNobdHover () {
+        $(".menu_toggle.menu_nobd").stop().fadeIn(400);
+    }
+    
+    menuNobdLeave () {
+        $(".menu_toggle.menu_nobd").stop().fadeOut(400);
     }
 
-    toggleMenu(id) {
-        var e = document.getElementById(id);
-
-        if(e.style.display === 'block'){
-            e.style.display = 'none';
-        }else{
-            e.style.display = 'block';
-        }
+    menuSystemHover () {
+        $(".menu_toggle.menu_system").stop().fadeIn(400);
+    }
+    
+    menuSystemLeave () {
+        $(".menu_toggle.menu_system").stop().fadeOut(400);
     }
 
     render () {
@@ -113,20 +119,11 @@ class Header extends Component {
                     </div>
                     <nav className="gnb gnb_admin">
                         <ul className="af">
-                            <li className="menulist">
-                                <Link to={'/UserApproval'}>사용자 관리</Link>
-                            </li>
-                            <li className="menulist">
-                                <Link to={'/SoftwareList'}>Software Tools 관리</Link>
-                            </li>
-                            <li className="menulist">
-                                <a href="#"
-                                    onMouseOver={function(){
-                                        this.toggleMenu('foo');
-                                    }.bind(this)}>
+                            <li className="menulist" onMouseEnter={this.menuNobdHover} onMouseLeave={this.menuNobdLeave}>
+                                <a href="#">
                                     게시판
                                 </a>
-                                <div id="foo">
+                                <div className="menu_toggle menu_nobd">
                                     <ul>
                                         <li><Link to={'/Blog'}>Blog</Link></li>
                                         <li><Link to={'/AdminDataSourceList'}>자유게시판</Link></li>
@@ -134,8 +131,19 @@ class Header extends Component {
                                     </ul>
                                 </div>
                             </li>
-                            <li  className="menulist">
-                                <Link to={'/floatingPopulationList'}>버스승강장 조회</Link>
+                            <li className="menulist">
+                                <Link to={'/UserApproval'}>사용자 관리</Link>
+                            </li>
+                            <li className="menulist" onMouseEnter={this.menuSystemHover} onMouseLeave={this.menuSystemLeave}>
+                                <a href="#">
+                                    시스템관리
+                                </a>
+                                <div className="menu_toggle menu_system">
+                                    <ul>
+                                        <li><Link to={'/SoftwareList'}>Software</Link></li>
+                                        <li><Link to={'/floatingPopulationList'}>버스승강장</Link></li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </nav>
