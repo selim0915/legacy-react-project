@@ -3,6 +3,7 @@ import ListPage from "./components/Nobd/Blog/pages/ListPage";
 import ShowPage from "./components/Nobd/Blog/pages/ShowPage";
 import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
+import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
 
 const routes = [
     {
@@ -12,6 +13,10 @@ const routes = [
     {
         path: '/blog',
         component: ListPage
+    },
+    {
+        path: '/blog/admin',
+        component: AdminPage
     },
     {
         path: '/blog/create',

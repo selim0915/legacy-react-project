@@ -51,7 +51,7 @@ const BlogForm = ({ editing }) => {
                 publish,
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
-            }).then(() => history.push('/blog'));
+            }).then(() => history.push('/blog/admin'));
         }
     };
 
