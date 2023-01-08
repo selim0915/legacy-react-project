@@ -12,7 +12,7 @@ const Navbar = () => {
                         activeClassName="active"
                         className="nav-link"
                         aria-current ="page"
-                        to="/Blog">Blog
+                        to="/blog">Blog
                     </NavLink>
                 </li>
             </ul>

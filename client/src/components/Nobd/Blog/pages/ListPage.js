@@ -44,11 +44,12 @@ const ListPage = () => {
                     key={post.id} 
                     title={post.title} 
                     body={post.body} 
-                    onClick={() => {history.push('/Blog/edit')}}>
+                    onClick={() => {history.push(`/blog/${post.id}`)}}>
                     <div>
                         <button 
                             className="btn btn-sm btn-danger"
-                            onClick={(e) => {deleteBlog(e, post.id)}}>삭제</button>
+                            onClick={(e) => {deleteBlog(e, post.id)}}
+                        >삭제</button>
                     </div>
                 </Card>
             )
@@ -66,7 +67,7 @@ const ListPage = () => {
                     Blogs
                 </h1>
                 <div>
-                    <Link className="sch_bt2 wi_au" to="/Blog/create">신규등록</Link>
+                    <Link className="sch_bt2 wi_au" to="/blog/create">신규등록</Link>
                 </div>
             </div>
             {renderBlogList()}
