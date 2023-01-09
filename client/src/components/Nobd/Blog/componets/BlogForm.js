@@ -14,6 +14,8 @@ const BlogForm = ({ editing }) => {
     const [originalBody, setOiginalBody] = useState('');
     const [publish, setPublish] = useState(true);
     const [originalPublish, setOiginalPublish] = useState(false);
+    const [titleError, setTitleError] = useState(false);
+    const [bodyError, setBodyError] = useState(false);
 
     const isEdited = () => {
         return title !== originalTitle || body !== originalBody || publish !== originalPublish;
@@ -31,26 +33,47 @@ const BlogForm = ({ editing }) => {
         setPublish(e.target.checked);
     }
 
+    const validateForm = () => {
+        let vaildated =true;
+
+        if(title === ''){
+            setTitleError(true);
+            vaildated = false;
+        }
+
+        if(body === ''){
+            setBodyError(true);
+            vaildated = false;
+        }
+
+        return vaildated;
+    }
+
     const onSubmit = () => {
-        if(editing){ // 수정
-            axios.patch(`http://localhost:3001/posts/${id}`, {
-                title, // title: title, // 변수명이 같으면 생략 가능
-                body, //body: body
-                publish,
-                updatedAt: Date.now()
-            }).then((res) => {
-                history.push(`/blog/${id}`);
-                //setoOiginalTitle(res.data.title);
-                //setOiginalBody(res.data.body);
-            });
-        }else{ // 신규등록
-            axios.post('http://localhost:3001/posts', {
-                title, // title: title,
-                body, //body: body
-                publish,
-                createdAt: Date.now(),
-                updatedAt: Date.now(),
-            }).then(() => history.push('/blog/admin'));
+        setTitleError(false);
+        setBodyError(false);
+
+        if(validateForm()){
+            if(editing){ // 수정
+                axios.patch(`http://localhost:3001/posts/${id}`, {
+                    title, // title: title, // 변수명이 같으면 생략 가능
+                    body, //body: body
+                    publish,
+                    updatedAt: Date.now()
+                }).then((res) => {
+                    history.push(`/blog/${id}`);
+                    //setoOiginalTitle(res.data.title);
+                    //setOiginalBody(res.data.body);
+                });
+            }else{ // 신규등록
+                axios.post('http://localhost:3001/posts', {
+                    title, // title: title,
+                    body, //body: body
+                    publish,
+                    createdAt: Date.now(),
+                    updatedAt: Date.now(),
+                }).then(() => history.push('/blog/admin'));
+            }
         }
     };
 
@@ -72,22 +95,31 @@ const BlogForm = ({ editing }) => {
                 {editing ? 'Blog 수정' : 'Blog 신규등록'}
             </h1>
             <div className="mb-3">
-                <label className="form-label">Title</label>
-                <input className="form-control" value={title} onChange={(e) => {setTitle(e.target.value)}}/>
+                <label className="form-label">제목</label>
+                <input 
+                    className={`form-control ${titleError ? 'border-danger' : ''}`}
+                    value={title} 
+                    onChange={(e) => {setTitle(e.target.value)}}/>
             </div>
+            {titleError && <div className="text-danger">
+                제목을 입력하세요.
+            </div>}
             <div className="mb-3">
-                <label className="form-label">Body</label>
+                <label className="form-label">내용</label>
                 <textarea 
-                    className="form-control"
+                    className={`form-control ${bodyError ? 'border-danger' : ''}`}
                     rows="5"
                     value={body} 
                     onChange={(e) => {setBody(e.target.value)}}
                 />
             </div>
+            {bodyError && <div className="text-danger">
+                내용을 입력하세요.
+            </div>}
             <div className="form-check mb-3">
                 <input
                     id="is_publish" 
-                    className="form-check-input"
+                    className="form-check-input"                                                                   
                     type="checkbox"
                     checked={publish}
                     onChange={onChangePublish}
