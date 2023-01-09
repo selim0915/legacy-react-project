@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     return(
         <nav className="navbar navbar-light" style={{'backgroundColor':'#e3f2fd', 'padding':'10px 20px'}}>
-            <Link className="navbar-brand" to="/">Home</Link>
+            <Link className="navbar-brand" to="/blog/home">Home</Link>
             <ul className="navbar-nav" style={{'flexDirection':'row'}}>
                 <li className="nav-item me-3">
                     <NavLink

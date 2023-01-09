@@ -43,7 +43,7 @@ class LoginForm extends Component {
                     });
                     
                     setTimeout(function() {
-                        window.location.href = '/SoftwareList';
+                        window.location.href = '/blog/home';
                     }.bind(this),1000);
                 }else{
                     this.sweetalert('이메일과 비밀번호를 확인해주세요.', '', 'info', '닫기')

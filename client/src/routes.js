@@ -7,7 +7,7 @@ import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
 
 const routes = [
     {
-        path: '/',
+        path: '/blog/home',
         component: HomePage
     },
     {
