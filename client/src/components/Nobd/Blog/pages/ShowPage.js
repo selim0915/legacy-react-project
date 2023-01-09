@@ -3,12 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../componets/LoadingSpinner";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ShowPage = () => {
     const { id } = useParams();
 
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
     const getPost = (id) => {
         axios.get(`http://localhost:3001/posts/${id}`).then((res) => {
@@ -37,7 +39,7 @@ const ShowPage = () => {
                 </h2>
                 <div>
                     {/* // TODO 목록버튼 만들기 */}
-                    <Link className="btn btn-primary" to={`/blog/${id}/edit`}>수정</Link>
+                    {!isLoggedIn && <Link className="btn btn-primary" to={`/blog/${id}/edit`}>수정</Link>}
                 </div>
             </div>
             <p>

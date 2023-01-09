@@ -21,7 +21,7 @@ const Navbar = () => {
                             }
                         }}>{isLoggedIn ? '로그인' : '로그아웃'}</button>
                 </li>
-                <li className="nav-item me-3">
+                {!isLoggedIn ? <li className="nav-item me-3">
                     <NavLink
                         exact
                         activeClassName="active"
@@ -29,7 +29,7 @@ const Navbar = () => {
                         aria-current ="page"
                         to="/blog/admin">Admin
                     </NavLink>
-                </li>
+                </li> : null }
                 <li className="nav-item">
                     <NavLink
                         exact

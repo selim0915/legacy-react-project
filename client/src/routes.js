@@ -16,11 +16,13 @@ const routes = [
     },
     {
         path: '/blog/admin',
-        component: AdminPage
+        component: AdminPage,
+        auth: true
     },
     {
         path: '/blog/create',
-        component: CreatePage
+        component: CreatePage,
+        auth: true
     },
     {
         path: '/blog/:id',
@@ -28,7 +30,8 @@ const routes = [
     }, // TODO : :id는 맨 아래 있어야만 하나 ?
     {
         path: '/blog/:id/edit',
-        component: EditPage
+        component: EditPage,
+        auth: true
     },
 ];
 

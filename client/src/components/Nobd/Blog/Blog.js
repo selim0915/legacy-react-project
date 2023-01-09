@@ -5,6 +5,7 @@ import routes from "../../../routes";
 import Toast from "./componets/Toast";
 import useToast from "../../../hooks/toast";
 import { useSelector } from "react-redux";
+import ProtectedRoute from "../../../ProtectedRoute";
 
 function Blog() {
     const toasts = useSelector((state) => state.toast.toasts);
@@ -24,7 +25,20 @@ function Blog() {
                         <Switch>
                             {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
                             {routes.map((route) => {
-                                return <Route key={route.path} path={route.path} component={route.component} exact></Route>
+                                if(route.auth){
+                                    return <ProtectedRoute 
+                                        key={route.path} 
+                                        path={route.path}
+                                        component={route.component}
+                                        exact
+                                    />
+                                }
+                                return <Route 
+                                            key={route.path} 
+                                            path={route.path} 
+                                            component={route.component} 
+                                            exact
+                                        />
                             })}
                         </Switch>
                     </article>
