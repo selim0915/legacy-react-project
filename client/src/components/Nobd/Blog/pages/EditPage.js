@@ -3,7 +3,7 @@ import BlogForm from "../componets/BlogForm"
 const EditPage = () => {
     return (
         <div>
-            <BlogForm editing="true" />
+            <BlogForm editing={true} />
         </div>
     );
 };

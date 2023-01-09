@@ -1,5 +1,5 @@
 import axios from "axios";
-import { bool } from "prop-types";
+import prototypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
@@ -12,7 +12,7 @@ const BlogForm = ({ editing }) => {
     const [originalTitle, setoOiginalTitle] = useState('');
     const [body, setBody] = useState('');
     const [originalBody, setOiginalBody] = useState('');
-    const [publish, setPublish] = useState(false);
+    const [publish, setPublish] = useState(true);
     const [originalPublish, setOiginalPublish] = useState(false);
 
     const isEdited = () => {
@@ -89,7 +89,7 @@ const BlogForm = ({ editing }) => {
                     id="is_publish" 
                     className="form-check-input"
                     type="checkbox"
-                    checked={publish.toString()}
+                    checked={publish}
                     onChange={onChangePublish}
                 />
                 <label htmlFor="is_publish" className="form-check-label">
@@ -114,7 +114,7 @@ const BlogForm = ({ editing }) => {
 }
 
 BlogForm.prototypes = {
-    editing: bool,
+    editing: prototypes.bool,
 }
 
 BlogForm.defaultProps = {
