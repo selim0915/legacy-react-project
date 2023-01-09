@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
 
-const BlogForm = ({ editing }) => {
+const BlogForm = ({ editing, addToast }) => {
     const history = useHistory();
     const { id } = useParams();
 
@@ -72,7 +72,13 @@ const BlogForm = ({ editing }) => {
                     publish,
                     createdAt: Date.now(),
                     updatedAt: Date.now(),
-                }).then(() => history.push('/blog/admin'));
+                }).then(() => {
+                    addToast({
+                        text: "등록 되었습니다.",
+                        type: "success"
+                    });
+                    history.push('/blog/admin')
+                });
             }
         }
     };
@@ -89,6 +95,7 @@ const BlogForm = ({ editing }) => {
             });
         }
     }, [id, editing]); // []: 디펜져싱
+
     return (
         <>
             <h1 className="mb-5">

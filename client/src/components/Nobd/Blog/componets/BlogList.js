@@ -6,8 +6,11 @@ import { useLocation } from "react-router-dom";
 import Card from "../componets/Card";
 import LoadingSpinner from "../componets/LoadingSpinner";
 import Pagination from "../componets/Pagination";
+import Toast from "../componets/Toast";
+import useToast from "../../../../hooks/Toast";
 
 const BlogList = ({ isAdmin }) => {
+    const [toasts, addToast, deleteToast] = useToast();
     const history = useHistory();
     const location = useLocation(); // url ? 뒤에 있는 파라미터를 가져올 수 있음
     const params = new URLSearchParams(location.search); // 뒤에 있는 값을 키, 값으로 가져올 수 있음
@@ -55,28 +58,6 @@ const BlogList = ({ isAdmin }) => {
     }, [isAdmin, searchText]); // []안에 값이 바뀔때 함수가 호출되게 ... useCallback 일반 함수에서 []를 사용할 수 있게 해줌
     
     useEffect(() => {
-        // ((page=1) => { // page 값 없으면 1
-        //     let params = {
-        //         _page: page,
-        //         _limit: limit,
-        //         _sort: 'id',
-        //         _order: 'desc'
-        //     }
-
-        //     if(!isAdmin){
-        //         params = {...params, publish: true}
-        //     }
-
-        //     // axios.get(`http://localhost:3001/posts?_page=${page}&_limit=5&_sort=id&_order=desc`, {
-        //     axios.get(`http://localhost:3001/posts`, {
-        //         params // params: params 키, 값 명이 같으면 생략 가능!
-        //     }).then((res) => {
-        //         setNumberOfPosts(res.headers['x-total-count'])
-        //         setPosts(res.data);
-        //         setLoading(false);
-        //     });
-        // })() // (내용)() 바로 실행하는 함수
-
         setCurrentPage(parseInt(pageParam) || 1);
         getPosts(parseInt(pageParam) || 1);
     }, []); // [] : 처음실행할때, 삭제 될때만 호출되는 함수
@@ -86,6 +67,10 @@ const BlogList = ({ isAdmin }) => {
 
         axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
             setPosts(PrevPosts => PrevPosts.filter(post => post.id !== id));
+            addToast({
+                text: '삭제 되었습니다.', 
+                type: 'success'
+            });
         });
     }
     
@@ -126,6 +111,10 @@ const BlogList = ({ isAdmin }) => {
 
     return (
         <div> 
+            <Toast
+                toasts={toasts}  
+                deleteToast={deleteToast}  
+            />
             <input 
                 type="text"
                 placeholder="검색어를 입력하세요."
