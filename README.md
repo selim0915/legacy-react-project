@@ -42,5 +42,7 @@
 ##### npm install -g json-server
 ##### npm install prop-types
 ##### npm i uuid
+##### npm install @reduxjs/toolkit
+##### npm install @reduxjs/toolkit react-redux
 
 ##### yarn dev
