@@ -37,8 +37,10 @@
 ##### npm install react-cookies --save
 ##### npm install --save node-cron
 
+#### Blog Add
 ##### npm i styled-components
 ##### npm install -g json-server
 ##### npm install prop-types
+##### npm i uuid
 
 ##### yarn dev
