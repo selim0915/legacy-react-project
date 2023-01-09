@@ -3,8 +3,10 @@ import prototypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
+import useToast from "../../../../hooks/toast";
 
-const BlogForm = ({ editing, addToast }) => {
+const BlogForm = ({ editing }) => {
+    const [addToast] = useToast(); // const [addToast, ] = useToast();
     const history = useHistory();
     const { id } = useParams();
 

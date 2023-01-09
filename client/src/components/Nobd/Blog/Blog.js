@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./componets/Navbar";
 import routes from "../../../routes";
 import Toast from "./componets/Toast";
-import useToast from "../../../hooks/Toast";
+import useToast from "../../../hooks/toast";
+import { useSelector } from "react-redux";
 
 function Blog() {
-    const [toasts, addToast, deleteToast] = useToast();
+    const toasts = useSelector((state) => state.toast.toasts);
+    const [, deleteToast] = useToast();
 
     return (
         <Router>
@@ -22,10 +24,7 @@ function Blog() {
                         <Switch>
                             {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
                             {routes.map((route) => {
-                                const Componets = route.component;
-                                return <Route key={route.path} path={route.path} component={route.component} exact>
-                                    <Componets addToast={addToast}/>
-                                </Route>
+                                return <Route key={route.path} path={route.path} component={route.component} exact></Route>
                             })}
                         </Switch>
                     </article>

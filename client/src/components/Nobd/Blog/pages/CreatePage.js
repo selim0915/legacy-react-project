@@ -1,9 +1,9 @@
 import BlogForm from "../componets/BlogForm"
 
-const CreatePage = ({ addToast }) => {
+const CreatePage = () => {
     return (
         <div>
-            <BlogForm editing={false} addToast={addToast} />
+            <BlogForm editing={false} />
         </div>
     );
 };

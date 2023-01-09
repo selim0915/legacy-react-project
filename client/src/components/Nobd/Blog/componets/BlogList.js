@@ -6,11 +6,10 @@ import { useLocation } from "react-router-dom";
 import Card from "../componets/Card";
 import LoadingSpinner from "../componets/LoadingSpinner";
 import Pagination from "../componets/Pagination";
-import Toast from "../componets/Toast";
-import useToast from "../../../../hooks/Toast";
+import useToast from "../../../../hooks/toast";
 
 const BlogList = ({ isAdmin }) => {
-    const [toasts, addToast, deleteToast] = useToast();
+    const [addToast] = useToast(); // const [addToast, ] = useToast();
     const history = useHistory();
     const location = useLocation(); // url ? 뒤에 있는 파라미터를 가져올 수 있음
     const params = new URLSearchParams(location.search); // 뒤에 있는 값을 키, 값으로 가져올 수 있음
@@ -111,10 +110,6 @@ const BlogList = ({ isAdmin }) => {
 
     return (
         <div> 
-            <Toast
-                toasts={toasts}  
-                deleteToast={deleteToast}  
-            />
             <input 
                 type="text"
                 placeholder="검색어를 입력하세요."
