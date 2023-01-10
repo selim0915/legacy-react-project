@@ -4,6 +4,7 @@ import ShowPage from "./components/Nobd/Blog/pages/ShowPage";
 import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
+import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
 
 const routes = [
     {
@@ -32,6 +33,10 @@ const routes = [
         path: '/blog/:id/edit',
         component: EditPage,
         auth: true
+    },
+    {
+        path: '*',
+        component: NotFoundPage
     },
 ];
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router";
 import useToast from "../../../../hooks/toast";
+import LoadingSpinner from "./LoadingSpinner";
 
 const BlogForm = ({ editing }) => {
     const [addToast] = useToast(); // const [addToast, ] = useToast();
@@ -18,6 +19,8 @@ const BlogForm = ({ editing }) => {
     const [originalPublish, setOiginalPublish] = useState(false);
     const [titleError, setTitleError] = useState(false);
     const [bodyError, setBodyError] = useState(false);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const isEdited = () => {
         return title !== originalTitle || body !== originalBody || publish !== originalPublish;
@@ -66,6 +69,13 @@ const BlogForm = ({ editing }) => {
                     history.push(`/blog/${id}`);
                     //setoOiginalTitle(res.data.title);
                     //setOiginalBody(res.data.body);
+                }).catch((e) => {
+                    setError('not DB connection');
+                    addToast({
+                        text: "수정시 오류가 발생하였습니다.",
+                        type: "danger"
+                    });
+                    setLoading(false);
                 });
             }else{ // 신규등록
                 axios.post('http://localhost:3001/posts', {
@@ -80,7 +90,14 @@ const BlogForm = ({ editing }) => {
                         type: "success"
                     });
                     history.push('/blog/admin')
-                });
+                }).catch((e) => {
+                    setError('not DB connection');
+                    addToast({
+                        text: "등록시 오류가 발생하였습니다.",
+                        type: "danger"
+                    });
+                    setLoading(false);
+                });;
             }
         }
     };
@@ -95,8 +112,20 @@ const BlogForm = ({ editing }) => {
                 setPublish(res.data.publish);
                 setOiginalPublish(res.data.publish);
             });
+        }else{
+            setLoading(false);
         }
     }, [id, editing]); // []: 디펜져싱
+
+    if(loading) {
+        return (
+            <LoadingSpinner />
+        );
+    }
+    
+    if(error){
+        return <div>error</div>
+    }
 
     return (
         <>

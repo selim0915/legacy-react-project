@@ -22,6 +22,7 @@ const BlogList = ({ isAdmin }) => {
     const [numberOfPosts, setNumberOfPosts] = useState(0);
     const [numberOfPages, setNumberOfPages] = useState(0);
     const [searchText, setSearchText] = useState('');
+    const [error, setError] = useState('');
     
     useEffect(() => {
         setNumberOfPages(Math.ceil(numberOfPosts/limit));
@@ -51,10 +52,17 @@ const BlogList = ({ isAdmin }) => {
             params // params: params 키, 값 명이 같으면 생략 가능!
         }).then((res) => {
             setPosts(res.data);
-            setLoading(false);
             setNumberOfPosts(res.headers['x-total-count']);
+            setLoading(false);
+        }).catch((e) => {
+            setError('not DB connection');
+            addToast({
+                text: '전체 조회 디비 연결 오류', 
+                type: 'danger'
+            });
+            setLoading(false);
         });
-    }, [isAdmin, searchText]); // []안에 값이 바뀔때 함수가 호출되게 ... useCallback 일반 함수에서 []를 사용할 수 있게 해줌
+    }, [isAdmin, searchText, addToast]); // []안에 값이 바뀔때 함수가 호출되게 ... useCallback 일반 함수에서 []를 사용할 수 있게 해줌
     
     useEffect(() => {
         setCurrentPage(parseInt(pageParam) || 1);
@@ -64,19 +72,19 @@ const BlogList = ({ isAdmin }) => {
     const deleteBlog = (e, id) => {
         e.stopPropagation();
 
-        axios.delete(`http://localhost:3001/posts/${id}`).then(() => {
+        axios.delete(`http://localhost:3001/posts/${id}`)
+        .then(() => {
             setPosts(PrevPosts => PrevPosts.filter(post => post.id !== id));
             addToast({
                 text: '삭제 되었습니다.', 
                 type: 'success'
             });
+        }).catch((e) => {
+            addToast({
+                text: '삭제시 오류가 발생하였습니다.', 
+                type: 'danger'
+            });
         });
-    }
-    
-    if(loading) {
-        return (
-            <LoadingSpinner />
-        );
     }
 
     const renderBlogList = () => {
@@ -106,6 +114,16 @@ const BlogList = ({ isAdmin }) => {
             setCurrentPage(1);
             getPosts(1);
         }
+    }
+
+    if(loading) {
+        return (
+            <LoadingSpinner />
+        );
+    }
+    
+    if(error){
+        return <div>error</div>
     }
 
     return (
