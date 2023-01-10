@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../store/authSlice";
 import Navbar from "./componets/Navbar";
 import routes from "../../../routes";
 import Toast from "./componets/Toast";
 import useToast from "../../../hooks/toast";
-import { useSelector } from "react-redux";
 import ProtectedRoute from "../../../ProtectedRoute";
+import LoadingSpinner from "./componets/LoadingSpinner";
 
 function Blog() {
     const toasts = useSelector((state) => state.toast.toasts);
     const [, deleteToast] = useToast();
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if(localStorage.getItem('isLoginIn')){  // isLoginIn라는 값이 있으면
+            dispatch(login())
+        }
+        setLoading(false);
+    }, []);
+
+    if(loading) {
+        return (
+            <LoadingSpinner />
+        );
+    }
 
     return (
         <Router>
