@@ -23,7 +23,6 @@ router.post('/', (req, res, next) => {
         console.log("Module > dbconnect error : "+ error);      
       }
     }else if(type == 'modify'){
-      //Swtool 수정
       try {
         // Mysql Api 모듈(CRUD)
         var dbconnect_Module = require('./dbconnect_Module');
@@ -32,6 +31,21 @@ router.post('/', (req, res, next) => {
         req.body.mapper = 'UserAdminMapper';//mybatis xml 파일명
         req.body.crud = 'update';//select, insert, update, delete 중에 입력
         req.body.mapper_id = 'updateUser';
+        
+        router.use('/', dbconnect_Module);
+        next('route')
+      } catch (error) {
+        console.log("Module > dbconnect error : "+ error);      
+      }
+    }else if(type == 'delete'){
+      try {
+        // Mysql Api 모듈(CRUD)
+        var dbconnect_Module = require('./dbconnect_Module');
+    
+        //Mysql 쿼리 호출정보 입력
+        req.body.mapper = 'UserAdminMapper';//mybatis xml 파일명
+        req.body.crud = 'delete';//select, insert, update, delete 중에 입력
+        req.body.mapper_id = 'deleteUser';
         
         router.use('/', dbconnect_Module);
         next('route')

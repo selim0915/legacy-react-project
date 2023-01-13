@@ -33,5 +33,9 @@
     WHERE useremail = #{is_UseremailFull}
   </update>
 
+ <delete id="deleteUser">
+    DELETE FROM react.react_user
+    WHERE useremail = #{is_useremail}
+  </delete>
 
 </mapper>

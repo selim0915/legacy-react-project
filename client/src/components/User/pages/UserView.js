@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import axios from "axios";
 import $ from 'jquery';
+import Swal from 'sweetalert2';
 
 const UserView = () => {
     const { id } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         callUserApprovaApi();
@@ -31,6 +33,43 @@ const UserView = () => {
             alert('6. 작업중 오류가 발생하였습니다.');
             return false;
         });
+    }
+
+    const deleteUser = (e) => {
+        sweetalertDelete('삭제 하시겠습니까?', function() {
+            axios.post('/api/userAdmin?type=delete', {
+                is_useremail : id, //e.target.getAttribute('id'),
+            })
+            .then( response => {
+                history.push("/user/admin");
+            }).catch( error => {
+                alert('작업중 오류가 발생하였습니다.');
+                return false;
+            });
+        }.bind(this));
+    }
+
+    const sweetalertDelete = (title, callbackFunc) => {
+        Swal.fire({
+            title: title,
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                'Deleted!',
+                '삭제되었습니다.',
+                'success'
+                )
+        }else{
+            return false;
+        }
+        callbackFunc()
+        })
     }
 
     return (
@@ -74,7 +113,8 @@ const UserView = () => {
                             </tbody>
                         </table>
                         <div className="btn_confirm_c mt-5">
-                            <Link to={`/user/admin/${id}/edit`} className="bt_ty bt_ty2 cancel_ty2">수정</Link>
+                            <Link to={`/user/admin/${id}/edit`} className="bt_ty bt_ty2">수정</Link>
+                            <a href="#n" id={id} className="bt_ty bt_ty1" onClick={(e) => deleteUser(e)}>삭제</a>
                         </div>
                     </div>
                 </div> 
