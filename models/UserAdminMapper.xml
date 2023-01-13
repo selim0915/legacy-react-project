@@ -30,7 +30,7 @@
       , usermajor = #{is_Usermajor}
       , userorg = #{is_Organization}
       , update_date = DATE_FORMAT(now(), '%Y%m%d%H%i%s')
-    WHERE useremail = CONCAT(#{is_Useremail1}, '@', #{is_Useremail2})
+    WHERE useremail = #{is_UseremailFull}
   </update>
 
 

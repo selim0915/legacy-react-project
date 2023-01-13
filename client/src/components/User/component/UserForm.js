@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import axios from "axios";
 import Swal from 'sweetalert2';
@@ -212,6 +212,7 @@ const UserForm = ({ editing }) => {
             .then( response => {
                 try {
                     var data = response.data.json[0]
+                    $('#email_full_val').val(data.useremail);
                     $('#email_val').val((data.useremail).split("@")[0]);
                     $('#email2_val').val((data.useremail).split("@")[1]);
                     $('#name_val').val(data.username);
@@ -268,6 +269,7 @@ const UserForm = ({ editing }) => {
         <div className="li_top">
             <h2 className="s_tit1">{editing ? '사용자 수정' : '회원가입'}</h2>
             <form method="post" name="frm">
+                <input id="email_full_val" type="hidden" name="is_UseremailFull" />
                 <div className="re1_wrap">
                     <div className="re_cnt ct2">
                         <table className="table_ty1">
@@ -275,9 +277,9 @@ const UserForm = ({ editing }) => {
                                 <tr className="re_email">
                                     <th>이메일</th>
                                     <td>
-                                        <input id="email_val" type="text" name="is_Useremail1"  placeholder="이메일을 입력해주세요." onKeyPress={emailKeyPress} />
+                                        <input id="email_val" type="text" name="is_Useremail1"  placeholder="이메일을 입력해주세요." onKeyPress={emailKeyPress} disabled={editing ? 'disabled' : ''} />
                                         <span className="e_goll">@</span>
-                                        <select id="email2_val" name="is_Useremail2" className="select_ty1">
+                                        <select id="email2_val" name="is_Useremail2" className="select_ty1" disabled={editing ? 'disabled' : ''} >
                                                 <option value="">선택하세요</option>
                                                 <option value='naver.com'>naver.com</option>
                                                 <option value='hanmail.net'>hanmail.net</option>

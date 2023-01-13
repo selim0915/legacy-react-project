@@ -1,18 +1,17 @@
-import React, { Component, useEffect, useState } from 'react';
-import {Link, useParams} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useParams } from "react-router";
 import axios from "axios";
 import $ from 'jquery';
 
 const UserView = () => {
     const { id } = useParams();
 
-    const [useremail, setUseremail] = useState('');
-
     useEffect(() => {
         callUserApprovaApi();
     },[]);
 
-    const callUserApprovaApi = async (id) => {
+    const callUserApprovaApi = async () => {
         axios.post('/api/userAdmin?type=list', {
             is_useremail: id,
         })
