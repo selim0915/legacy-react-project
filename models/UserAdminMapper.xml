@@ -25,12 +25,12 @@
   <update id="updateUser"> 
     UPDATE react.react_user
     SET
-      username = #{name_val}
-      , userphone = concat(#{phone1_val},'-',#{phone2_val},'-',#{phone3_val})
-      , usermajor = #{major_val}
-      , userorg = #{org_val}
+      username = #{is_Username}
+      , userphone = CONCAT(#{is_Userphone1},'-',#{is_Userphone2},'-',#{is_Userphone3})
+      , usermajor = #{is_Usermajor}
+      , userorg = #{is_Organization}
       , update_date = DATE_FORMAT(now(), '%Y%m%d%H%i%s')
-    WHERE useremail = concat(#{email_val},'@', #{email2_val})
+    WHERE useremail = CONCAT(#{is_Useremail1}, '@', #{is_Useremail2})
   </update>
 
 

@@ -130,32 +130,6 @@ const UserForm = ({ editing }) => {
             return true;
         }
 
-        const fnSignInsert = async (type, e) => {
-            var jsonstr = $("form[name='frm']").serialize();
-            jsonstr = decodeURIComponent(jsonstr);
-            var Json_form = JSON.stringify(jsonstr).replace(/\"/gi,'')
-            Json_form = "{\"" +Json_form.replace(/\&/g,'\",\"').replace(/=/gi,'\":"')+"\"}";
-           
-            try {
-                const response = await fetch('/api/register?type='+type, {
-                    method: 'POST',
-                    headers: {
-                    'Content-Type': 'application/json',
-                    },
-                    body: Json_form,
-                });
-                const body = await response.text();
-                if(body === "succ"){
-                    sweetalert('회원가입이 완료되었습니다.', '', 'info', '닫기')
-                    history.push('/user/admin');
-                }else{
-                    sweetalert('작업중 오류가 발생하였습니다.', body, 'error', '닫기');            
-                }  
-            } catch (error) {
-                sweetalert('작업중 오류가 발생하였습니다.', error, 'error', '닫기');
-            }
-        }
-
         if(fnValidate()){
             var jsonstr = $("form[name='frm']").serialize();
             jsonstr = decodeURIComponent(jsonstr);
@@ -173,7 +147,7 @@ const UserForm = ({ editing }) => {
                     });
                     const body = await response.text();
                     if(body == "succ"){
-                        debugger
+                        sweetalert('회원정보가 수정되었습니다.', '', 'info', '닫기')
                         history.push(`/user/admin/`+id);
                     }else{
                         alert('3. 작업중 오류가 발생하였습니다.')
@@ -182,6 +156,7 @@ const UserForm = ({ editing }) => {
                     alert('4. 작업중 오류가 발생하였습니다.')
                 }
             }else{
+                //this.state.full_email = this.email_val_checker+'@'+this.email2_val_checker
                 axios.post('/api/register?type=dplicheck', {
                     is_Email: email_val_checker+'@'+email2_val_checker
                 })
@@ -201,7 +176,30 @@ const UserForm = ({ editing }) => {
                         sweetalert('작업중 오류가 발생하였습니다.', error, 'error', '닫기')
                     }
                 })
-                .catch( response => { return false; } );
+                .catch( response => { 
+                    return false; 
+                });
+            }
+        }
+
+        const fnSignInsert = async (type, e) => {
+            try {
+                const response = await fetch('/api/register?type='+type, {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json',
+                    },
+                    body: Json_form,
+                });
+                const body = await response.text();
+                if(body === "succ"){
+                    sweetalert('회원가입이 완료되었습니다.', '', 'info', '닫기')
+                    history.push('/user/admin');
+                }else{
+                    sweetalert('작업중 오류가 발생하였습니다.', body, 'error', '닫기');            
+                }  
+            } catch (error) {
+                sweetalert('작업중 오류가 발생하였습니다.', error, 'error', '닫기');
             }
         }
     };
@@ -277,9 +275,9 @@ const UserForm = ({ editing }) => {
                                 <tr className="re_email">
                                     <th>이메일</th>
                                     <td>
-                                        <input id="email_val" type="text" name="email_val"  placeholder="이메일을 입력해주세요." onKeyPress={emailKeyPress} />
+                                        <input id="email_val" type="text" name="is_Useremail1"  placeholder="이메일을 입력해주세요." onKeyPress={emailKeyPress} />
                                         <span className="e_goll">@</span>
-                                        <select id="email2_val" name="email2_val" className="select_ty1">
+                                        <select id="email2_val" name="is_Useremail2" className="select_ty1">
                                                 <option value="">선택하세요</option>
                                                 <option value='naver.com'>naver.com</option>
                                                 <option value='hanmail.net'>hanmail.net</option>
@@ -294,42 +292,42 @@ const UserForm = ({ editing }) => {
                                 {!editing && <tr>
                                     <th>비밀번호</th>
                                     <td>
-                                        <input id="pwd_val" type="password" name="pwd_val"
+                                        <input id="pwd_val" type="password" name="is_Password"
                                         placeholder="비밀번호를 입력해주세요." onKeyPress={pwdKeyPress} />
                                     </td>
                                 </tr>}
                                 {!editing && <tr>
                                     <th>비밀번호 확인</th>
                                     <td>
-                                        <input id="pwd_cnf_val" type="password" name="pwd_cnf_val"
+                                        <input id="pwd_cnf_val" type="password" name="is_Password"
                                         placeholder="비밀번호를 다시 입력해주세요." onKeyPress={pwdCnfKeyPress}/>
                                     </td>
                                 </tr>}
                                 <tr>
                                     <th>성명</th>
                                     <td>
-                                        <input id="name_val" type="text" name="name_val"
+                                        <input id="name_val" type="text" name="is_Username"
                                         placeholder="성명을 입력해주세요." onKeyPress={nameKeyPress}/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>소속 기관</th>
                                     <td>
-                                        <input id="org_val" type="text" name="org_val"
+                                        <input id="org_val" type="text" name="is_Organization"
                                         placeholder="소속 기관명을 입력해주세요." />
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>전공</th>
                                     <td>
-                                        <input id="major_val" type="text" name="major_val"
+                                        <input id="major_val" type="text" name="is_Usermajor"
                                         placeholder="전공을 입력해주세요." />
                                     </td>
                                 </tr>
                                 <tr className="tr_tel">
                                     <th>핸드폰</th>
                                     <td>
-                                        <select id="phone1_val" name="phone1_val" className="select_ty1">
+                                        <select id="phone1_val" name="is_Userphone1" className="select_ty1">
                                             <option value="">선택</option>
                                             <option value="010">010</option>
                                             <option value="011">011</option>
@@ -339,9 +337,9 @@ const UserForm = ({ editing }) => {
                                             <option value="019">019</option>
                                         </select>
                                         <span className="tel_dot">-</span>
-                                        <input id="phone2_val" name="phone2_val" max="9999" maxLength="4" onChange={(e) => mustNumber("phone2_val")}/>
+                                        <input id="phone2_val" name="is_Userphone2" max="9999" maxLength="4" onChange={(e) => mustNumber("phone2_val")}/>
                                         <span className="tel_dot">-</span>
-                                        <input id="phone3_val" name="phone3_val" max="9999" maxLength="4" onChange={(e) => mustNumber("phone3_val")}/>
+                                        <input id="phone3_val" name="is_Userphone3" max="9999" maxLength="4" onChange={(e) => mustNumber("phone3_val")}/>
                                     </td>
                                 </tr>
                             </tbody>
