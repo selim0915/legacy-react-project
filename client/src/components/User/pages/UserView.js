@@ -1,0 +1,87 @@
+import React, { Component, useEffect, useState } from 'react';
+import {Link, useParams} from 'react-router-dom';
+import axios from "axios";
+import $ from 'jquery';
+
+const UserView = () => {
+    const { id } = useParams();
+
+    const [useremail, setUseremail] = useState('');
+
+    useEffect(() => {
+        callUserApprovaApi();
+    },[]);
+
+    const callUserApprovaApi = async (id) => {
+        axios.post('/api/userAdmin?type=list', {
+            is_useremail: id,
+        })
+        .then( response => {
+            try {
+                var data = response.data.json[0]
+                $('#is_useremail').val(data.useremail);
+                $('#is_username').val(data.username);
+                $('#is_userphone').val(data.userphone);
+                $('#is_usermajor').val(data.usermajor);
+                $('#is_userorg').val(data.userorg);
+            } catch (error) {
+                alert('5. 작업중 오류가 발생하였습니다.')
+            }
+        })
+        .catch( error => {
+            alert('6. 작업중 오류가 발생하였습니다.');
+            return false;
+        });
+    }
+
+    return (
+        <div className="li_top">
+            <h2 className="s_tit1">사용자 상세정보</h2>
+            <form name="frm" id="frm" action="" method="post">
+                <div className="re1_wrap">
+                    <div className="re_cnt ct2">
+                        <table className="table_ty1">
+                            <tbody>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td>
+                                        <input type="text" id="is_useremail" name="is_useremail" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>성명</th>
+                                    <td>
+                                        <input type="text" id="is_username" name="is_username" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>소속 기관</th>
+                                    <td>
+                                        <input type="text" id="is_userorg" name="is_userorg" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>전공</th>
+                                    <td>
+                                        <input type="text" id="is_usermajor" name="is_usermajor" disabled="disabled" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>핸드폰</th>
+                                    <td>
+                                        <input type="text" name="is_userphone" id="is_userphone" disabled="disabled" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div className="btn_confirm_c mt-5">
+                            <Link to={`/user/admin/${id}/edit`} className="bt_ty bt_ty2 cancel_ty2">수정</Link>
+                        </div>
+                    </div>
+                </div> 
+            </form>	
+        </div>
+    );
+}
+
+export default UserView;

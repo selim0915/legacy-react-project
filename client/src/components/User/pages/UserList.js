@@ -42,7 +42,7 @@ class UserApproval extends Component {
                     <tbody>
                         <tr className="hidden_type">
                             <th>
-                                <Link to={'/UserApprovalView/'+data.useremail}>{data.useremail}</Link>
+                                <Link to={'/user/admin/'+data.useremail}>{data.useremail}</Link>
                             </th>
                             <th>{data.username}</th>
                             <th>{data.userphone}</th>
@@ -63,33 +63,34 @@ class UserApproval extends Component {
 
     render () {
         return (
-            <section className="sub_wrap" >
-                <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
-                    <div className="li_top">
-                        <h2 className="s_tit1">사용자 목록</h2>
+            <div>
+                <div className="li_top d-flex justify-content-between">
+                    <h2 className="s_tit1">사용자 목록</h2>
+                    <div className="li_top_sch af">
+                        <Link to={'/user/admin/create'} className="sch_bt2 wi_au">신규등록</Link>
                     </div>
+                </div>
 
-                    <div className="list_cont list_cont_admin">
-                        <table className="table_ty1">
-                            <thead>
-                                <tr>
-                                    <th>이메일</th>
-                                    <th>이름</th>
-                                    <th>전화번호</th>
-                                    <th>전공</th>
-                                    <th>소속기관</th>
-                                    <th>승인여부</th>
-                                    <th>등록자</th>    
-                                    <th>등록날짜</th>
-                                    <th>수정자</th> 
-                                    <th>수정날짜</th>
-                                </tr>
-                            </thead>
-                        </table>	
-                        {this.state.append_UserList}
-                    </div>
-                </article>
-            </section>
+                <div className="list_cont list_cont_admin">
+                    <table className="table_ty1">
+                        <thead>
+                            <tr>
+                                <th>이메일</th>
+                                <th>이름</th>
+                                <th>전화번호</th>
+                                <th>전공</th>
+                                <th>소속기관</th>
+                                <th>승인여부</th>
+                                <th>등록자</th>    
+                                <th>등록날짜</th>
+                                <th>수정자</th> 
+                                <th>수정날짜</th>
+                            </tr>
+                        </thead>
+                    </table>	
+                    {this.state.append_UserList}
+                </div>
+            </div>
         );
     }
 }

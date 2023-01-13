@@ -1,3 +1,7 @@
+import UserList from "./components/User/pages/UserList";
+import UserView from "./components/User/pages/UserView";
+import UserCreate from "./components/User/pages/UserCreate";
+import UserEdit from "./components/User/pages/UserEdit";
 import HomePage from "./components/Nobd/Blog/pages/HomePage";
 import ListPage from "./components/Nobd/Blog/pages/ListPage";
 import ShowPage from "./components/Nobd/Blog/pages/ShowPage";
@@ -7,6 +11,23 @@ import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
 import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
 
 const routes = [
+    {
+        path: '/user/admin',
+        component: UserList
+    },
+    {
+        path: '/user/admin/create',
+        component: UserCreate
+    },
+    {
+        path: '/user/admin/:id',
+        component: UserView
+    },
+    {
+        path: '/user/admin/:id/edit',
+        component: UserEdit,
+        auth: true
+    },
     {
         path: '/blog',
         component: ListPage
@@ -28,7 +49,7 @@ const routes = [
     {
         path: '/blog/:id',
         component: ShowPage
-    }, // TODO : :id는 맨 아래 있어야만 하나 ?
+    },
     {
         path: '/blog/:id/edit',
         component: EditPage,

@@ -7,11 +7,11 @@ import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
 import Register from './Register/Register';
-import UserApproval from './User/UserApproval';
-import UserApprovalView from './User/UserApprovalView';
+import User from './User/User';
 import AdminDataSourceList from './Nobd/nobdList';
 import ReduxEx from './Nobd/Redux/ReduxEx';
 import Blog from './Nobd/Blog/Blog';
+
 
 // css
 //import '../App.css';
@@ -93,12 +93,10 @@ class App extends Component {
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
         <Route path='/floatingPopulationList' component={floatingPopulationList} />
         <Route path='/register' component={Register} />
-        <Route path='/UserApproval' component={UserApproval} />
-        <Route path='/UserApprovalView/:useremail' component={UserApprovalView} />
+        <Route path='/user/admin' component={User} />
         <Route path='/AdminDataSourceList' component={AdminDataSourceList} />
         <Route path='/ReduxEx' component={ReduxEx} />
-        <Route path='/Blog' component={Blog} />
-
+        <Route path='/blog' component={Blog} />
         <Footer />
       </div>
     );

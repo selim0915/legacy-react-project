@@ -5,12 +5,12 @@ import cookie from 'react-cookies';
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
-
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
             usernm:'',
+            userid:''
         };
     }
     componentDidMount() {
@@ -44,6 +44,7 @@ class Header extends Component {
             , token2 : cookie.load('username') 
         })
         .then( response => {
+            this.setState({userid : response.data.token1})
             this.setState({usernm : response.data.token2})
         })
         .catch( error => {
@@ -100,7 +101,7 @@ class Header extends Component {
                     <li className="my1" onMouseEnter={this.myInfoHover} onMouseLeave={this.myInfoLeave}><b>내정보</b>
                             <div className="box0 box1">
                                 <ul>
-                                    <li><a>내 정보 수정</a></li>
+                                    <li><Link to={'/user/admin/'+this.state.userid}>내 정보 수정</Link></li>
                                     <li><a href="#" onClick={this.logout}>로그아웃</a></li>
                                 </ul>
                             </div>
@@ -132,7 +133,7 @@ class Header extends Component {
                                 </div>
                             </li>
                             <li className="menulist">
-                                <Link to={'/UserApproval'}>사용자 관리</Link>
+                                <Link to={'/user/admin'}>사용자 관리</Link>
                             </li>
                             <li className="menulist" onMouseEnter={this.menuSystemHover} onMouseLeave={this.menuSystemLeave}>
                                 <a href="#">

@@ -345,9 +345,10 @@ body{position: relative;min-height: 100%;min-width: 100%;}
 .agree_box label:before{position: absolute; content:''; width: 16px; height: 16px; background: url(../img/sub/agree_i.png) center no-repeat; left: 0; top: 5px;}
 .agree_box label:after{position: absolute; content:''; width: 8px; height: 8px; background: #2c2c92; left: 4px; top: 9px; border-radius: 50%; opacity: 0; transition:.3s;}
 .agree_box input:checked + label:after{opacity: 1;}
-.btn_confirm{text-align: right;}
+.btn_confirm_c{text-align: center;}
+.btn_confirm_r{text-align: right;}
 .btn_confirm a:last-child{margin-right: 0;}
-.re1_wrap{background: #fff; padding: 70px; box-sizing: border-box;}
+.re1_wrap{background: #fff; padding: 30px; box-sizing: border-box;}
 .re1_wrap .table_ty1 tr th{width: 152px; text-align: left; border: 0; letter-spacing: -0.03em; font-size: 16px;}
 .re1_wrap .table_ty1 tr td{height: 45px; padding: 14px 0; text-align: left; font-size: 16px; width: 100%;}
 .re1_wrap .table_ty1 tr td input,

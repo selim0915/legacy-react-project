@@ -22,4 +22,16 @@
       ORDER BY username
   </select>
 
+  <update id="updateUser"> 
+    UPDATE react.react_user
+    SET
+      username = #{name_val}
+      , userphone = concat(#{phone1_val},'-',#{phone2_val},'-',#{phone3_val})
+      , usermajor = #{major_val}
+      , userorg = #{org_val}
+      , update_date = DATE_FORMAT(now(), '%Y%m%d%H%i%s')
+    WHERE useremail = concat(#{email_val},'@', #{email2_val})
+  </update>
+
+
 </mapper>
