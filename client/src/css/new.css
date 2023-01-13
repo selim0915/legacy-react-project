@@ -775,3 +775,8 @@ td.check_ty1 label:after{margin-top: 7px;}
 .cursor-pointer {
     cursor: pointer;
 }
+.link {
+    color: #0076bf;
+    cursor: pointer;
+    text-decoration: underline;
+}

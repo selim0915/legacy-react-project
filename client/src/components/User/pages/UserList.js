@@ -42,15 +42,15 @@ class UserApproval extends Component {
                     <tbody>
                         <tr className="hidden_type">
                             <th>
-                                <Link to={'/user/admin/'+data.useremail}>{data.useremail}</Link>
+                                <Link to={'/user/admin/'+data.useremail} className="link">{data.useremail}</Link>
                             </th>
                             <th>{data.username}</th>
                             <th>{data.userphone}</th>
                             <th>{data.usermajor}</th>
                             <th>{data.userorg}</th>
                             <th>{data.userflag}</th>
-                            <th>{data.reg_user}</th>    
-                            <th>{data.reg_date}</th>
+                            {/* <th>{data.reg_user}</th>    
+                            <th>{data.reg_date}</th> */}
                             <th>{data.update_user}</th> 
                             <th>{data.update_date}</th>
                         </tr>
@@ -81,8 +81,8 @@ class UserApproval extends Component {
                                 <th>전공</th>
                                 <th>소속기관</th>
                                 <th>승인여부</th>
-                                <th>등록자</th>    
-                                <th>등록날짜</th>
+                                {/* <th>등록자</th>    
+                                <th>등록날짜</th> */}
                                 <th>수정자</th> 
                                 <th>수정날짜</th>
                             </tr>
