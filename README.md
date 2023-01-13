@@ -3,6 +3,7 @@
 ##### npm install -save react-scripts
 ##### yarn add react-scripts
 
+### react200
 ##### npm install jquery 
 ##### npm install reactstrap
 ##### npm install bootstrap
@@ -16,28 +17,23 @@
 ##### npm i react-router-dom@5
 ##### npm i react-router;
 ##### npm install --save lodash
-
 ##### npm i -g express-generator
 ##### express nodefolder
-
 ##### npm install --save concurrently
 ##### npm install -g nodemon
 ##### npm install --save body-parser
-
 ##### npm install oracledb --save
 ##### npm install express
 ##### npm install --save mybatis-mapper
-
 ##### npm install --save multer
 ##### npm install --save moment
 ##### npm install -save react-moment
-
 ##### npm install --save bcrypt
 ##### npm install --save jsonwebtoken
 ##### npm install react-cookies --save
 ##### npm install --save node-cron
 
-#### Blog Add
+### Blog Add
 ##### npm i styled-components
 ##### npm install -g json-server
 ##### npm install prop-types
