@@ -19,7 +19,7 @@
       <if test="is_useremail != null && is_useremail != ''">
         WHERE useremail = #{is_useremail}
       </if>
-      ORDER BY username
+      ORDER BY useremail, username
   </select>
 
   <update id="updateUser"> 
