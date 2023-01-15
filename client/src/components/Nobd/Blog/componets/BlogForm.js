@@ -112,6 +112,7 @@ const BlogForm = ({ editing }) => {
                 setPublish(res.data.publish);
                 setOiginalPublish(res.data.publish);
             });
+            setLoading(false);
         }else{
             setLoading(false);
         }
