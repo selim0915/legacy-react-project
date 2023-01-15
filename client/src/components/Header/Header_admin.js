@@ -102,7 +102,8 @@ class Header extends Component {
                             <div className="box0 box1">
                                 <ul>
                                     <li><Link to={'/user/admin/'+this.state.userid}>내 정보 수정</Link></li>
-                                    <li><a href="#" onClick={this.logout}>로그아웃</a></li>
+                                    <li><Link to={'/mypage/diary'}>다이어리</Link></li>
+                                    <li><a href="/#" onClick={this.logout}>로그아웃</a></li>
                                 </ul>
                             </div>
                             </li>

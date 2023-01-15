@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import cookie from 'react-cookies';
 import axios from "axios";
 
+import Mypage from './Mypage/Mypage';
 import SoftwareList from './Syst/Sw/SoftwareList';
 import SoftwareView from './Syst/Sw/SoftwareView';
 import floatingPopulationList from './Syst/Bus/floatingPopulationList';
@@ -84,6 +85,7 @@ class App extends Component {
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
         <Route path='/login' component={LoginForm} />
+        <Route path='/mypage/diary' component={Mypage} /> {/* 내정보>다이어리 */}
         <Route path='/blog' component={Blog} /> {/* 게시판>블로그 */}
         <Route path='/prac' component={Prac} /> {/* 게시판>자유게시판 */}
         <Route path='/user/admin' component={User} /> {/* 사용자관리 */}
