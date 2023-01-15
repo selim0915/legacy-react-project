@@ -137,12 +137,12 @@ class nobdList extends Component {
                                             }
                                             i += 1;
                                         }
+                                        this.setState({
+                                            contents: _contents,
+                                            mode: 'welcome'
+                                        });
+                                        alert("삭제 되었습니다.");
                                     }
-                                    this.setState({
-                                        contents: _contents,
-                                        mode: 'welcome'
-                                    });
-                                    alert("삭제 되었습니다.");
                                 }else{
                                     this.setState({
                                         mode: _mode

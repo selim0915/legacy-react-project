@@ -5,7 +5,7 @@ class Search extends Component {
         return (
             <div className="li_top">
                 <h2 className="s_tit1">
-                    <a href="/AdminDataSourceList" onClick={function(e){
+                    <a href="/prac" onClick={function(e){
                         e.preventDefault();
                         this.props.onChangePage();
                     }.bind(this)}>{this.props.title}</a>

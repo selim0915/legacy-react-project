@@ -7,7 +7,7 @@ import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
 import User from './User/User';
-import AdminDataSourceList from './Nobd/nobdList';
+import Prac from './Nobd/Prac/nobdList';
 import Blog from './Nobd/Blog/Blog';
 
 
@@ -88,7 +88,7 @@ class App extends Component {
         <Route exact path='/' component={LoginForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/blog' component={Blog} /> {/* 게시판>블로그 */}
-        <Route path='/AdminDataSourceList' component={AdminDataSourceList} /> {/* 게시판>자유게시판 */}
+        <Route path='/prac' component={Prac} /> {/* 게시판>자유게시판 */}
         <Route path='/user/admin' component={User} /> {/* 사용자관리 */}
         <Route path='/SoftwareList' component={SoftwareList} /> {/* 시스템관리 */}
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} /> {/* 시스템관리 */}
