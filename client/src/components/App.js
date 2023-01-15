@@ -6,10 +6,8 @@ import axios from "axios";
 import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
-import Register from './Register/Register';
 import User from './User/User';
 import AdminDataSourceList from './Nobd/nobdList';
-import ReduxEx from './Nobd/Redux/ReduxEx';
 import Blog from './Nobd/Blog/Blog';
 
 
@@ -89,14 +87,12 @@ class App extends Component {
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
         <Route path='/login' component={LoginForm} />
-        <Route path='/SoftwareList' component={SoftwareList} />
-        <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
-        <Route path='/floatingPopulationList' component={floatingPopulationList} />
-        <Route path='/register' component={Register} />
-        <Route path='/user/admin' component={User} />
-        <Route path='/AdminDataSourceList' component={AdminDataSourceList} />
-        <Route path='/ReduxEx' component={ReduxEx} />
-        <Route path='/blog' component={Blog} />
+        <Route path='/blog' component={Blog} /> {/* 게시판>블로그 */}
+        <Route path='/AdminDataSourceList' component={AdminDataSourceList} /> {/* 게시판>자유게시판 */}
+        <Route path='/user/admin' component={User} /> {/* 사용자관리 */}
+        <Route path='/SoftwareList' component={SoftwareList} /> {/* 시스템관리 */}
+        <Route path='/SoftwareView/:swtcode' component={SoftwareView} /> {/* 시스템관리 */}
+        <Route path='/floatingPopulationList' component={floatingPopulationList} /> {/* 시스템관리>버스정류장 */}
         <Footer />
       </div>
     );
