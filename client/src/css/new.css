@@ -230,7 +230,7 @@ body{position: relative;min-height: 100%;min-width: 100%;}
 
 /*sub 공통*/
 .sub_wrap{background: #f8f8f8; padding: 30px 30px;min-height: 600px;}
-.s_tit1{font-size: 30px; line-height: 38px; color: #333; font-weight: 500; letter-spacing: -0.03em; margin-bottom: 20px; margin-left: -3px;}
+.s_tit1{font-size: 30px; line-height: 38px; color: #333; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 20px; margin-left: -3px;}
 .input_ty1{font-size: 15px; color: #333; height: 45px; line-height: 43px; background: #fff; border: 1px solid #dedede; outline:none; text-indent: 20px; box-sizing: border-box; padding-right: 15px;}
 .input_ty1::placeholder{color: #cdcdcd;}
 
@@ -324,12 +324,6 @@ body{position: relative;min-height: 100%;min-width: 100%;}
 .last_page a{display: block; width: 20px; height: 20px; background: #dbdbdb url(../img/sub/pazer_arr2.png) 8px 5px no-repeat; border-radius: 50%; transition:.3s;}
 .start_page:hover a{background: #2c2c92 url(../img/sub/pazer_arr.png) 6px 6px no-repeat; }
 .last_page:hover a{background: #2c2c92 url(../img/sub/pazer_arr2.png) 8px 5px no-repeat; }
-
-/*셀렉박스*/
-.select_ty1{background: url(../img/sub/sch_arr_g.png) no-repeat 92% 50%;-webkit-appearance: none;-moz-appearance: none; appearance: none;}
-.select_ty1.on{background: url(../img/sub/sch_arr.png) no-repeat 92% 50%;}
-
-/*회원가입*/
 
 /*회원 약관동의*/
 .check_top{overflow: hidden; height: 70px; box-sizing: border-box; border: 1px solid #dbdbdb; border-bottom: 0; padding: 0px 10px;}
@@ -780,3 +774,21 @@ td.check_ty1 label:after{margin-top: 7px;}
     cursor: pointer;
     text-decoration: underline;
 }
+
+/* Internet Explorer용 코드  */
+html {
+    scrollbar-3dLight-Color: #efefef;
+    scrollbar-arrow-color: #dfdfdf;
+    scrollbar-base-color: #efefef;
+    scrollbar-Face-Color: #dfdfdf;
+    scrollbar-Track-Color: #efefef;
+    scrollbar-DarkShadow-Color: #efefef;
+    scrollbar-Highlight-Color: #efefef;
+    scrollbar-Shadow-Color: #efefef
+}
+/* Chrome, Safari용 스크롤 바 */
+::-webkit-scrollbar {width: 8px;height: 8px;border: 3px solid #fff;}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {display: block;height: 10px;}
+::-webkit-scrollbar-track {background: #efefef;-webkit-border-radius: 10px;border-radius: 10px;-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, .2)}
+::-webkit-scrollbar-thumb {height: 50px;width: 50px;background: rgba(0, 0, 0, .2);-webkit-border-radius: 8px;border-radius: 8px;-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, .1)}
