@@ -3,9 +3,9 @@ import { Route } from "react-router-dom";
 import cookie from 'react-cookies';
 import axios from "axios";
 
-import SoftwareList from './SoftwareToolsManage/SoftwareList';
-import SoftwareView from './SoftwareToolsManage/SoftwareView';
-import floatingPopulationList from './Floating_population/floatingPopulationList';
+import SoftwareList from './Syst/Sw/SoftwareList';
+import SoftwareView from './Syst/Sw/SoftwareView';
+import floatingPopulationList from './Syst/Bus/floatingPopulationList';
 import User from './User/User';
 import Prac from './Nobd/Prac/nobdList';
 import Blog from './Nobd/Blog/Blog';
