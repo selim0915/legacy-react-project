@@ -2,7 +2,6 @@ import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 // import {createStore, applyMiddleware} from 'redux';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './components/App';
 // import reducers from './reducers';
 import * as serviceWorker from './serviceWorker';
