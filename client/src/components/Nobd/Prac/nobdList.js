@@ -104,58 +104,54 @@ class nobdList extends Component {
     render(){
         return (
             <div>
-                <div className="container">
-                    <section className="sub_wrap">
-                        <article className="s_cnt re_1 ct1">
-                            <Search 
-                                title={this.state.subject.title}
-                                sub={this.state.subject.sub}
-                                onChangePage={function(){
-                                    this.setState({
-                                        mode: 'welcome'
-                                    });
-                                }.bind(this)}>
-                            </Search>
-                            <Content 
-                                data={this.state.contents}
-                                onChangePage={function(id){
-                                    this.setState({
-                                        mode: 'read',
-                                        selected_content_id: Number(id)
-                                    });
-                                }.bind(this)}>
-                            </Content>
-                            <Control onChangeMode={function(_mode){
-                                if(_mode === "delete"){
-                                    if(window.confirm('삭제 하겠습니까?')){ // true, false
-                                        var _contents = Array.from(this.state.contents);
-                                        var i = 0 ;
-                                        while(i < _contents.length){
-                                            if(_contents[i].id === this.state.selected_content_id){
-                                                _contents.splice(i, 1);
-                                                break;
-                                            }
-                                            i += 1;
-                                        }
-                                        this.setState({
-                                            contents: _contents,
-                                            mode: 'welcome'
-                                        });
-                                        alert("삭제 되었습니다.");
+                <div>
+                    <Search 
+                        title={this.state.subject.title}
+                        sub={this.state.subject.sub}
+                        onChangePage={function(){
+                            this.setState({
+                                mode: 'welcome'
+                            });
+                        }.bind(this)}>
+                    </Search>
+                    <Content 
+                        data={this.state.contents}
+                        onChangePage={function(id){
+                            this.setState({
+                                mode: 'read',
+                                selected_content_id: Number(id)
+                            });
+                        }.bind(this)}>
+                    </Content>
+                    <Control onChangeMode={function(_mode){
+                        if(_mode === "delete"){
+                            if(window.confirm('삭제 하겠습니까?')){ // true, false
+                                var _contents = Array.from(this.state.contents);
+                                var i = 0 ;
+                                while(i < _contents.length){
+                                    if(_contents[i].id === this.state.selected_content_id){
+                                        _contents.splice(i, 1);
+                                        break;
                                     }
-                                }else{
-                                    this.setState({
-                                        mode: _mode
-                                    });
+                                    i += 1;
                                 }
-                            }.bind(this)}></Control>
-                            {this.getContent()}
-                        </article>
-                        <hr />
-                        <article>
-                            <LikeContent></LikeContent>
-                        </article>
-                    </section>
+                                this.setState({
+                                    contents: _contents,
+                                    mode: 'welcome'
+                                });
+                                alert("삭제 되었습니다.");
+                            }
+                        }else{
+                            this.setState({
+                                mode: _mode
+                            });
+                        }
+                    }.bind(this)}></Control>
+                    {this.getContent()}
+                </div>
+                <hr />
+                <div>
+                    <LikeContent></LikeContent>
                 </div>
             </div>
         )

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../store/authSlice";
-import Navbar from "./componets/Navbar";
-import routes from "../../../routes";
-import Toast from "./componets/Toast";
-import useToast from "../../../hooks/toast";
-import ProtectedRoute from "../../../ProtectedRoute";
-import LoadingSpinner from "./componets/LoadingSpinner";
+import { login } from "../store/authSlice";
+import Navbar from "./Nobd/Blog/componets/Navbar";
+import routes from "../routes";
+import Toast from "./Nobd/Blog/componets/Toast";
+import useToast from "../hooks/toast";
+import ProtectedRoute from "../ProtectedRoute";
+import LoadingSpinner from "./Nobd/Blog/componets/LoadingSpinner";
 
-function Blog() {
+function RoutePage() {
+    const location = useLocation();
+    const pathname = location.pathname;
+
     const toasts = useSelector((state) => state.toast.toasts);
     const [, deleteToast] = useToast();
     const dispatch = useDispatch();
@@ -31,12 +34,10 @@ function Blog() {
     return (
         <Router>
             <div className="container">
-                <Navbar />
+                {/* blog url 에서만 보여주는 화면 */}
+                {pathname.includes('/blog') ? <Navbar /> : null}
+                {pathname.includes('/blog') ? <Toast toasts={toasts} deleteToast={deleteToast} /> : null}
 
-                <Toast
-                    toasts={toasts}
-                    deleteToast={deleteToast}
-                />
                 <section className="sub_wrap">
                     <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
                         <Switch>
@@ -64,4 +65,5 @@ function Blog() {
         </Router>
     )
 }
-export default Blog;
+
+export default RoutePage;

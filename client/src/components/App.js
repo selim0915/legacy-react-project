@@ -3,13 +3,10 @@ import { Route } from "react-router-dom";
 import cookie from 'react-cookies';
 import axios from "axios";
 
-import Mypage from './Mypage/Mypage';
+import RoutePage from './RoutePage';
 import SoftwareList from './Syst/Sw/SoftwareList';
 import SoftwareView from './Syst/Sw/SoftwareView';
 import floatingPopulationList from './Syst/Bus/floatingPopulationList';
-import User from './User/User';
-import Prac from './Nobd/Prac/nobdList';
-import Blog from './Nobd/Blog/Blog';
 
 // css
 import '../css/new.css';
@@ -85,10 +82,10 @@ class App extends Component {
         <HeaderAdmin />
         <Route exact path='/' component={LoginForm} />
         <Route path='/login' component={LoginForm} />
-        <Route path='/mypage/diary' component={Mypage} /> {/* 내정보>다이어리 */}
-        <Route path='/blog' component={Blog} /> {/* 게시판>블로그 */}
-        <Route path='/prac' component={Prac} /> {/* 게시판>자유게시판 */}
-        <Route path='/user/admin' component={User} /> {/* 사용자관리 */}
+        <Route path='/mypage/diary' component={RoutePage} /> {/* 내정보>다이어리 */}
+        <Route path='/blog' component={RoutePage} /> {/* 게시판>블로그 */}
+        <Route path='/prac' component={RoutePage} /> {/* 게시판>자유게시판 */}
+        <Route path='/user/admin' component={RoutePage} /> {/* 사용자관리 */}
         <Route path='/SoftwareList' component={SoftwareList} /> {/* 시스템관리 */}
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} /> {/* 시스템관리 */}
         <Route path='/floatingPopulationList' component={floatingPopulationList} /> {/* 시스템관리>버스정류장 */}

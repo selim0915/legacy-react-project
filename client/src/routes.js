@@ -10,12 +10,12 @@ import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
 import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
+import Prac from "./components/Nobd/Prac/nobdList";
 
 const routes = [
     {
         path: '/mypage/diary',
-        component: Diary,
-        auth: true
+        component: Diary
     },
     {
         path: '/user/admin',
@@ -60,6 +60,10 @@ const routes = [
         path: '/blog/:id/edit',
         component: EditPage,
         auth: true
+    },
+    {
+        path: '/prac',
+        component: Prac
     },
     {
         path: '*',
