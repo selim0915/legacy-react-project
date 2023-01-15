@@ -10,10 +10,7 @@ import User from './User/User';
 import Prac from './Nobd/Prac/nobdList';
 import Blog from './Nobd/Blog/Blog';
 
-
 // css
-//import '../App.css';
-//import 'bootstrap/dist/css/bootstrap.css';
 import '../css/new.css';
 import '../css/snow.css';
 
