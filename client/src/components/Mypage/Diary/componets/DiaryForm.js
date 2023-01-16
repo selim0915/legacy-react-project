@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
+import prototypes from "prop-types";
 
-const Diary = () =>{
+const Diary = ({ onCreate }) =>{
     const authorInput = useRef(); // DOM요소를 current로 지정함.
     const contentInput = useRef(); // DOM요소를 current로 지정함.
 
@@ -9,7 +10,7 @@ const Diary = () =>{
 
     const [state, setState] = useState({
         author: "",
-        cotnent: "",
+        content: "",
         emotion: 3,
         authorError: false,
         contentError: false,
@@ -23,17 +24,17 @@ const Diary = () =>{
             setAuthorError(true);
             vaildated = false;
         }
-        if(state.cotnent.length < 5){
+        if(state.content.length < 5){
             setContentError(true);
             vaildated = false;
         }
 
         // Focus
-        if(setAuthorError){
+        if(authorError){
             authorInput.current.focus();
             return;
         }
-        if(setContentError){
+        if(contentError){
             contentInput.current.focus();
             return;
         }
@@ -53,7 +54,12 @@ const Diary = () =>{
         setContentError(false);
 
         if(validateForm()){
-            alert('저장');
+            onCreate(state.author, state.content, state.emotion);
+            setState({
+                author: "",
+                content: "",
+                emotion: 3,
+            })
         }
     }
 
@@ -78,9 +84,9 @@ const Diary = () =>{
                 <textarea 
                     className={`form-control ${contentError ? 'border-danger' : ''}`} 
                     rows="10"
-                    name="cotnent"
+                    name="content"
                     ref={contentInput}
-                    value={state.cotnent}
+                    value={state.content}
                     onChange={handleChangeSate}
                     placeholder="내용을 입력하세요. "
                     maxLength={500} />
@@ -101,12 +107,20 @@ const Diary = () =>{
             </div>
             <div className="mt-5">
                 <button 
-                    className="btn btn-primary"
+                    className="btn btn-primary btn-lg"
                     onClick={handleSubmit}>저장
                 </button>
             </div>
         </div>
     )
+}
+
+Diary.prototypes = {
+    onCreate: prototypes.func,
+}
+
+Diary.defaultProps = {
+    onCreate: () => {},
 }
 
 export default Diary;
