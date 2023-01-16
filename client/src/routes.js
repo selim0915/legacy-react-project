@@ -1,4 +1,4 @@
-import Diary from "./components/Mypage/Diary/Diary";
+import DiaryList from "./components/Mypage/Diary/page/DiaryList";
 import UserList from "./components/User/pages/UserList";
 import UserView from "./components/User/pages/UserView";
 import UserCreate from "./components/User/pages/UserCreate";
@@ -15,7 +15,7 @@ import Prac from "./components/Nobd/Prac/nobdList";
 const routes = [
     {
         path: '/mypage/diary',
-        component: Diary
+        component: DiaryList
     },
     {
         path: '/user/admin',
