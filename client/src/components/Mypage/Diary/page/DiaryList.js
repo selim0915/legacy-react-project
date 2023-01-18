@@ -28,6 +28,12 @@ const DiaryList = () => {
         }.bind());
     }
 
+    const onEdit = (targetId, newContent) => {
+        setData(
+            data.map((item) => item.id === targetId ? {...item, content: newContent} : item)
+        )
+    }
+
     const sweetalertDelete = (title, callbackFunc) => {
         Swal.fire({
             title: title,
@@ -59,10 +65,10 @@ const DiaryList = () => {
                     <DiaryForm onCreate={onCreate}/>
                 </div>
                 <div className="col" style={{"height": "640px", "overflowY": "auto"}}>
-                    {data.length === 0
-                        ? <div>전체 0건</div>
-                        : <DiaryItem diaryList={data} onRemove={onRemove} />
-                    }
+                    <div className="text-secondary mb-2">전체 {data.length}건</div>
+                    {data.map((item) => (
+                            <DiaryItem key={item.id} {...item} onRemove={onRemove} onEdit={onEdit} />
+                    ))}
                 </div>
             </div>
         </div>
