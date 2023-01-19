@@ -61,7 +61,7 @@ const DiaryItem = ({
                 <p className="lh-sm fs-5 text-break mb-0">
                     {isEdit 
                         ? <textarea 
-                            class="form-control mt-2"
+                            className="form-control mt-2"
                             rows="3"
                             name="content"
                             ref={localContentInput}
