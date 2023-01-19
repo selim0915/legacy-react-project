@@ -1,7 +1,11 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import prototypes from "prop-types";
 
-const Diary = ({ onCreate }) =>{
+const DiaryForm = ({ onCreate }) =>{
+    // useEffect(() =>{
+    //     console.log("DiaryForm 렌더")
+    // },[]);
+
     const authorInput = useRef(); // DOM요소를 current로 지정함.
     const contentInput = useRef(); // DOM요소를 current로 지정함.
 
@@ -115,12 +119,12 @@ const Diary = ({ onCreate }) =>{
     )
 }
 
-Diary.prototypes = {
+DiaryForm.prototypes = {
     onCreate: prototypes.func,
 }
 
-Diary.defaultProps = {
+DiaryForm.defaultProps = {
     onCreate: () => {},
 }
 
-export default Diary;
+export default React.memo(DiaryForm);

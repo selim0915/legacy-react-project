@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const DiaryItem = ({
   id,
@@ -11,6 +11,10 @@ const DiaryItem = ({
   onRemove,
   onEdit,
 }) => {
+    // useEffect(() => {
+    //     console.log(`${id}번째 렌더`);
+    // });
+
     const [isEdit, setInEdit] = useState(false);
     const [localContent, setLocalContent] = useState(content);
     const localContentInput = useRef();
@@ -76,4 +80,4 @@ const DiaryItem = ({
     )
 }
 
-export default DiaryItem;
+export default React.memo(DiaryItem);

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Swal from 'sweetalert2';
 import DiaryForm from "../componets/DiaryForm";
 import DiaryItem from "../componets/DiaryItem";
@@ -30,7 +30,7 @@ const DiaryList = () => {
         getData();
     }, [])
 
-    const onCreate = (author, content, emotion) => {
+    const onCreate = useCallback((author, content, emotion) => {
         const createdAt = new Date().getTime();
 
         const newItem = {
@@ -41,21 +41,18 @@ const DiaryList = () => {
             createdAt,
         };
         dataId.current += 1;
-        setData([newItem, ...data]);
-    }
+        setData((data) => [newItem, ...data]); // 함수형 업데이트
+    },[]);
 
-    const onRemove = (targetId) => {
+    const onRemove = useCallback((targetId) => {
         sweetalertDelete('삭제 하시겠습니까?', function() {
-            const newDiaryList = data.filter((item) => item.id !== targetId);
-            setData(newDiaryList);
+            setData(data => data.filter((item) => item.id !== targetId)); // 함수형 업데이트
         }.bind());
-    }
+    },[]);
 
-    const onEdit = (targetId, newContent) => {
-        setData(
-            data.map((item) => item.id === targetId ? {...item, content: newContent} : item)
-        )
-    }
+    const onEdit = useCallback((targetId, newContent) => {
+        setData(data => data.map((item) => item.id === targetId ? {...item, content: newContent} : item)) // 함수형 업데이트
+    },[]);
 
     const sweetalertDelete = (title, callbackFunc) => {
         Swal.fire({
