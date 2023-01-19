@@ -10,6 +10,7 @@ import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
 import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
+import MemoList from "./components/Nobd/Memo/MemoList";
 import Prac from "./components/Nobd/Prac/nobdList";
 
 const routes = [
@@ -60,6 +61,10 @@ const routes = [
         path: '/blog/:id/edit',
         component: EditPage,
         auth: true
+    },
+    {
+        path: '/memo',
+        component: MemoList
     },
     {
         path: '/prac',

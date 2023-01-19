@@ -128,6 +128,7 @@ class Header extends Component {
                                 <div className="menu_toggle menu_nobd">
                                     <ul>
                                         <li><Link to={'/blog'}>Blog</Link></li>
+                                        <li><Link to={'/memo'}>메모장</Link></li>
                                         <li><Link to={'/prac'}>자유게시판</Link></li>
                                         {/* <li><Link to={'/ReduxEx'}>Redux</Link></li> */}
                                     </ul>

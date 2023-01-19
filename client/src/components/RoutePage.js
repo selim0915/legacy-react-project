@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/authSlice";
 import Navbar from "./Nobd/Blog/componets/Navbar";
@@ -40,7 +40,7 @@ function RoutePage() {
 
                 <section className="sub_wrap">
                     <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
-                        <Switch>
+                        <Routes>
                             {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
                             {routes.map((route) => {
                                 if(route.auth){
@@ -58,7 +58,7 @@ function RoutePage() {
                                             exact
                                         />
                             })}
-                        </Switch>
+                        </Routes>
                     </article>
                 </section>
             </div>

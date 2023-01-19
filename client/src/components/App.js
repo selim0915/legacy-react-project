@@ -84,6 +84,7 @@ class App extends Component {
         <Route path='/login' component={LoginForm} />
         <Route path='/mypage/diary' component={RoutePage} /> {/* 내정보>다이어리 */}
         <Route path='/blog' component={RoutePage} /> {/* 게시판>블로그 */}
+        <Route path='/memo' component={RoutePage} /> {/* 게시판>메모장 */}
         <Route path='/prac' component={RoutePage} /> {/* 게시판>자유게시판 */}
         <Route path='/user/admin' component={RoutePage} /> {/* 사용자관리 */}
         <Route path='/SoftwareList' component={SoftwareList} /> {/* 시스템관리 */}
