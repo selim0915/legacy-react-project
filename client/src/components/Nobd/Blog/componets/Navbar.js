@@ -23,18 +23,16 @@ const Navbar = () => {
                 </li>
                 {!isLoggedIn ? <li className="nav-item me-3">
                     <NavLink
-                        exact
-                        activeClassName="active"
-                        className="nav-link"
+                        exact="true"
+                        className={({ isActive }) => "nav-link" + (isActive ? " activated" : "")}
                         aria-current ="page"
                         to="/blog/admin">Admin
                     </NavLink>
                 </li> : null }
                 <li className="nav-item">
                     <NavLink
-                        exact
-                        activeClassName="active"
-                        className="nav-link"
+                        exact="true"
+                        className={({ isActive }) => "nav-link" + (isActive ? " activated" : "")}
                         aria-current ="page"
                         to="/blog">Blog
                     </NavLink>

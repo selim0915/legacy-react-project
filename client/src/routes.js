@@ -9,70 +9,94 @@ import ShowPage from "./components/Nobd/Blog/pages/ShowPage";
 import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
-import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
 import MemoList from "./components/Nobd/Memo/MemoList";
 import Prac from "./components/Nobd/Prac/nobdList";
+import LoginForm from "./components/LoginForm";
+import SoftwareView from "./components/Syst/Sw/SoftwareView";
+import SoftwareList from "./components/Syst/Sw/SoftwareList";
+import FloatingPopulationList from "./components/Syst/Bus/floatingPopulationList";
+import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
 
 const routes = [
     {
+        path: '/login',
+        element: <LoginForm/>
+    },
+    {
         path: '/mypage/diary',
-        component: DiaryList
+        element: <DiaryList/>
     },
     {
         path: '/user/admin',
-        component: UserList
+        element: <UserList/>
     },
     {
         path: '/user/admin/create',
-        component: UserCreate
+        element: <UserCreate/>
     },
     {
         path: '/user/admin/:id',
-        component: UserView
+        element: <UserView/>
     },
     {
         path: '/user/admin/:id/edit',
-        component: UserEdit,
+        element: <UserEdit/>,
         auth: true
     },
     {
         path: '/blog',
-        component: ListPage
+        element: <ListPage/>
     },
     {
         path: '/blog/home',
-        component: HomePage
+        element: <HomePage/>
     },
     {
         path: '/blog/admin',
-        component: AdminPage,
+        element: <AdminPage/>,
         auth: true
     },
     {
         path: '/blog/create',
-        component: CreatePage,
+        element: <CreatePage/>,
         auth: true
     },
     {
         path: '/blog/:id',
-        component: ShowPage
+        element: <ShowPage/>
     },
     {
         path: '/blog/:id/edit',
-        component: EditPage,
+        element: <EditPage/>,
         auth: true
     },
     {
         path: '/memo',
-        component: MemoList
+        element: <MemoList/>
     },
     {
         path: '/prac',
-        component: Prac
+        element: <Prac/>
     },
     {
+        path: '/SoftwareList',
+        element: <SoftwareList/>
+    },
+    {
+        path: '/SoftwareView/:swtcode',
+        element: <SoftwareView/>
+    },
+    {
+        path: '/floatingPopulationList',
+        element: <FloatingPopulationList/>
+    },
+    // {
+    //     path: '*',
+    //     element: <NotFoundPage/>
+    // },
+    {
         path: '*',
-        component: NotFoundPage
+        element: <LoginForm/>
     },
 ];
 

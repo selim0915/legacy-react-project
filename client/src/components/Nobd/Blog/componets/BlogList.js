@@ -1,7 +1,7 @@
 import axios from "axios";
 import prototypes from "prop-types";
 import { useState, useEffect, useCallback } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 import Card from "../componets/Card";
 import LoadingSpinner from "../componets/LoadingSpinner";
@@ -10,7 +10,7 @@ import useToast from "../../../../hooks/toast";
 
 const BlogList = ({ isAdmin }) => {
     const [addToast] = useToast(); // const [addToast, ] = useToast();
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation(); // url ? 뒤에 있는 파라미터를 가져올 수 있음
     const params = new URLSearchParams(location.search); // 뒤에 있는 값을 키, 값으로 가져올 수 있음
     const pageParam = params.get("page");
@@ -29,7 +29,7 @@ const BlogList = ({ isAdmin }) => {
     }, [numberOfPosts]); // [numberOfPosts] : 해당 변수가 바뀔떄 마다 호출되는 함수
 
     const onClickPageButton = (page) => {
-        history.push(`${location.pathname}?page=${page}`)
+        navigate(`${location.pathname}?page=${page}`)
         setCurrentPage(page);
         getPosts(page);
     };
@@ -97,7 +97,7 @@ const BlogList = ({ isAdmin }) => {
                     key={post.id} 
                     title={post.title} 
                     body={post.body}
-                    onClick={() => {history.push(`/blog/${post.id}`)}}>
+                    onClick={() => {navigate(`/blog/${post.id}`)}}>
                     {isAdmin ? (<div>
                         <button 
                             className="btn btn-sm btn-danger"
@@ -111,7 +111,7 @@ const BlogList = ({ isAdmin }) => {
 
     const onSearch = (e) => {
         if(e.key === "Enter"){
-            history.push(`${location.pathname}?page=1`)
+            navigate(`${location.pathname}?page=1`)
             setCurrentPage(1);
             getPosts(1);
         }

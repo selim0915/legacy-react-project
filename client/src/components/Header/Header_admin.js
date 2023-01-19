@@ -143,7 +143,7 @@ class Header extends Component {
                                 </a>
                                 <div className="menu_toggle menu_system">
                                     <ul>
-                                        <li><Link to={'/SoftwareList'}>Software</Link></li>
+                                        {/* <li><Link to={'/SoftwareList'}>Software</Link></li> */}
                                         <li><Link to={'/floatingPopulationList'}>버스승강장</Link></li>
                                     </ul>
                                 </div>

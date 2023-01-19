@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
-import { Route } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import cookie from 'react-cookies';
 import axios from "axios";
-
-import RoutePage from './RoutePage';
-import SoftwareList from './Syst/Sw/SoftwareList';
-import SoftwareView from './Syst/Sw/SoftwareView';
-import floatingPopulationList from './Syst/Bus/floatingPopulationList';
+import ProtectedRoute from '../ProtectedRoute';
+import useToast from '../hooks/toast';
+import LoadingSpinner from './Nobd/Blog/componets/LoadingSpinner';
+import Navbar from './Nobd/Blog/componets/Navbar';
+import Toast from './Nobd/Blog/componets/Toast';
+import { login } from '../store/authSlice';
+import routes from '../routes';
 
 // css
 import '../css/new.css';
@@ -21,48 +24,53 @@ import HeaderAdmin from './Header/Header_admin';
 // footer
 import Footer from './Footer/Footer';
 
-// login
-import LoginForm from './LoginForm';
+function App() {
+  const location = useLocation();
+  const pathname = location.pathname;
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
+  const toasts = useSelector((state) => state.toast.toasts);
+  const [, deleteToast] = useToast();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+      if(localStorage.getItem('isLoginIn')){  // isLoginIn라는 값이 있으면
+          dispatch(login())
+      }
+      setLoading(false);
+  }, []);
 
-  componentDidMount() {
+  useEffect(() => {
     axios.post('/api/LoginForm?type=SessionConfirm', {
       token1 : cookie.load('userid'),
       token2 : cookie.load('username') 
     })
     .then( response => {
-        this.state.userid = response.data.token1
         let password = cookie.load('userpassword')
 
         if(password !== undefined){
           axios.post('/api/LoginForm?type=SessionSignin', {
-            is_Email: this.state.userid,
+            is_Email: response.data.token1,
             is_Token : password
           })
           .then( response => {
             if(response.data.json[0].useremail === undefined){
-              this.noPermission()
+              noPermission()
             }
           })
           .catch( error => {
-            this.noPermission()
+            noPermission()
           });
         }else{
-          this.noPermission()
+          noPermission()
         }
     })
-    .catch( response => this.noPermission());
-  }
+    .catch( response => noPermission());
+  }, []);
 
-  noPermission = (e) => {
+  const noPermission = (e) => {
     if(window.location.hash !== 'nocookie'){
-      this.remove_cookie();
+      remove_cookie();
 
       setTimeout(function() {
           window.location.href = '/login/#nocookie';
@@ -70,30 +78,50 @@ class App extends Component {
     }
   };
 
-  remove_cookie = (e) => {
+  const remove_cookie = (e) => {
     cookie.remove('userid', { path: '/'});
     cookie.remove('username', { path: '/'});
     cookie.remove('userpassword', { path: '/'});
   }
 
-  render() {
-    return (
-      <div className="App">
-        <HeaderAdmin />
-        <Route exact path='/' component={LoginForm} />
-        <Route path='/login' component={LoginForm} />
-        <Route path='/mypage/diary' component={RoutePage} /> {/* 내정보>다이어리 */}
-        <Route path='/blog' component={RoutePage} /> {/* 게시판>블로그 */}
-        <Route path='/memo' component={RoutePage} /> {/* 게시판>메모장 */}
-        <Route path='/prac' component={RoutePage} /> {/* 게시판>자유게시판 */}
-        <Route path='/user/admin' component={RoutePage} /> {/* 사용자관리 */}
-        <Route path='/SoftwareList' component={SoftwareList} /> {/* 시스템관리 */}
-        <Route path='/SoftwareView/:swtcode' component={SoftwareView} /> {/* 시스템관리 */}
-        <Route path='/floatingPopulationList' component={floatingPopulationList} /> {/* 시스템관리>버스정류장 */}
-        <Footer />
-      </div>
-    );
+  if(loading) {
+      return (
+          <LoadingSpinner />
+      );
   }
+
+  return (
+    <div className="App">
+      <HeaderAdmin />
+      <div className="container">
+          {/* blog url 에서만 보여주는 화면 */}
+          {pathname.includes('/blog') ? <Navbar /> : null}
+          {pathname.includes('/blog') ? <Toast toasts={toasts} deleteToast={deleteToast} /> : null}
+
+          <section className="sub_wrap">
+              <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
+                  <Routes>
+                      {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
+                      {routes.map((route) => {
+                          return <Route 
+                                      key={route.path} 
+                                      path={route.path} 
+                                      element={route.auth ? <ProtectedRoute 
+                                                                  key={route.path} 
+                                                                  path={route.path}
+                                                                  element={route.element}
+                                                                  exact="true"
+                                                              /> : route.element} 
+                                      exact="true"
+                                  />
+                      })}
+                  </Routes>
+              </article>
+          </section>
+      </div>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

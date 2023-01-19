@@ -2,13 +2,13 @@ import axios from "axios";
 import prototypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import useToast from "../../../../hooks/toast";
 import LoadingSpinner from "./LoadingSpinner";
 
 const BlogForm = ({ editing }) => {
     const [addToast] = useToast(); // const [addToast, ] = useToast();
-    const history = useHistory();
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const [title, setTitle] = useState('');
@@ -28,9 +28,9 @@ const BlogForm = ({ editing }) => {
 
     const goBack = () => {
         if(editing){ // 수정
-            history.push(`/blog/${id}`);
+            navigate(`/blog/${id}`);
         }else{
-            history.push('/blog');
+            navigate('/blog');
         }
     }
 
@@ -66,7 +66,7 @@ const BlogForm = ({ editing }) => {
                     publish,
                     updatedAt: Date.now()
                 }).then((res) => {
-                    history.push(`/blog/${id}`);
+                    navigate(`/blog/${id}`);
                     //setoOiginalTitle(res.data.title);
                     //setOiginalBody(res.data.body);
                 }).catch((e) => {
@@ -89,7 +89,7 @@ const BlogForm = ({ editing }) => {
                         text: "등록 되었습니다.",
                         type: "success"
                     });
-                    history.push('/blog/admin')
+                    navigate('/blog/admin')
                 }).catch((e) => {
                     setError('not DB connection');
                     addToast({

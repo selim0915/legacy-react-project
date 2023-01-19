@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import $ from 'jquery';
@@ -7,7 +7,7 @@ import prototypes from "prop-types";
 
 const UserForm = ({ editing }) => {
     const { id } = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const submitClick = async (type, e) => {
         const email_val_checker = $('#email_val').val();
@@ -148,7 +148,7 @@ const UserForm = ({ editing }) => {
                     const body = await response.text();
                     if(body == "succ"){
                         sweetalert('회원정보가 수정되었습니다.', '', 'info', '닫기')
-                        history.push(`/user/admin/`+id);
+                        navigate(`/user/admin/`+id);
                     }else{
                         alert('3. 작업중 오류가 발생하였습니다.')
                     }
@@ -194,7 +194,7 @@ const UserForm = ({ editing }) => {
                 const body = await response.text();
                 if(body === "succ"){
                     sweetalert('회원가입이 완료되었습니다.', '', 'info', '닫기')
-                    history.push('/user/admin');
+                    navigate('/user/admin');
                 }else{
                     sweetalert('작업중 오류가 발생하였습니다.', body, 'error', '닫기');            
                 }  

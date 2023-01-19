@@ -14,8 +14,7 @@
 ##### npm install --save react-redux
 ##### npm install react-cookies --save
 ##### npm install --save react-router-dom
-##### npm i react-router-dom@5
-##### npm i react-router;
+##### npm i react-router-dom@6
 ##### npm install --save lodash
 ##### npm i -g express-generator
 ##### express nodefolder

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useHistory, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import $ from 'jquery';
 import Swal from 'sweetalert2';
 
 const UserView = () => {
     const { id } = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         callUserApprovaApi();
@@ -41,7 +41,7 @@ const UserView = () => {
                 is_useremail : id, //e.target.getAttribute('id'),
             })
             .then( response => {
-                history.push("/user/admin");
+                navigate("/user/admin");
             }).catch( error => {
                 alert('작업중 오류가 발생하였습니다.');
                 return false;
