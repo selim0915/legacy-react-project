@@ -1,11 +1,37 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
 import Swal from 'sweetalert2';
 import DiaryForm from "../componets/DiaryForm";
 import DiaryItem from "../componets/DiaryItem";
 // https://jsonplaceholder.typicode.com/comments
 
+const reducer = (state, action) => { 
+    switch(action.type){
+        case 'INIT': {
+            return (action.data)
+        }
+        case 'CREATE': {
+            const createdAt = new Date().getTime();
+            const newItem = {
+                ...action.data,
+                createdAt
+            }
+            return [newItem, ...state];
+        }
+        case 'REMOVE': {
+            return state.filter((v)=>v.id !== action.targetId);
+        }
+        case 'EDIT': {
+            return state.map((v)=>
+                v.id === action.targetId ? {...v, content: action.newContent} : v
+            )
+        }
+        default: 
+            return state;
+    }
+}
+
 const DiaryList = () => {
-    const [data, setData] = useState([]);
+    const [data, dispatch] = useReducer(reducer, []); // (reducer함수, 초기값)
     const dataId = useRef(0);
 
     const getData = async() => {
@@ -23,7 +49,7 @@ const DiaryList = () => {
                 id: dataId.current++,
             }
         })
-        setData(initData);
+        dispatch({type:"INIT", data:initData});
     };
 
     useEffect(() => {
@@ -31,27 +57,18 @@ const DiaryList = () => {
     }, [])
 
     const onCreate = useCallback((author, content, emotion) => {
-        const createdAt = new Date().getTime();
-
-        const newItem = {
-            id: dataId.current,
-            author,
-            content,
-            emotion,
-            createdAt,
-        };
+        dispatch({type:"CREATE", data: {author, content, emotion, id: dataId.current}});
         dataId.current += 1;
-        setData((data) => [newItem, ...data]); // 함수형 업데이트
     },[]);
 
     const onRemove = useCallback((targetId) => {
         sweetalertDelete('삭제 하시겠습니까?', function() {
-            setData(data => data.filter((item) => item.id !== targetId)); // 함수형 업데이트
+            dispatch({type: "REMOVE", targetId});
         }.bind());
     },[]);
 
     const onEdit = useCallback((targetId, newContent) => {
-        setData(data => data.map((item) => item.id === targetId ? {...item, content: newContent} : item)) // 함수형 업데이트
+        dispatch({type:"EDIT", targetId, newContent});
     },[]);
 
     const sweetalertDelete = (title, callbackFunc) => {
