@@ -11,12 +11,12 @@ import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
 import MemoList from "./components/Nobd/Memo/MemoList";
 import Prac from "./components/Nobd/Prac/nobdList";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/Content/LoginForm";
 import SoftwareView from "./components/Syst/Sw/SoftwareView";
 import SoftwareList from "./components/Syst/Sw/SoftwareList";
 import FloatingPopulationList from "./components/Syst/Bus/floatingPopulationList";
 import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
-import Main from "./components/Main";
+import Main from "./components/Content/Main";
 
 const routes = [
     {

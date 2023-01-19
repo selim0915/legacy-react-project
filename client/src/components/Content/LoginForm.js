@@ -43,8 +43,8 @@ class LoginForm extends Component {
                     });
                     
                     setTimeout(function() {
-                        window.location.href = '/blog/home';
-                    }.bind(this),1000);
+                        window.location.href = '/';
+                    },1000);
                 }else{
                     this.sweetalert('이메일과 비밀번호를 확인해주세요.', '', 'info', '닫기')
                 }
@@ -66,16 +66,16 @@ class LoginForm extends Component {
         return (
             <section className="main">
                 <div className="m_login">
-                <h3><span><img src={require("../img/main/log_img.png")} alt="" />
+                <h3><span><img src={require("../../img/main/log_img.png")} alt="" />
                 </span>LOGIN</h3>
                 <div className="log_box">
                     <div className="in_ty1">
-                        <span><img src={require("../img/main/m_log_i3.png")} alt="" /></span>
+                        <span><img src={require("../../img/main/m_log_i3.png")} alt="" /></span>
                         <input type="text" id="email_val" placeholder="이메일" />
                     </div>
                     <div  className="in_ty1">
                         <span className="ic_2">
-                            <img src={require("../img/main/m_log_i2.png")} alt="" />
+                            <img src={require("../../img/main/m_log_i2.png")} alt="" />
                         </span>
                         <input type="password" id="pwd_val" placeholder="비밀번호" />
                     </div>
