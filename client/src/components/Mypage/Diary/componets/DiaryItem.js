@@ -1,7 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext, useRef, useState } from "react";
 import { DiaryDispatchContext, DiaryStateContext } from "../page/DiaryList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2';
 
 const DiaryItem = ({
   id,
@@ -14,7 +15,9 @@ const DiaryItem = ({
     //     console.log(`${id}번째 렌더`);
     // });
 
-    // const diaryList = useContext(DiaryStateContext);
+    const diaryList = useContext(DiaryStateContext);
+    console.log(diaryList); // 객체 가져올 수 있음 테스트
+
     const {onRemove, onEdit} = useContext(DiaryDispatchContext); 
 
     const [isEdit, setInEdit] = useState(false);
@@ -31,7 +34,9 @@ const DiaryItem = ({
     }
 
     const handleRemove = () => {
-        onRemove(id);
+        sweetalert('삭제 하시겠습니까?', function() {
+            onRemove(id);
+        }.bind());
     }
 
     const handleREdit = () => {
@@ -40,10 +45,33 @@ const DiaryItem = ({
             return;
         }
 
-        if(window.confirm(`${id}번째 일기를 수정 하시겠습니까?`)){
+        sweetalert(`${id}번\n수정 하시겠습니까?`, function() {
             onEdit(id, localContent);
             toggleIsEdit();
+        }.bind());
+    }
+
+    const sweetalert = (title, callbackFunc) => {
+        Swal.fire({
+            title: title,
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                '완료',
+                '처리 되었습니다.',
+                'success'
+                )
+        }else{
+            return false;
         }
+        callbackFunc()
+        })
     }
 
     return (

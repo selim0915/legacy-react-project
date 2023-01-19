@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
-import Swal from 'sweetalert2';
 import DiaryForm from "../componets/DiaryForm";
 import DiaryItem from "../componets/DiaryItem";
 // https://jsonplaceholder.typicode.com/comments
@@ -65,37 +64,12 @@ const DiaryList = () => {
     },[]);
 
     const onRemove = useCallback((targetId) => {
-        sweetalertDelete('삭제 하시겠습니까?', function() {
-            dispatch({type: "REMOVE", targetId});
-        }.bind());
+        dispatch({type: "REMOVE", targetId});
     },[]);
 
     const onEdit = useCallback((targetId, newContent) => {
         dispatch({type:"EDIT", targetId, newContent});
     },[]);
-
-    const sweetalertDelete = (title, callbackFunc) => {
-        Swal.fire({
-            title: title,
-            text: "",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-        }).then((result) => {
-            if (result.value) {
-                Swal.fire(
-                'Deleted!',
-                '삭제되었습니다.',
-                'success'
-                )
-        }else{
-            return false;
-        }
-        callbackFunc()
-        })
-    }
 
     const memoizedDispatchs = useMemo(()=>{
         return {onCreate, onRemove, onEdit};
