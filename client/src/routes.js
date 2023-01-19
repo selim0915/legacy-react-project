@@ -16,6 +16,7 @@ import SoftwareView from "./components/Syst/Sw/SoftwareView";
 import SoftwareList from "./components/Syst/Sw/SoftwareList";
 import FloatingPopulationList from "./components/Syst/Bus/floatingPopulationList";
 import NotFoundPage from "./components/Nobd/Blog/pages/NotFoundPage";
+import Main from "./components/Main";
 
 const routes = [
     {
@@ -90,13 +91,13 @@ const routes = [
         path: '/floatingPopulationList',
         element: <FloatingPopulationList/>
     },
-    // {
-    //     path: '*',
-    //     element: <NotFoundPage/>
-    // },
+    {
+        path: '/',
+        element: <Main/>
+    },
     {
         path: '*',
-        element: <LoginForm/>
+        element: <NotFoundPage/>
     },
 ];
 
