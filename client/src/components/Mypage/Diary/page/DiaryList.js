@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
 import Swal from 'sweetalert2';
 import DiaryForm from "../componets/DiaryForm";
 import DiaryItem from "../componets/DiaryItem";
@@ -29,6 +29,9 @@ const reducer = (state, action) => {
             return state;
     }
 }
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
 const DiaryList = () => {
     const [data, dispatch] = useReducer(reducer, []); // (reducer함수, 초기값)
@@ -94,6 +97,10 @@ const DiaryList = () => {
         })
     }
 
+    const memoizedDispatchs = useMemo(()=>{
+        return {onCreate, onRemove, onEdit};
+    },[]);
+    
     const getDiaryAnalysis = useMemo(() => {
         const goodCount = data.filter((v) => v.emotion >= 3).length;
         const badCount = data.length - goodCount;
@@ -104,27 +111,31 @@ const DiaryList = () => {
     const {goodCount, badCount, goodRatio} = getDiaryAnalysis;
 
     return (
-        <div>
-            <h2 className="s_tit1">다이어리</h2>
-            <div className="row">
-                <div className="col" style={{"maxWidth": "400px"}}>
-                    <DiaryForm onCreate={onCreate}/>
-                </div>
-                <div className="col" style={{"height": "640px", "overflowY": "auto"}}>
-                    <div className="d-flex justify-content-between">
-                        <div className="text-secondary mb-2">
-                            전체 {data.length} 건
+        <DiaryStateContext.Provider value={data}>
+            <DiaryDispatchContext.Provider value={memoizedDispatchs}r>
+                <div>
+                    <h2 className="s_tit1">다이어리</h2>
+                    <div className="row">
+                        <div className="col" style={{"maxWidth": "400px"}}>
+                            <DiaryForm />
                         </div>
-                        <div className="text-secondary mb-2">
-                            3이상 {goodCount} 건, 3미만 {badCount} 건 ({goodRatio}/100%)
+                        <div className="col" style={{"height": "640px", "overflowY": "auto"}}>
+                            <div className="d-flex justify-content-between">
+                                <div className="text-secondary mb-2">
+                                    전체 {data.length} 건
+                                </div>
+                                <div className="text-secondary mb-2">
+                                    3이상 {goodCount} 건, 3미만 {badCount} 건 ({goodRatio}/100%)
+                                </div>
+                            </div>
+                            {data.map((item) => (
+                                <DiaryItem key={item.id} {...item} />
+                            ))}
                         </div>
                     </div>
-                    {data.map((item) => (
-                            <DiaryItem key={item.id} {...item} onRemove={onRemove} onEdit={onEdit} />
-                    ))}
                 </div>
-            </div>
-        </div>
+            </DiaryDispatchContext.Provider>
+        </DiaryStateContext.Provider>
     )
 }
 

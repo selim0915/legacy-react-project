@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { DiaryDispatchContext, DiaryStateContext } from "../page/DiaryList";
 
 const DiaryItem = ({
   id,
@@ -8,12 +9,13 @@ const DiaryItem = ({
   content,
   emotion,
   createdAt,
-  onRemove,
-  onEdit,
 }) => {
     // useEffect(() => {
     //     console.log(`${id}번째 렌더`);
     // });
+
+    // const diaryList = useContext(DiaryStateContext);
+    const {onRemove, onEdit} = useContext(DiaryDispatchContext); 
 
     const [isEdit, setInEdit] = useState(false);
     const [localContent, setLocalContent] = useState(content);

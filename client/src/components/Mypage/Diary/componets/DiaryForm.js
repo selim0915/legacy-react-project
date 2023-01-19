@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import prototypes from "prop-types";
+import { DiaryDispatchContext } from "../page/DiaryList";
 
-const DiaryForm = ({ onCreate }) =>{
+const DiaryForm = () =>{
     // useEffect(() =>{
     //     console.log("DiaryForm 렌더")
     // },[]);
+
+    const {onCreate} = useContext(DiaryDispatchContext); 
 
     const authorInput = useRef(); // DOM요소를 current로 지정함.
     const contentInput = useRef(); // DOM요소를 current로 지정함.
