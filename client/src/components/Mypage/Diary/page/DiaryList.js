@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Swal from 'sweetalert2';
 import DiaryForm from "../componets/DiaryForm";
 import DiaryItem from "../componets/DiaryItem";
@@ -80,6 +80,15 @@ const DiaryList = () => {
         })
     }
 
+    const getDiaryAnalysis = useMemo(() => {
+        const goodCount = data.filter((v) => v.emotion >= 3).length;
+        const badCount = data.length - goodCount;
+        const goodRatio = Math.round((goodCount/data.length)*100,2);
+
+        return{goodCount, badCount, goodRatio};
+    }, [data.length]); // [] 값이 바뀔때만 함수가 실행되게 됨 ... 길이가 바뀌지 않으면 계산식 실행되지 않음
+    const {goodCount, badCount, goodRatio} = getDiaryAnalysis;
+
     return (
         <div>
             <h2 className="s_tit1">다이어리</h2>
@@ -88,7 +97,14 @@ const DiaryList = () => {
                     <DiaryForm onCreate={onCreate}/>
                 </div>
                 <div className="col" style={{"height": "640px", "overflowY": "auto"}}>
-                    <div className="text-secondary mb-2">전체 {data.length}건</div>
+                    <div className="d-flex justify-content-between">
+                        <div className="text-secondary mb-2">
+                            전체 {data.length} 건
+                        </div>
+                        <div className="text-secondary mb-2">
+                            3이상 {goodCount} 건, 3미만 {badCount} 건 ({goodRatio}/100%)
+                        </div>
+                    </div>
                     {data.map((item) => (
                             <DiaryItem key={item.id} {...item} onRemove={onRemove} onEdit={onEdit} />
                     ))}
