@@ -1,4 +1,5 @@
 import DiaryList from "./components/Mypage/Diary/page/DiaryList";
+import Todo from "./components/Mypage/Todo/Todo";
 import UserList from "./components/User/pages/UserList";
 import UserView from "./components/User/pages/UserView";
 import UserCreate from "./components/User/pages/UserCreate";
@@ -26,6 +27,10 @@ const routes = [
     {
         path: '/mypage/diary',
         element: <DiaryList/>
+    },
+    {
+        path: '/mypage/todo',
+        element: <Todo/>
     },
     {
         path: '/user/admin',

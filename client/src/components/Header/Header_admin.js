@@ -98,15 +98,16 @@ class Header extends Component {
             <div className="hd_top">
                 <div className="top_wrap ct1 af">
                     <ul className="hd_left af">
-                    <li className="my1" onMouseEnter={this.myInfoHover} onMouseLeave={this.myInfoLeave}><b>MyPage</b>
+                        <li className="my1" onMouseEnter={this.myInfoHover} onMouseLeave={this.myInfoLeave}><b>MyPage</b>
                             <div className="box0 box1">
                                 <ul>
                                     <li><Link to={'/user/admin/'+this.state.userid}>프로필</Link></li>
                                     <li><Link to={'/mypage/diary'}>다이어리</Link></li>
+                                    <li><Link to={'/mypage/todo'}>Todo</Link></li>
                                     <li><a href="/#" onClick={this.logout}>로그아웃</a></li>
                                 </ul>
                             </div>
-                            </li>
+                        </li>
                         <li className="my2"><b><span>0</span>알림</b>
                         </li>
                     </ul>
