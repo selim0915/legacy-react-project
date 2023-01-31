@@ -67,6 +67,7 @@ const BlogList = ({ isAdmin }) => {
     useEffect(() => {
         setCurrentPage(parseInt(pageParam) || 1);
         getPosts(parseInt(pageParam) || 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // [] : 처음실행할때, 삭제 될때만 호출되는 함수
 
     const deleteBlog = (e, id) => {

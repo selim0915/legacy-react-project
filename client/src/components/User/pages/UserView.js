@@ -12,6 +12,7 @@ const UserView = () => {
 
     useEffect(() => {
         callUserApprovaApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const callUserApprovaApi = async () => {
