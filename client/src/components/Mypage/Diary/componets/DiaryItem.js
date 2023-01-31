@@ -1,8 +1,8 @@
-import React, { useContext, useRef, useState } from "react";
-import { DiaryDispatchContext, DiaryStateContext } from "../page/DiaryList";
+import { faFaceSmile } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
+import React, { useContext, useRef, useState } from "react";
 import Swal from 'sweetalert2';
+import { DiaryDispatchContext, DiaryStateContext } from "../page/DiaryList";
 
 const DiaryItem = ({
   id,

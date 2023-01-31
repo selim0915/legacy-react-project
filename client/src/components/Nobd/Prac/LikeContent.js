@@ -1,5 +1,5 @@
 import { Axios } from "axios";
-import React, { Component, createRef, useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 function LikeContent() {
     var [funcShow, setFuncShow] = useState(true);
@@ -11,12 +11,12 @@ function LikeContent() {
             <button value="remove func"
                 onClick={function(){
                     setFuncShow(false);
-                }.bind(this)}>remove func
+                }}>remove func
             </button>
             <button value="remove comp"
                 onClick={function(){
                     setClassShow(false);
-                }.bind(this)}>remove comp
+                }}>remove comp
             </button>
             {funcShow ? <NobdList initNumber={2}></NobdList> : null}
             {classShow ? <NobdListTwo initNumber={2}></NobdListTwo> : null}
@@ -107,9 +107,9 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
         } = e;
         setEmail(value);
     }
-    const onClickOutside = () => {
-        console.log("serim");
-    }
+    // const onClickOutside = () => {
+    //     console.log("serim");
+    // }
     //const ref = ClickOutside(onClickOutside);
     const name = UseInput("");
     //console.log("name", name);
@@ -126,7 +126,7 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
         }
         // useEffect -> render3 -> useEffect return -> useEffect
         // useEffect에 return를 통해 코드를 입력하면 한번 들려갔다 옴, 보통 clean up 기능이라고 활용 함
-    }, []); // 맨 처음 조회될떄만 호출되도록 하는 useEffect, 컴포넌트가 소멸될 때도 실행 됨
+    }, [number]); // 맨 처음 조회될떄만 호출되도록 하는 useEffect, 컴포넌트가 소멸될 때도 실행 됨
 
     useEffect(function(){
         console.log("%cfunc => useEffect number(componentDidMount & componentDidUpdate) A"+(++funId), classStyle2);
@@ -153,7 +153,7 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
                 <br/>
                 {loading && <span>loding</span>}
                 {!loading && error && <span>error</span>}
-                {!loading && payload && <img src={payload.file}/>}
+                {!loading && payload && <img alt="img" src={payload.file}/>}
             </div>
             
             <hr/>
@@ -163,12 +163,12 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
             <button value="random"
                 onClick={function(){
                     setNumber(Math.random());
-                }.bind(this)}>랜덤숫자
+                }}>랜덤숫자
             </button>
             <button value="date"
                 onClick={function(){
                     setDate((new Date().toString()));
-                }.bind(this)}>최신날짜
+                }}>최신날짜
             </button>
             <button onClick={() => setNumber(number+1)}>추천</button>
             <button onClick={() => setNumber(number-1)}>비추천</button>
@@ -177,22 +177,22 @@ const NobdList = (props) => { // 함수는 대문사 명시 필요.
     );
 };
 
-function ClickOutside (fn) {
-    const ref = createRef();
-    const handleClick = e => {
-        //console.log(ref.current.contains(e.target));
-        if(!ref.current.contains(e.target)){
-            //console.log("clicked outside");
-            fn();
-        }
-    };
+// function ClickOutside (fn) {
+//     const ref = createRef();
+//     const handleClick = e => {
+//         //console.log(ref.current.contains(e.target));
+//         if(!ref.current.contains(e.target)){
+//             //console.log("clicked outside");
+//             fn();
+//         }
+//     };
 
-    useEffect(() => {
-        document.addEventListener("click", handleClick);
-    }, [])
+//     useEffect(() => {
+//         document.addEventListener("click", handleClick);
+//     }, [])
 
-    return ref;
-}
+//     return ref;
+// }
 
 function UseInput(defaultValue){
     const [value, setValue] = useState(defaultValue);

@@ -123,7 +123,7 @@ class Header extends Component {
                     <nav className="gnb gnb_admin">
                         <ul className="af">
                             <li className="menulist" onMouseEnter={this.menuNobdHover} onMouseLeave={this.menuNobdLeave}>
-                                <a href="#">
+                                <a href="/#">
                                     게시판
                                 </a>
                                 <div className="menu_toggle menu_nobd">
@@ -139,7 +139,7 @@ class Header extends Component {
                                 <Link to={'/user/admin'}>사용자 관리</Link>
                             </li>
                             <li className="menulist" onMouseEnter={this.menuSystemHover} onMouseLeave={this.menuSystemLeave}>
-                                <a href="#">
+                                <a href="/#">
                                     시스템관리
                                 </a>
                                 <div className="menu_toggle menu_system">

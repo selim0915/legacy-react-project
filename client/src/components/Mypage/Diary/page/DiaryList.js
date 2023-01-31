@@ -73,7 +73,7 @@ const DiaryList = () => {
 
     const memoizedDispatchs = useMemo(()=>{
         return {onCreate, onRemove, onEdit};
-    },[]);
+    },[onCreate, onEdit, onRemove]);
     
     const getDiaryAnalysis = useMemo(() => {
         const goodCount = data.filter((v) => v.emotion >= 3).length;
@@ -81,7 +81,7 @@ const DiaryList = () => {
         const goodRatio = Math.round((goodCount/data.length)*100,2);
 
         return{goodCount, badCount, goodRatio};
-    }, [data.length]); // [] 값이 바뀔때만 함수가 실행되게 됨 ... 길이가 바뀌지 않으면 계산식 실행되지 않음
+    }, [data]); // [] 값이 바뀔때만 함수가 실행되게 됨 ... 길이가 바뀌지 않으면 계산식 실행되지 않음
     const {goodCount, badCount, goodRatio} = getDiaryAnalysis;
 
     return (

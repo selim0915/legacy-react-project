@@ -38,6 +38,7 @@ function App() {
           dispatch(login())
       }
       setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -66,6 +67,7 @@ function App() {
         }
     })
     .catch( response => noPermission());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const noPermission = (e) => {
@@ -74,7 +76,7 @@ function App() {
 
       setTimeout(function() {
           window.location.href = '/login/#nocookie';
-      }.bind(this),1000);
+      },1000);
     }
   };
 

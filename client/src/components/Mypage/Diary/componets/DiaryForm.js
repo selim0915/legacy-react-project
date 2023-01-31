@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
 import prototypes from "prop-types";
+import React, { useContext, useRef, useState } from "react";
 import { DiaryDispatchContext } from "../page/DiaryList";
 
 const DiaryForm = () =>{
