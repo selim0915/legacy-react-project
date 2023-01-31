@@ -58,12 +58,12 @@ const UserForm = ({ editing }) => {
                         sweetalert('비밀번호 공백을 제거해 주세요.', '', 'info', '닫기')
                         return false;
                     } 
-                    // if(!pattern1.test(str) || !pattern2.test(str) || !pattern3.test(str)
-                    // || str.length < 8 || str.length > 16) {
-                    //     $('#pwd_val').addClass('border_validate_err');
-                    //     sweetalert('8~16자 영문 대 소문자\n숫자, 특수문자를 사용하세요.', '', 'info', '닫기')
-                    //     return false; 
-                    // } 
+                    if(!pattern1.test(str) || !pattern2.test(str) || !pattern3.test(str)
+                    || str.length < 8 || str.length > 16) {
+                        $('#pwd_val').addClass('border_validate_err');
+                        sweetalert('8~16자 영문 대 소문자\n숫자, 특수문자를 사용하세요.', '', 'info', '닫기')
+                        return false; 
+                    } 
                 }
 
                 $('#pwd_val').removeClass('border_validate_err');
@@ -146,7 +146,7 @@ const UserForm = ({ editing }) => {
                         body: Json_form,
                     });
                     const body = await response.text();
-                    if(body == "succ"){
+                    if(body === "succ"){
                         sweetalert('회원정보가 수정되었습니다.', '', 'info', '닫기')
                         navigate(`/user/admin/`+id);
                     }else{

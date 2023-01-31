@@ -21,7 +21,7 @@ class LoginForm extends Component {
                 var username = response.data.json[0].username
                 var upw = response.data.json[0].userpassword
                 
-                if(userid != null && userid != ''){
+                if(userid !== null && userid !== ''){
                     this.sweetalert('로그인 되었습니다.', '', 'info', '닫기')
                     const expires = new Date()
                     expires.setMinutes(expires.getMinutes() + 60)

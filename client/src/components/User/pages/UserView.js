@@ -46,7 +46,7 @@ const UserView = () => {
                 alert('작업중 오류가 발생하였습니다.');
                 return false;
             });
-        }.bind(this));
+        });
     }
 
     const sweetalertDelete = (title, callbackFunc) => {

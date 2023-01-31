@@ -2,7 +2,7 @@ import { Component } from "react";
 
 class R066_onClick extends Component{
     buttonClick = (param) => {
-        if(typeof param != 'string') param = "Click a"
+        if(typeof param !== 'string') param = "Click a"
         console.log('param : '+param);
     }
 
