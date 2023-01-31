@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 import $ from 'jquery';
-import Swal from 'sweetalert2'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router";
+import { Link, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SoftwareView = () => {
     const { swtcode } = useParams();

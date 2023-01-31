@@ -1,7 +1,7 @@
 import axios from "axios";
 import prototypes from "prop-types";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import useToast from "../../../../hooks/toast";
 import LoadingSpinner from "./LoadingSpinner";

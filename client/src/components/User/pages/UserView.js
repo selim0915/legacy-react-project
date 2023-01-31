@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import $ from 'jquery';
 import Swal from 'sweetalert2';
