@@ -1,88 +1,82 @@
-import React, { useReducer, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import MemoButton from "./MemoButton";
 import MemoHeader from "./MemoHeader";
+import MemoList from "./MemoList";
 
-const reducer = (state, action) => {
-    let newState = [];
-
-    switch(action.type){
-        case 'INIT' : {
-            return action.data;
-        }
-        case 'CREATE' : {
-            const newItem = {
-                ...action.data
-            };
-            newState = [newItem, ...state];
-            break;
-        }
-        case 'REMOVE' : {
-            newState = state.filter((item)=>item.id !== action.targetId);
-            break;
-        }
-        case 'EDIT' : {
-            newState = state.map((item)=>item.id === action.data.id ? {...action.data} : item);
-            break;
-        }
-        default : 
-            return state;
+const dumpData = [
+    {
+        id:1,
+        emotion:1,
+        content:"오늘의일기1",
+        date: 1675264716343,
+    },
+    {
+        id:2,
+        emotion:2,
+        content:"오늘의일기2",
+        date: 1675264716344,
+    },
+    {
+        id:3,
+        emotion:3,
+        content:"오늘의일기3",
+        date: 1675264716345,
+    },
+    {
+        id:4,
+        emotion:4,
+        content:"오늘의일기4",
+        date: 1675264716346,
+    },
+    {
+        id:5,
+        emotion:5,
+        content:"오늘의일기5",
+        date: 1675264716347,
     }
-    return newState;
-}
-
-export const MemoStateContext = React.createContext();
-export const MemoDispatchContext = React.createContext();
+]
 
 const MemoHome = () =>{
-    const dataId = useRef(0);
-    const [data, dispatch] = useReducer(reducer, []);
+    const [data, setData] = useState([]);
+    const [curDate, setCurDate] = useState(new Date());
+    const headText = `${curDate.getFullYear()}년 ${curDate.getMonth()+1}월`;
+    const memoList = dumpData;
 
-    const onCreate = (date, content, emotion)=>{
-        dispatch({
-            type:"CREATE", 
-            data: {
-                id:dataId.current, 
-                data: new Date(date).getTime(), 
-                content, 
-                emotion
-            }
-        });
-        dataId.current += 1;
+    useEffect(()=>{
+        if(memoList.length >= 1) {
+            const firstDay = new Date(
+                curDate.getFullYear(),
+                curDate.getMonth(),
+                1
+            ).getTime();
+
+            const lastDay = new Date(
+                curDate.getFullYear(),
+                curDate.getMonth()+1,
+                0
+            ).getTime();
+
+            setData(memoList.filter((it=>firstDay <= it.date && it.date <= lastDay)))
+        }
+    },[curDate, memoList])
+
+    const increaseMonth = () => {
+        setCurDate(new Date(curDate.getFullYear(), curDate.getMonth()+1, curDate.getDate()));
     }
 
-    const onRemove = (targetId) => {
-        dispatch({type:"REMOVE", targetId});
-    }
-
-    const onEdit = (targetId, date, content, emotion) => {
-        dispatch({
-            type:"REMOVE", 
-            data: {
-                id: targetId,
-                date: new Date(date).getTime(),
-                content,
-                emotion,
-            }
-        });
+    const decreaseMonth = () => {
+        setCurDate(new Date(curDate.getFullYear(), curDate.getMonth()-1, curDate.getDate()));
     }
 
     return (
-        <MemoStateContext.Provider value={data}>
-            <MemoDispatchContext.Provider value={{onCreate, onEdit, onRemove}}>
-                <div>
-                    <MemoHeader 
-                        headText={"MemoHome"} 
-                        leftChild={<MemoButton text="왼쪽버튼" onClick={()=>alert("left")}/>}
-                        rightChild={<MemoButton text="오른쪽버튼" onClick={()=>alert("right")}/>}/>
+        <div>
+            <MemoHeader 
+                headText={headText} 
+                leftChild={<MemoButton text="<" onClick={decreaseMonth}/>}
+                rightChild={<MemoButton text=">" onClick={increaseMonth}/>}/>
 
-                    <Link to={'/memo'}>MemoHome</Link>
-                    <Link to={'/memo/new'}>MemoNew</Link>
-                    <Link to={'/memo/edit'}>MemoEdit</Link>
-                    <Link to={'/memo/1'}>Memo</Link>
-                </div>
-            </MemoDispatchContext.Provider>
-        </MemoStateContext.Provider>
+            <MemoList memoList={data} />
+        </div>
     )
 }
 export default MemoHome;
