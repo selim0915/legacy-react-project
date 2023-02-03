@@ -10,10 +10,11 @@ import ShowPage from "./components/Nobd/Blog/pages/ShowPage";
 import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
+import Memo from "./components/Nobd/Memo/Memo";
 import MemoHome from "./components/Nobd/Memo/MemoHome";
+import MemoView from "./components/Nobd/Memo/MemoView";
 import MemoNew from "./components/Nobd/Memo/MemoNew";
 import MemoEdit from "./components/Nobd/Memo/MemoEdit";
-import Memo from "./components/Nobd/Memo/Memo";
 import Prac from "./components/Nobd/Prac/nobdList";
 import LoginForm from "./components/Content/LoginForm";
 import SoftwareView from "./components/Syst/Sw/SoftwareView";
@@ -81,6 +82,10 @@ const routes = [
     },
     {
         path: '/memo',
+        element: <Memo/>
+    },
+    {
+        path: '/memo/home',
         element: <MemoHome/>
     },
     {
@@ -88,12 +93,12 @@ const routes = [
         element: <MemoNew/>
     },
     {
-        path: '/memo/edit',
-        element: <MemoEdit/>
+        path: '/memo/:id',
+        element: <MemoView/>
     },
     {
-        path: '/memo/:id',
-        element: <Memo/>
+        path: '/memo/edit/:id',
+        element: <MemoEdit/>
     },
     {
         path: '/prac',

@@ -1,20 +1,25 @@
-/* @import url(/css/dpl/sce/NotoSansKR-Hestia.css); */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@400&family=Yeon+Sung&display=swap');
 
 /**** Common ************************************************/
 * {margin:0;padding:0;}
+body {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    font-family: 'Noto Sans KR', 'Nanum Pen Script', 'Yeon Sung', '맑은 고딕', '돋움', Dotum, '굴림', Gulim, Tahoma, Verdana, Geneva, sans-serif, Apple Gothic, AppleGothic;
+    font-size: 13px;
+    font-weight: 400;
+    color: #505050;
+    line-height: 30px;
+    letter-spacing: -0.03em;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 img, fieldset, button {border:none;}
 button img {display:none;}
-button {
-    font-family: 'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 30px;
-    vertical-align: middle;
-    border: 1px solid #c5c5c5;
-    padding: 0px 5px;
-    margin: 0px 2px;
-}
-input, select, textarea {font-family:'Noto Sans Korean', 'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:15px;font-weight:400;color:#505050;line-height:30px;letter-spacing:-0.03em;box-sizing:border-box;vertical-align:middle;}
+button {font-size: 12px;font-weight: 600;line-height: 30px;vertical-align: middle;border: 1px solid #c5c5c5;padding: 0px 5px;margin: 0px 2px;}
+input, select, textarea {font-family:'Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:15px;font-weight:400;color:#505050;line-height:30px;letter-spacing:-0.03em;box-sizing:border-box;vertical-align:middle;}
 input[type=submit] {cursor:pointer;appearance:none;-moz-appearance:none;-webkit-appearance:none;border-radius:0;-moz-border-radius:0;-webkit-border-radius:0;}
 select::-ms-expand {display: none;}
 ul, li {list-style:none;margin: 0px;padding: 0px;}
@@ -37,12 +42,8 @@ p {display:block;}
 .mc {margin:0 auto;}
 .clear:after {content:"";display:block;clear:both;}
 .fawb:before, .fawa:after {font-family:FontAwesome;text-rendering:auto;-webkit-font-smoothing:antialiased;}
-body {font-family:'Noto Sans Korean','Noto Sans KR', 'Malgun Gothic','맑은 고딕','돋움',Dotum,'굴림',Gulim,Tahoma,Verdana,Geneva,sans-serif,Apple Gothic,AppleGothic;font-size:13px;font-weight:400;color:#505050;line-height:30px; letter-spacing:-0.03em; -webkit-text-size-adjust:none;font-smoothing:antialiased;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-body{position: relative;min-height: 100%;min-width: 100%;}
-
 
 /*공통*/
-
 .ct1{max-width:1280px; margin: 0 auto;}
 .ct2{max-width:724px; margin: 0 auto; }
 .af:after{display: block; clear: both; content:'';}
@@ -792,3 +793,109 @@ html {
 ::-webkit-scrollbar-button:end:increment {display: block;height: 10px;}
 ::-webkit-scrollbar-track {background: #efefef;-webkit-border-radius: 10px;border-radius: 10px;-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, .2)}
 ::-webkit-scrollbar-thumb {height: 50px;width: 50px;background: rgba(0, 0, 0, .2);-webkit-border-radius: 8px;border-radius: 8px;-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, .1)}
+
+/* Memo */
+.MemoButton {
+    cursor: pointer;
+    border: "none";
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+.MemoButton_default {
+    background-color: #2b62c6;
+    color: #fff;
+}
+.MemoButton_positive {
+    background-color: #f0f0f0;
+}
+.MemoButton_negative {
+    background-color: #eb6565;
+}
+.memo_header {
+    padding: 5px 0px 30px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+}
+.memo_header > div {
+    display: flex;
+}
+.memo_header .head_text {
+    width: 50%;
+    font-size: 25px;
+    justify-content: center;
+}
+.memo_header .head_btn_left {
+    width: 25%;
+    justify-content: start;
+}
+.memo_header .head_btn_right {
+    width: 25%;
+    justify-content: end;
+}
+.MemoList .menu-warpper{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.MemoList .memoControlMenu {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+.MemoList .menu-warpper .right_col{
+    flex-grow: 1;
+}
+.MemoList .menu-warpper .right_col button {
+    width: 100%;
+}
+.MemoItem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #fefefe;
+    display: flex;
+    justify-content: space-between;
+}
+.MemoItem .emotion_img_wrapper {
+    cursor: pointer;
+    min-width:120px;
+    height: 80px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+.MemoItem .emotion_img_wrapper_1 {
+    background-color: #64c964;
+}
+.MemoItem .emotion_img_wrapper_2 {
+    background-color: #9dd772;
+}
+.MemoItem .emotion_img_wrapper_3 {
+    background-color: #fdce17;
+}
+.MemoItem .emotion_img_wrapper_4 {
+    background-color: #fd8446;
+}
+.MemoItem .emotion_img_wrapper_5 {
+    background-color: #fd565f;
+}
+.MemoItem .info_wrapper {
+    cursor: pointer;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+.MemoItem .memo_date {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+.MemoItem .memo_content_preview {
+    font-size: 13px;
+}
