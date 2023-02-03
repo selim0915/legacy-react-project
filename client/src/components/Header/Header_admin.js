@@ -112,7 +112,7 @@ class Header extends Component {
                         </li>
                     </ul>
                     <div className="hd_right">
-                        <p><span>'{this.state.usernm}'</span>님 안녕하세요.</p>
+                        <p><span>'{this.state.usernm}'</span>님 반갑습니다.@</p>
                     </div>
                 </div>
             </div>
