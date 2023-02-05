@@ -14,18 +14,18 @@ const MemoHome = () =>{
     useEffect(()=>{
         if(memoList.length >= 1) {
             const firstDay = new Date(
-                curDate.getFullYear(),
-                curDate.getMonth(),
-                1
+                curDate.getFullYear(), // 년
+                curDate.getMonth(), //월
+                1 // 일
             ).getTime();
 
             const lastDay = new Date(
-                curDate.getFullYear(),
-                curDate.getMonth() + 1,
-                0,
-                23,
-                59,
-                59
+                curDate.getFullYear(), // 년
+                curDate.getMonth() + 1, // 월
+                0, // 일
+                23, // 시
+                59, // 분
+                59 // 초
             ).getTime();
 
             setData(memoList.filter((it) => firstDay <= it.date && it.date <= lastDay))

@@ -60,7 +60,7 @@ function App() {
   const loginDispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
-  const dataId = useRef(0);
+  const dataId = useRef(6);
   const [memoDumpData, dispatch] = useReducer(reducer, emotionDumpData);
 
   const onCreate = (date, content, emotion)=>{
