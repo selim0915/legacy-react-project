@@ -44,6 +44,8 @@ const reducer = (state, action) => {
         default : 
             return state;
     }
+
+    localStorage.setItem("memo", JSON.stringify(newState));
     return newState;
 }
 
@@ -61,7 +63,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const dataId = useRef(6);
-  const [memoDumpData, dispatch] = useReducer(reducer, emotionDumpData);
+  const [memoDumpData, dispatch] = useReducer(reducer, emotionDumpData); // [] 기본값
 
   const onCreate = (date, content, emotion)=>{
         dispatch({
@@ -91,6 +93,16 @@ function App() {
             }
         });
     }
+
+  useEffect(() => {
+    const localData = localStorage.getItem('memo');
+    if(localData){
+      const memoList = JSON.parse(localData).sort((a,b) => parseInt(b.id) - parseInt(a.id));
+      dataId.current = parseInt(memoList[0].id)+1;
+
+      dispatch({type: "INIT", data: memoList});
+    }
+  },[])
   
   useEffect(() => {
       if(localStorage.getItem('isLoginIn')){  // isLoginIn라는 값이 있으면
