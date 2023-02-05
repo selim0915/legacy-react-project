@@ -11,6 +11,7 @@ import { emotionDumpData } from "../utils/emotion";
 
 // css, js
 import '../css/new.css';
+import '../css/memo.css';
 import '../css/snow.css';
 import '../js/snow.js';
 

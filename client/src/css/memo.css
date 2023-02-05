@@ -1,0 +1,237 @@
+.MemoButton {
+    cursor: pointer;
+    border: "none";
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+.MemoButton_default {
+    background-color: #2b62c6;
+    color: #fff;
+}
+.MemoButton_positive {
+    background-color: #f0f0f0;
+}
+.MemoButton_negative {
+    background-color: #eb6565;
+}
+.memo_header {
+    padding: 5px 0px 30px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+}
+.memo_header > div {
+    display: flex;
+}
+.memo_header .head_text {
+    width: 50%;
+    font-size: 25px;
+    justify-content: center;
+}
+.memo_header .head_btn_left {
+    width: 25%;
+    justify-content: start;
+}
+.memo_header .head_btn_right {
+    width: 25%;
+    justify-content: end;
+}
+.MemoList .menu-warpper{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.MemoList .memoControlMenu {
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+.MemoList .menu-warpper .right_col{
+    flex-grow: 1;
+}
+.MemoList .menu-warpper .right_col button {
+    width: 100%;
+}
+.MemoItem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #fefefe;
+    display: flex;
+    justify-content: space-between;
+}
+.MemoItem .emotion_img_wrapper {
+    cursor: pointer;
+    min-width:120px;
+    height: 80px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+.MemoItem .emotion_img_wrapper_1 {
+    background-color: #64c964;
+}
+.MemoItem .emotion_img_wrapper_2 {
+    background-color: #9dd772;
+}
+.MemoItem .emotion_img_wrapper_3 {
+    background-color: #fdce17;
+}
+.MemoItem .emotion_img_wrapper_4 {
+    background-color: #fd8446;
+}
+.MemoItem .emotion_img_wrapper_5 {
+    background-color: #fd565f;
+}
+.MemoItem .info_wrapper {
+    cursor: pointer;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+.MemoItem .memo_date {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+.MemoItem .memo_content_preview {
+    font-size: 13px;
+}
+.MemoEditor section {
+    margin-bottom: 40px;
+}
+.MemoEditor h4 {
+    font-size: 24px;
+    font-weight: bold;
+}
+.MemoEditor .input_date{
+    border: none;
+    border-radius: 10px;
+    border-color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.MemoEditor .emotion_list_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 2%;
+}
+.MemoEditor textarea {
+    font-size: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 200px;
+    resize: vertical;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+}
+.MemoEditor .control_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.EmotionItem{
+    cursor: pointer;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+.EmotionItem img{
+    width: 50%;
+    margin-bottom: 10px;
+}
+.EmotionItem span {
+    font-size: 18px;
+}
+.EmotionItem_off {
+    background-color: #ececec;
+}
+.EmotionItem_on_1{
+    background-color: #64c964;
+    color: #fff;
+}
+.EmotionItem_on_2 {
+    background-color: #9dd772;
+    color: #fff;
+}
+.EmotionItem_on_3 {
+    background-color: #fdce17;
+    color: #fff;
+}
+.EmotionItem_on_4 {
+    background-color: #fd8446;
+    color: #fff;
+}
+.EmotionItem_on_5 {
+    background-color: #fd565f;
+    color: #fff;
+}
+.MemoView section {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.MemoView h4 {
+    font-size: 24px;
+    font-weight: bold;
+}
+.MemoView .memo_img_wrapper {
+    background-color: #ececec;
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.MemoView .emotion_descript{
+    font-size: 25px;
+}
+.MemoView .memo_img_wrapper_1 {
+    background-color: #64c964;
+}
+.MemoView .memo_img_wrapper_2 {
+    background-color: #9dd772;
+}
+.MemoView .memo_img_wrapper_3 {
+    background-color: #fdce17;
+}
+.MemoView .memo_img_wrapper_4 {
+    background-color: #fd8446;
+}
+.MemoView .memo_img_wrapper_5 {
+    background-color: #fd565f;
+}
+.MemoView .emotion_descript {
+    font-size: 25px;
+    color: white;
+}
+.MemoView .memo_content_wrapper {
+    width: 100%;
+    background-color: #ececec;
+    border-radius: 5px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+.MemoView .memo_content_wrapper p {
+    padding: 20px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 2.5;
+}
