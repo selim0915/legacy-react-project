@@ -21,7 +21,7 @@ const MemoItem = ({ id, emotion, content, date }) => {
             <div 
                 className={["emotion_img_wrapper", `emotion_img_wrapper_${emotion}`].join(" ")}
                 onClick={goDetail}>
-                <img src={process.env.PUBLIC_URL + `assets/img/emotion${emotion}.png`} alt="img" />
+                <img src={process.env.PUBLIC_URL + `/assets/img/emotion${emotion}.png`} alt={`emotion${emotion}.png`} />
             </div>
             <div className="info_wrapper" onClick={goDetail}>
                 <div className="memo_date">{strDate}</div>
