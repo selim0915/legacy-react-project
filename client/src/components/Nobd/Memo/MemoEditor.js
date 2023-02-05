@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getStringDate } from "../../../utils/date";
 import { emotionList } from "../../../utils/emotion";
@@ -15,9 +15,9 @@ const MemoEditor = ({ isEdit, originData }) => {
     const navigate = useNavigate();
     const {onCreate, onEdit, onRemove} = useContext(MemoDispatchContext);
 
-    const handleClickEmote = (emotion) => {
+    const handleClickEmote = useCallback((emotion) => {
         setEmotion(emotion);
-    }
+    }, []);
 
     const handleSubmit = () => {
         if(content.length < 1) {

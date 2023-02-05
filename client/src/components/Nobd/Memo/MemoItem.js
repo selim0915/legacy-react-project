@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import MemoButton from "./MemoButton";
 
@@ -34,4 +35,4 @@ const MemoItem = ({ id, emotion, content, date }) => {
         </div>
     )
 }
-export default MemoItem;
+export default React.memo(MemoItem);

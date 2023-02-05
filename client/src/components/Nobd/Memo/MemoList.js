@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MemoButton from "./MemoButton";
 import MemoItem from "./MemoItem";
@@ -14,13 +14,13 @@ const filterOptionList = [
     {value:"bad",   name:"나쁜날"},
 ]
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => { // 고착컴포넌트 prop가 값이 바뀌지 않으면 렌더링 되지 않게 해줌
     return (
         <select className="memoControlMenu" value={value} onChange={(e) => onChange(e.target.value)}>
             {optionList.map((it, idx) => <option key={idx} value={it.value}>{it.name}</option>)}
         </select>
     )
-}
+});
 
 const MemoList = ({ memoList }) => {
     const navigate = useNavigate();
