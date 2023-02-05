@@ -1,8 +1,8 @@
+import MemoEditor from "./MemoEditor";
+
 const MemoNew = () =>{
     return (
-        <div>
-            MemoNew
-        </div>
+        <MemoEditor />
     )
 }
 export default MemoNew;

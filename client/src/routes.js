@@ -10,7 +10,6 @@ import ShowPage from "./components/Nobd/Blog/pages/ShowPage";
 import CreatePage from "./components/Nobd/Blog/pages/CreatePage";
 import EditPage from "./components/Nobd/Blog/pages/EditPage";
 import AdminPage from "./components/Nobd/Blog/pages/AdminPage";
-import Memo from "./components/Nobd/Memo/Memo";
 import MemoHome from "./components/Nobd/Memo/MemoHome";
 import MemoView from "./components/Nobd/Memo/MemoView";
 import MemoNew from "./components/Nobd/Memo/MemoNew";
@@ -82,10 +81,6 @@ const routes = [
     },
     {
         path: '/memo',
-        element: <Memo/>
-    },
-    {
-        path: '/memo/home',
         element: <MemoHome/>
     },
     {

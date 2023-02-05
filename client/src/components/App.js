@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import cookie from 'react-cookies';
 import axios from "axios";
-import ProtectedRoute from '../ProtectedRoute';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
+import cookie from 'react-cookies';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, useLocation } from "react-router-dom";
 import useToast from '../hooks/toast';
+import ProtectedRoute from '../ProtectedRoute';
+import routes from '../routes';
+import { login } from '../store/authSlice';
 import LoadingSpinner from './Nobd/Blog/componets/LoadingSpinner';
 import Navbar from './Nobd/Blog/componets/Navbar';
 import Toast from './Nobd/Blog/componets/Toast';
-import { login } from '../store/authSlice';
-import routes from '../routes';
 
 // css
 import '../css/new.css';
 import '../css/snow.css';
 
 // js
-import '../js/snow.js'
+import '../js/snow.js';
 
 // header
 import HeaderAdmin from './Header/Header_admin';
@@ -24,18 +24,111 @@ import HeaderAdmin from './Header/Header_admin';
 // footer
 import Footer from './Footer/Footer';
 
+const reducer = (state, action) => {
+    let newState = [];
+
+    switch(action.type){
+        case 'INIT' : {
+            return action.data;
+        }
+        case 'CREATE' : {
+            newState = [action.data, ...state];
+            break;
+        }
+        case 'REMOVE' : {
+            newState = state.filter((item)=>item.id !== action.targetId);
+            break;
+        }
+        case 'EDIT' : {
+            newState = state.map((item)=>item.id === action.data.id ? {...action.data} : item);
+            break;
+        }
+        default : 
+            return state;
+    }
+    return newState;
+}
+
+export const MemoStateContext = React.createContext();
+export const MemoDispatchContext = React.createContext();
+
+const dumpData = [
+    {
+        id:1,
+        emotion:1,
+        content:"오늘의일기1",
+        date: 1675264716343,
+    },
+    {
+        id:2,
+        emotion:2,
+        content:"오늘의일기2",
+        date: 1675264716344,
+    },
+    {
+        id:3,
+        emotion:3,
+        content:"오늘의일기3",
+        date: 1675264716345,
+    },
+    {
+        id:4,
+        emotion:4,
+        content:"오늘의일기4",
+        date: 1675264716346,
+    },
+    {
+        id:5,
+        emotion:5,
+        content:"오늘의일기5",
+        date: 1675264716347,
+    }
+]
+
 function App() {
   const location = useLocation();
   const pathname = location.pathname;
 
   const toasts = useSelector((state) => state.toast.toasts);
   const [, deleteToast] = useToast();
-  const dispatch = useDispatch();
+  const loginDispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
+  const dataId = useRef(0);
+  const [memoDumpData, dispatch] = useReducer(reducer, dumpData);
+
+  const onCreate = (date, content, emotion)=>{
+        dispatch({
+            type:"CREATE", 
+            data: {
+                id:dataId.current, 
+                date: new Date(date).getTime(), 
+                content, 
+                emotion
+            }
+        });
+        dataId.current += 1;
+    }
+
+    const onRemove = (targetId) => {
+        dispatch({type:"REMOVE", targetId});
+    }
+
+    const onEdit = (targetId, date, content, emotion) => {
+        dispatch({
+            type:"REMOVE", 
+            data: {
+                id: targetId,
+                date: new Date(date).getTime(),
+                content,
+                emotion,
+            }
+        });
+    }
   
   useEffect(() => {
       if(localStorage.getItem('isLoginIn')){  // isLoginIn라는 값이 있으면
-          dispatch(login())
+          loginDispatch(login())
       }
       setLoading(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,36 +186,40 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <HeaderAdmin />
-      <div className="container">
-          {/* blog url 에서만 보여주는 화면 */}
-          {pathname.includes('/blog') ? <Navbar /> : null}
-          {pathname.includes('/blog') ? <Toast toasts={toasts} deleteToast={deleteToast} /> : null}
+    <MemoStateContext.Provider value={memoDumpData}>
+      <MemoDispatchContext.Provider value={{onCreate, onEdit, onRemove}}>
+        <div className="App">
+          <HeaderAdmin />
+          <div className="container">
+              {/* blog url 에서만 보여주는 화면 */}
+              {pathname.includes('/blog') ? <Navbar /> : null}
+              {pathname.includes('/blog') ? <Toast toasts={toasts} deleteToast={deleteToast} /> : null}
 
-          <section className="sub_wrap">
-              <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
-                  <Routes>
-                      {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
-                      {routes.map((route) => {
-                          return <Route 
-                                      key={route.path} 
-                                      path={route.path} 
-                                      element={route.auth ? <ProtectedRoute 
-                                                                  key={route.path} 
-                                                                  path={route.path}
-                                                                  element={route.element}
-                                                                  exact="true"
-                                                              /> : route.element} 
-                                      exact="true"
-                                  />
-                      })}
-                  </Routes>
-              </article>
-          </section>
-      </div>
-      <Footer />
-    </div>
+              <section className="sub_wrap">
+                  <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
+                      <Routes>
+                          {/* exact : 정확하게 매치되야 보여준다는 옵션 */}
+                          {routes.map((route) => {
+                              return <Route 
+                                          key={route.path} 
+                                          path={route.path} 
+                                          element={route.auth ? <ProtectedRoute 
+                                                                      key={route.path} 
+                                                                      path={route.path}
+                                                                      element={route.element}
+                                                                      exact="true"
+                                                                  /> : route.element} 
+                                          exact="true"
+                                      />
+                          })}
+                      </Routes>
+                  </article>
+              </section>
+          </div>
+          <Footer />
+        </div>
+        </MemoDispatchContext.Provider>
+    </MemoStateContext.Provider>
   );
 }
 
