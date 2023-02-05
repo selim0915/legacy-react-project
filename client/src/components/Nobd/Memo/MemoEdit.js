@@ -1,20 +1,32 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { MemoStateContext } from "../../App";
+import MemoEditor from "./MemoEditor";
 
 const MemoEdit = () =>{
+    const {id} = useParams();
+    const [originData, setOriginData] = useState();
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
 
-    const id = searchParams.get("id");
-    const mode = searchParams.get("mode");
+    const memoList = useContext(MemoStateContext);
+
+    useEffect(() => {
+        if(memoList.length >= 1){
+            const targetMemo = memoList.find((it) => 
+                parseInt(it.id) === parseInt(id)
+            );
+            
+            if(targetMemo){
+                setOriginData(targetMemo);
+            }else{
+                navigate("/memo", {replace: true});
+            }
+        }
+    }, [id, memoList, navigate])
 
     return (
         <div>
-            MemoEdit
-            {id}
-            {mode}
-            <button onClick={()=>setSearchParams({who: "srwoo"})}>바꾸기</button>
-            <button onClick={()=>navigate("/")}>메인으로 보내기</button>
-            <button onClick={()=>navigate(-1)}>뒤로 보내기</button>
+            {originData && <MemoEditor isEdit={true} originData={originData} />}
         </div>
     )
 }

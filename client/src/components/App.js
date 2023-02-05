@@ -7,22 +7,19 @@ import useToast from '../hooks/toast';
 import ProtectedRoute from '../ProtectedRoute';
 import routes from '../routes';
 import { login } from '../store/authSlice';
+import { emotionDumpData } from "../utils/emotion";
+
+// css, js
+import '../css/new.css';
+import '../css/snow.css';
+import '../js/snow.js';
+
+// compoents
+import Footer from './Footer/Footer';
+import HeaderAdmin from './Header/Header_admin';
 import LoadingSpinner from './Nobd/Blog/componets/LoadingSpinner';
 import Navbar from './Nobd/Blog/componets/Navbar';
 import Toast from './Nobd/Blog/componets/Toast';
-
-// css
-import '../css/new.css';
-import '../css/snow.css';
-
-// js
-import '../js/snow.js';
-
-// header
-import HeaderAdmin from './Header/Header_admin';
-
-// footer
-import Footer from './Footer/Footer';
 
 const reducer = (state, action) => {
     let newState = [];
@@ -52,38 +49,6 @@ const reducer = (state, action) => {
 export const MemoStateContext = React.createContext();
 export const MemoDispatchContext = React.createContext();
 
-const dumpData = [
-    {
-        id:1,
-        emotion:1,
-        content:"오늘의일기1",
-        date: 1675264716343,
-    },
-    {
-        id:2,
-        emotion:2,
-        content:"오늘의일기2",
-        date: 1675264716344,
-    },
-    {
-        id:3,
-        emotion:3,
-        content:"오늘의일기3",
-        date: 1675264716345,
-    },
-    {
-        id:4,
-        emotion:4,
-        content:"오늘의일기4",
-        date: 1675264716346,
-    },
-    {
-        id:5,
-        emotion:5,
-        content:"오늘의일기5",
-        date: 1675264716347,
-    }
-]
 
 function App() {
   const location = useLocation();
@@ -95,7 +60,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const dataId = useRef(0);
-  const [memoDumpData, dispatch] = useReducer(reducer, dumpData);
+  const [memoDumpData, dispatch] = useReducer(reducer, emotionDumpData);
 
   const onCreate = (date, content, emotion)=>{
         dispatch({
@@ -116,7 +81,7 @@ function App() {
 
     const onEdit = (targetId, date, content, emotion) => {
         dispatch({
-            type:"REMOVE", 
+            type:"EDIT", 
             data: {
                 id: targetId,
                 date: new Date(date).getTime(),

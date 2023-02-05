@@ -1,52 +1,19 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getStringDate } from "../../../utils/date";
+import { emotionList } from "../../../utils/emotion";
 import { MemoDispatchContext } from "../../App";
 import EmotionItem from "./EmotionItem";
 import MemoButton from "./MemoButton";
 import MemoHeader from "./MemoHeader";
 
-const env = process.env;
-env.PUBLIC_URL = env.PUBLIC_URL || "";
-
-const emotionList = [
-    {
-        emotion_id:1,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion1.png`,
-        emotion_descript: '매우 좋음'
-    },
-    {
-        emotion_id:2,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion2.png`,
-        emotion_descript: '좋음'
-    },
-    {
-        emotion_id:3,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion3.png`,
-        emotion_descript: '보통'
-    },
-    {
-        emotion_id:4,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion4.png`,
-        emotion_descript: '나쁨'
-    },
-    {
-        emotion_id:5,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion5.png`,
-        emotion_descript: '매우 나쁨'
-    }
-]
-
-const getStringDate = (date) => {
-    return date.toISOString().slice(0, 10);
-}
-
-const MemoEditor = () => {
+const MemoEditor = ({ isEdit, originData }) => {
     const contentRef = useRef();
-    const [content, setContent] = useState("");
-    const [emotion, setEmotion] = useState(3);
     const [date, setDate] = useState(getStringDate(new Date()));
+    const [emotion, setEmotion] = useState(3);
+    const [content, setContent] = useState("");
     const navigate = useNavigate();
-    const {onCreate} = useContext(MemoDispatchContext);
+    const {onCreate, onEdit} = useContext(MemoDispatchContext);
 
     const handleClickEmote = (emotion) => {
         setEmotion(emotion);
@@ -57,15 +24,29 @@ const MemoEditor = () => {
             contentRef.current.focus();
             return
         }
-        onCreate(date, content, emotion);
-        navigate('/memo', {replace:true}) // 뒤로가기 하면 다시 못돌아오게
+        
+        if(isEdit){ // 수정
+            onEdit(originData.id, date, content, emotion);
+            navigate(`/memo/${originData.id}`);
+        }else{
+            onCreate(date, content, emotion);
+            navigate('/memo', {replace:true}) // 뒤로가기 하면 다시 못돌아오게
+        }
     }
+
+    useEffect(() => {
+        if(isEdit){ // 수정
+            setDate(getStringDate(new Date(parseInt(originData.date))));
+            setEmotion(originData.emotion);
+            setContent(originData.content);
+        }
+    }, [isEdit, originData])
 
     return (
         <div className="MemoEditor">
             <MemoHeader 
-                headText={"새 메모"}
-                leftChild={<MemoButton text="취소" type="positive" onClick={() => navigate(-1)}/>}
+                headText={isEdit ? "메모 수정" : "메모 신규등록"}
+                leftChild={<MemoButton text="뒤로" type="positive" onClick={() => navigate(-1)}/>}
             />
             <div>
                 <section>
