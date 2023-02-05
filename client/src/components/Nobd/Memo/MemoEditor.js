@@ -13,7 +13,7 @@ const MemoEditor = ({ isEdit, originData }) => {
     const [emotion, setEmotion] = useState(3);
     const [content, setContent] = useState("");
     const navigate = useNavigate();
-    const {onCreate, onEdit} = useContext(MemoDispatchContext);
+    const {onCreate, onEdit, onRemove} = useContext(MemoDispatchContext);
 
     const handleClickEmote = (emotion) => {
         setEmotion(emotion);
@@ -34,6 +34,13 @@ const MemoEditor = ({ isEdit, originData }) => {
         }
     }
 
+    const handleRemove = () => {
+        if(window.confirm("삭제하겠습니까?")){
+            onRemove(originData.id);
+            navigate('/memo', {replace:true});
+        }
+    }
+
     useEffect(() => {
         if(isEdit){ // 수정
             setDate(getStringDate(new Date(parseInt(originData.date))));
@@ -47,6 +54,7 @@ const MemoEditor = ({ isEdit, originData }) => {
             <MemoHeader 
                 headText={isEdit ? "메모 수정" : "메모 신규등록"}
                 leftChild={<MemoButton text="뒤로" type="positive" onClick={() => navigate(-1)}/>}
+                rightChild={<MemoButton text="삭제" type="negative" onClick={() => handleRemove()}/>}
             />
             <div>
                 <section>
