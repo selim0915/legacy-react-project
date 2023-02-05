@@ -13,6 +13,11 @@ const MemoView = () =>{
     const navigate = useNavigate();
     const memoList = useContext(MemoStateContext);
 
+    useEffect(() => {
+        const titleElement = document.getElementsByTagName('title')[0];
+        titleElement.innerHTML = `MEMO ${id} 상세정보`
+    },[id]);
+
     useEffect(()=> {
         if(memoList.length > 0){
             const targetMemo = memoList.find(

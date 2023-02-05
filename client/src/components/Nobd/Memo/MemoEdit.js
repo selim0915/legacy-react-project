@@ -11,6 +11,11 @@ const MemoEdit = () =>{
     const memoList = useContext(MemoStateContext);
 
     useEffect(() => {
+        const titleElement = document.getElementsByTagName('title')[0];
+        titleElement.innerHTML = `MEMO ${id} 수정`;
+    },[id]);
+
+    useEffect(() => {
         if(memoList.length >= 1){
             const targetMemo = memoList.find((it) => 
                 parseInt(it.id) === parseInt(id)

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MemoButton from "./MemoButton";
 import MemoItem from "./MemoItem";
@@ -26,6 +26,11 @@ const MemoList = ({ memoList }) => {
     const navigate = useNavigate();
     const [sortType, setSortType] = useState('lastst');
     const [filter, setFilter] = useState('all');
+
+    useEffect(() => {
+        const titleElement = document.getElementsByTagName('title')[0];
+        titleElement.innerHTML = 'MEMO 목록';
+    },[]);
 
     const getProcessMemoList = () => {
         const filterCallback = (item) => {
