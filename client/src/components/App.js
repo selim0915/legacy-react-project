@@ -10,10 +10,10 @@ import { login } from '../store/authSlice';
 import { emotionDumpData } from "../utils/emotion";
 
 // css, js
-import '../css/new.css';
-import '../css/memo.css';
-import '../css/snow.css';
-import '../js/snow.js';
+import '../styles/new.css';
+import '../styles/memo.css';
+import '../styles/snow.css';
+import '../utils/snow';
 
 // compoents
 import Footer from './Footer/Footer';

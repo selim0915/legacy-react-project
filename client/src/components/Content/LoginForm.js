@@ -5,6 +5,9 @@ import cookie from 'react-cookies';
 import Swal from 'sweetalert2';
 import $ from 'jquery';
 
+const env = process.env;
+env.PUBLIC_URL = env.PUBLIC_URL || "";
+
 class LoginForm extends Component {
     submitClick = (e) => {
         this.email_val = $('#email_val').val();
@@ -66,16 +69,21 @@ class LoginForm extends Component {
         return (
             <section className="main">
                 <div className="m_login">
-                <h3><span><img src={require("../../img/main/log_img.png")} alt="" />
-                </span>LOGIN</h3>
+                <h3>
+                    <span>
+                        <img src={process.env.PUBLIC_URL + `/assets/png/log_img.png`} alt="" />
+                    </span>LOGIN
+                </h3>
                 <div className="log_box">
                     <div className="in_ty1">
-                        <span><img src={require("../../img/main/m_log_i3.png")} alt="" /></span>
+                        <span>
+                            <img src={process.env.PUBLIC_URL + `/assets/png/m_log_i3.png`} alt="" />
+                        </span>
                         <input type="text" id="email_val" placeholder="이메일" />
                     </div>
                     <div  className="in_ty1">
                         <span className="ic_2">
-                            <img src={require("../../img/main/m_log_i2.png")} alt="" />
+                            <img src={process.env.PUBLIC_URL + `/assets/png/m_log_i2.png`} alt="" />
                         </span>
                         <input type="password" id="pwd_val" placeholder="비밀번호" />
                     </div>

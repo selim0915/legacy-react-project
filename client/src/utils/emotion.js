@@ -37,27 +37,27 @@ export const emotionDumpData = [
 export const emotionList = [
     {
         emotion_id:1,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion1.png`,
+        emotion_img: process.env.PUBLIC_URL + `/assets/png/emotion1.png`,
         emotion_descript: '매우 좋음'
     },
     {
         emotion_id:2,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion2.png`,
+        emotion_img: process.env.PUBLIC_URL + `/assets/png/emotion2.png`,
         emotion_descript: '좋음'
     },
     {
         emotion_id:3,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion3.png`,
+        emotion_img: process.env.PUBLIC_URL + `/assets/png/emotion3.png`,
         emotion_descript: '보통'
     },
     {
         emotion_id:4,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion4.png`,
+        emotion_img: process.env.PUBLIC_URL + `/assets/png/emotion4.png`,
         emotion_descript: '나쁨'
     },
     {
         emotion_id:5,
-        emotion_img: process.env.PUBLIC_URL + `/assets/img/emotion5.png`,
+        emotion_img: process.env.PUBLIC_URL + `/assets/png/emotion5.png`,
         emotion_descript: '매우 나쁨'
     }
 ]
