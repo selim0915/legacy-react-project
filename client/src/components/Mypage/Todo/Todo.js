@@ -14,7 +14,7 @@ const Todo = () => {
         }
 
         setDatas(preData => [...preData, newData])
-        handlerTodoList();
+        setTitle("");
     }
 
     const handlerRemove = (pId) => {
