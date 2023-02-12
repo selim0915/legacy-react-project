@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getStringDate } from "../../../utils/date";
-import { emotionList } from "../../../utils/emotion";
+import { emotionList } from "../../../utils/dumpData";
 import { MemoDispatchContext } from "../../App";
 import EmotionItem from "./EmotionItem";
 import MemoButton from "./MemoButton";

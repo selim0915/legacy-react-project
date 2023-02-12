@@ -7,7 +7,7 @@ import useToast from '../hooks/toast';
 import ProtectedRoute from '../ProtectedRoute';
 import routes from '../routes';
 import { login } from '../store/authSlice';
-import { emotionDumpData } from "../utils/emotion";
+import { emotionDumpData } from "../utils/dumpData";
 
 // css, js
 import '../styles/new.css';

@@ -61,3 +61,16 @@ export const emotionList = [
         emotion_descript: '매우 나쁨'
     }
 ]
+
+export const todoDumpData = [
+    {
+        id: "1",
+        title: "공부하기",
+        completed: true
+    },
+    {
+        id: "2",
+        title: "청소하기",
+        completed: false
+    }
+]

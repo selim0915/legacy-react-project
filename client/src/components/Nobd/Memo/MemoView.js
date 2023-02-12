@@ -5,7 +5,7 @@ import { MemoStateContext } from "../../App";
 import LoadingSpinner from "../Blog/componets/LoadingSpinner";
 import MemoButton from "./MemoButton";
 import MemoHeader from "./MemoHeader";
-import { emotionList } from "../../../utils/emotion";
+import { emotionList } from "../../../utils/dumpData";
 
 const MemoView = () =>{
     const {id} = useParams();
