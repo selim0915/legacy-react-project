@@ -134,8 +134,8 @@ const UserForm = ({ editing }) => {
         if(fnValidate()){
             var jsonstr = $("form[name='frm']").serialize();
             jsonstr = decodeURIComponent(jsonstr);
-            var Json_form = JSON.stringify(jsonstr).replace(/\\"/gi,'')
-            Json_form = "{\"" +Json_form.replace(/\\&/g,'\\",\\"').replace(/=/gi,'\\":"')+"\"}";
+            var Json_form = JSON.stringify(jsonstr).replace(/\"/gi,'')
+            Json_form = "{\"" +Json_form.replace(/\&/g,'\",\"').replace(/=/gi,'\":"')+"\"}";
         
             if(editing){
                 try {
