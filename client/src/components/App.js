@@ -21,6 +21,7 @@ import HeaderAdmin from './Header/Header_admin';
 import LoadingSpinner from './Nobd/Blog/componets/LoadingSpinner';
 import Navbar from './Nobd/Blog/componets/Navbar';
 import Toast from './Nobd/Blog/componets/Toast';
+import Toast2 from '../components/common/Toast';
 
 const reducer = (state, action) => {
     let newState = [];
@@ -171,7 +172,7 @@ function App() {
           <div className="container">
               {/* blog url 에서만 보여주는 화면 */}
               {pathname.includes('/blog') ? <Navbar /> : null}
-              {pathname.includes('/blog') ? <Toast toasts={toasts} deleteToast={deleteToast} /> : null}
+              {pathname.includes('/blog') ? <Toast toasts={toasts} deleteToast={deleteToast} /> : <Toast2 toasts={toasts} /> }
 
               <section className="sub_wrap">
                   <article className="s_cnt mp_pro_li ct1 mp_pro_li_admin">
