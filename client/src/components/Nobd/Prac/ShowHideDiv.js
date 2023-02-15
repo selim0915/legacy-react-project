@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ShowHideDiv = () => {
+    const [displayValue, setDisplayValue] = useState("block");
+
     const handlerShow = () => {
-        const element = document.getElementsByClassName("srwoo");
-        for(let i=0; i<element.length; i++){
-            element[i].style.display = "none";
-        }
+        // const element = document.getElementsByClassName("srwoo");
+        // for(let i=0; i<element.length; i++){
+        //     element[i].style.display = "none";
+        // }
+        setDisplayValue("none")
     }
 
     const handlerhide = () => {
@@ -13,12 +16,34 @@ const ShowHideDiv = () => {
         for(let i=0; i<element.length; i++){
             element[i].style.display = "block";
         }
+        setDisplayValue("block") // hide다 끝나면 state값 세팅
     }
+
+    // useState로 스타일명을 입력하고 바꿔준다면 ?
+    // 
+    // 로딩 show 하는건 state로 hide하는건 id로 하나씩
+
 
     return (
         <> 
             <button onClick={handlerShow}>보이는 박스를 안보이게</button>
             <button onClick={handlerhide}>안 보이는 박스를 보이게</button>
+
+            <div className="srwoo" style={{display: displayValue}}>
+                보이는 박스1
+            </div>
+            <div className="srwoo" style={{display: displayValue}}>
+                보이는 박스2
+            </div>
+            <div className="srwoo" style={{display: displayValue}}>
+                보이는 박스3
+            </div>
+            <div className="srwoo" style={{display: displayValue}}>
+                보이는 박스4
+            </div>
+            <div className="srwoo" style={{display: displayValue}}>
+                보이는 박스5
+            </div>
 
             {/* <div>
             <div className="srwoo">
