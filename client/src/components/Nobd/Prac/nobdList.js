@@ -6,6 +6,7 @@ import ReadContent from "./ReadContent";
 import CreatContent from "./CreatContent";
 import UpdateContent from "./UpdateContent";
 import LikeContent from "./LikeContent";
+import ShowHideDiv from "./ShowHideDiv";
 
 class nobdList extends Component {
     constructor(props){
@@ -104,6 +105,7 @@ class nobdList extends Component {
     render(){
         return (
             <div>
+                <ShowHideDiv />
                 <div>
                     <Search 
                         title={this.state.subject.title}
